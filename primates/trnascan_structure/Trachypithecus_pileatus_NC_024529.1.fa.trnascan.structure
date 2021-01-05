@@ -1,0 +1,132 @@
+NC_024529.1.trna1 (1-71)	Length: 71 bp
+Type: Phe	Anticodon: GAA at 36-38 (36-38)	Score: 81.0
+         *    |    *    |    *    |    *    |    *    |    *    |    *    |
+Seq: GTTTATGTAGCTTAACTtACCcAAAGCAAGACACTGAAAATGCCTAGATGGGTTCATAAACCCCATAGACA
+Str: >>>>>>>..>>>>..........<<<<.>>.>>.......<<.<<....>>>>......<<<<<<<<<<<.
+
+NC_024529.1.trna2 (1019-1087)	Length: 69 bp
+Type: Val	Anticodon: TAC at 32-34 (1050-1052)	Score: 81.4
+         *    |    *    |    *    |    *    |    *    |    *    |    *   
+Seq: CAAGGTATAGCTCAACACAAAGCATCCTGCTTACACCCGGAAGATATCAACATCACTTGATTGCCTTGA
+Str: >>>>>>>..>>>........<<<.>>>.>.......<.<<<....>>>>>......<<<<<<<<<<<<.
+
+NC_024529.1.trna3 (2652-2726)	Length: 75 bp
+Type: Leu	Anticodon: TAA at 36-38 (2687-2689)	Score: 122.2
+         *    |    *    |    *    |    *    |    *    |    *    |    *    |    
+Seq: GTTAAGATGGCAGAGCCcGGCaATTGCATAAAATTTAAGACTTTATAAtCAGAGGTTCAATTCCTCTTCTTAACA
+Str: >>>>>>>..>>>>..........<<<<.>>>>.........<<<<.....>>>>>.......<<<<<<<<<<<<.
+
+NC_024529.1.trna4 (3684-3753)	Length: 70 bp
+Type: Ile	Anticodon: GAT at 30-32 (3713-3715)	Score: 113.2
+         *    |    *    |    *    |    *    |    *    |    *    |    *    
+Seq: AGAAATATGTCTGACAAAAGAGTTACTTTGATAGAGTAAATAaTAGAGGTgCTTAGTCCTCTTATTTCTA
+Str: >>>>>>>..>>>......<<<.>>>>>.......<<<<<.....>>>>>........<<<<<<<<<<<<.
+
+NC_024529.1.trna5 (3824-3891)	Length: 68 bp
+Type: Met	Anticodon: CAT at 31-33 (3854-3856)	Score: 123.1
+         *    |    *    |    *    |    *    |    *    |    *    |    *  
+Seq: AGTAAGGTCAGCTAAATAAGCTATCGGGCCCATACCCCGAAAATGTTGGTTATACCCTTCCCGTACTA
+Str: >>>>.>>..>>>>.....<<<<.>>>>>.......<<<<<....>..>>......<<..<<<.<<<<.
+
+NC_024529.1.trna6 (4934-5001)	Length: 68 bp
+Type: Trp	Anticodon: TCA at 32-34 (4965-4967)	Score: 93.9
+         *    |    *    |    *    |    *    |    *    |    *    |    *  
+Seq: AGAAATTTAGGTTAAATAAGACCGAAAGCCTTCAAAGCTCTTAGTAAGTTAAACATACTTAATTTCTG
+Str: >>>>>>>..>>>>......<<<<.>.>>>.......<<<.<....>>>>.......<<<<<<<<<<<.
+
+NC_024529.1.trna7 (6941-7008)	Length: 68 bp
+Type: Asp	Anticodon: GTC at 31-33 (6971-6973)	Score: 91.1
+         *    |    *    |    *    |    *    |    *    |    *    |    *  
+Seq: GAGATATTAGAAAAACTATTTCATGGCTTTGTCAAAGCTAAATTATAGGACATACCCTATATATCTTA
+Str: >>>>>>>..>>>>.....<<<<.>>>>>.......<<<<<....>>>>>......<<<<<<<<<<<<.
+
+NC_024529.1.trna8 (7741-7807)	Length: 67 bp
+Type: Lys	Anticodon: TTT at 29-31 (7769-7771)	Score: 79.9
+         *    |    *    |    *    |    *    |    *    |    *    |    * 
+Seq: CACTGTATAGCTACCACAGCATTAACCTTTTAAGTTAAAGATGAGAAAACACTTTTCTCTGCAGTGA
+Str: >>>>>>>..>>>.....<<<.>>>>>.......<<<<<....>>>>>.......<<<<<<<<<<<<.
+
+NC_024529.1.trna9 (9434-9501)	Length: 68 bp
+Type: Gly	Anticodon: TCC at 31-33 (9464-9466)	Score: 102.2
+         *    |    *    |    *    |    *    |    *    |    *    |    *  
+Seq: ATTCTTTTAGTATAATTAGTACAGCTGACTTCCAATTAGCTAGTTTCGATAATACTCGAAAAAGAATA
+Str: >>>>>>>..>>>>.....<<<<.>>>>>.......<<<<<....>>>>>......<<<<<<<<<<<<.
+
+NC_024529.1.trna10 (9848-9912)	Length: 65 bp
+Type: Arg	Anticodon: TCG at 31-33 (9878-9880)	Score: 93.9
+         *    |    *    |    *    |    *    |    *    |    *    |    
+Seq: TGGCAAGTAGTTTAAACAAAACAAATGATTTCGACTCATTAGATTATGATAATCATACTAGCCAA
+Str: >>>>.>>..>>>>.....<<<<.>>>>>.......<<<<<....>>>>>...<<<<<<<.<<<<.
+
+NC_024529.1.trna11 (11581-11649)	Length: 69 bp
+Type: His	Anticodon: GTG at 31-33 (11611-11613)	Score: 99.7
+         *    |    *    |    *    |    *    |    *    |    *    |    *   
+Seq: GTAAATATAATTTAACTAAAATATTAGATTGTGAATCTAAACATAGAAGTTTATCTCTTCTTATTTACC
+Str: >>>>>>>..>>>>.....<<<<.>>>>>.......<<<<<....>>>>>.......<<<<<<<<<<<<.
+
+NC_024529.1.trna12 (11650-11708)	Length: 59 bp
+Type: Ser	Anticodon: GCT at 20-22 (11669-11671)	Score: 67.7
+         *    |    *    |    *    |    *    |    *    |    *   
+Seq: GAGAAAGcttgcAAGGACTGCTAATCCATGCCCCCGTACtTAACAAAACGGCTATCTCA
+Str: >>>>.>>.....>.>>>.......<<<.<....>>>>..........<<<<<<.<<<<.
+
+NC_024529.1.trna13 (11709-11779)	Length: 71 bp
+Type: Leu	Anticodon: TAG at 33-35 (11741-11743)	Score: 122.6
+         *    |    *    |    *    |    *    |    *    |    *    |    *    |
+Seq: ACTTTTAAAGGATAACAGATATCCGTTGGTCTTAGGAACCAAAAATATTGGTGCAACTCCAAATAAAAGTA
+Str: >>>>>>>..>>>>.......<<<<.>>>>>.......<<<<<.....>>>>.......<<<<.<<<<<<<.
+
+NC_024529.1.trna14 (15329-15393)	Length: 65 bp
+Type: Thr	Anticodon: TGT at 32-34 (15360-15362)	Score: 73.1
+         *    |    *    |    *    |    *    |    *    |    *    |    
+Seq: GCCCCCGTAGTATAAAACAATACACCAGTCTTGTAAACTGGAAACGGAGACCTTTCCCTGGGGCA
+Str: >>>>>.>..>>>>......<<<<.>>>>>.......<<<<<....>>>......<<<<.<<<<<.
+
+NC_024529.1.trna15 (15462-15396)	Length: 67 bp
+Type: Pro	Anticodon: TGG at 31-33 (15432-15430)	Score: 86.7
+         *    |    *    |    *    |    *    |    *    |    *    |    * 
+Seq: CAGAAAGTAGTTTAAATAGAATGCCAGTTTTGGGTATTGGAGGCGGAGTTGAGTACTTTCTTTCTGA
+Str: >>>>>>>..>>>>.....<<<<.>>>>>.......<<<<<....>>>>.......<<<<<<<<<<<.
+
+NC_024529.1.trna16 (14183-14115)	Length: 69 bp
+Type: Glu	Anticodon: TTC at 31-33 (14153-14151)	Score: 108.3
+         *    |    *    |    *    |    *    |    *    |    *    |    *   
+Seq: GTTTTTGTAGTTGAAATACAACGATGATTTTTCATATCATTAGTCATGGTTTAAGTCCATGTAAGAACG
+Str: >>>>>>>..>>>>.....<<<<.>>>>>.......<<<<<....>>>>>.......<<<<<<<<<<<<.
+
+NC_024529.1.trna17 (6937-6869)	Length: 69 bp
+Type: Ser	Anticodon: TGA at 31-33 (6907-6905)	Score: 99.6
+         *    |    *    |    *    |    *    |    *    |    *    |    *   
+Seq: GAAAAAGTTATAGGGGCTATAGAATTGGCTTGAAACCAGTTTCAGGAGGTTCGATTCCTTCCTTTTTTA
+Str: >>>>>>>>>>>.......<<<<.>>>>>.......<<<<<....>>>>>.......<<<<<<<<<<<<.
+
+NC_024529.1.trna18 (5314-5249)	Length: 66 bp
+Type: Tyr	Anticodon: GTA at 29-31 (5286-5284)	Score: 107.8
+         *    |    *    |    *    |    *    |    *    |    *    |    *
+Seq: GGTAAAATGGCTGAGTAAGCATTAGGCTGTAAATCTAAAGACAGAGGTTTAGCCCTCTTTTTACCA
+Str: >>>>>>>..>>>.....<<<.>>>>>.......<<<<<....>>>>>......<<<<<<<<<<<<.
+
+NC_024529.1.trna19 (5249-5184)	Length: 66 bp
+Type: Cys	Anticodon: GCA at 29-31 (5221-5219)	Score: 94.2
+         *    |    *    |    *    |    *    |    *    |    *    |    *
+Seq: AGCCCCGAGGTGATTTTCATGTTGAATTGCAAATTCAAAGGAGCAGCCAGATTTCTGCCGGGGCTT
+Str: >>>>>>>..>>>>...<<<<.>>>>>.......<<<<<....>>>>........<<<<<<<<<<<.
+
+NC_024529.1.trna20 (5152-5080)	Length: 73 bp
+Type: Asn	Anticodon: GTT at 34-36 (5119-5117)	Score: 100.9
+         *    |    *    |    *    |    *    |    *    |    *    |    *    |  
+Seq: TAGATTAAAGCCAGTTGATtGAGGCGTTTAGCTGTTAACTAAGTTTtTGTGGGTTTAAGTCCCATTAATCTAG
+Str: >>>>>>>..>>>..........<<<.>>>>>.......<<<<<.....>>>>>.......<<<<<<<<<<<<.
+
+NC_024529.1.trna21 (5078-5010)	Length: 69 bp
+Type: Ala	Anticodon: TGC at 31-33 (5048-5046)	Score: 95.5
+         *    |    *    |    *    |    *    |    *    |    *    |    *   
+Seq: AAGGGCTTAGCTTAATTAAAGTAACTGATTTGCGTTCGGTTGATGCAGAGTGTAGTTCTGTAGTCCTTG
+Str: >>>>>>>..>>>>.....<<<<.>>>>>.......<<<<<....>>>>>.......<<<<<<<<<<<<.
+
+NC_024529.1.trna22 (3822-3751)	Length: 72 bp
+Type: Gln	Anticodon: TTG at 34-36 (3789-3787)	Score: 105.8
+         *    |    *    |    *    |    *    |    *    |    *    |    *    | 
+Seq: TAGAATGAGGTGTAATAGGTAGCACGGAGGAATTTGAATTCTCAGGAGTAGGTTCAATGCCTATAGTTCTAG
+Str: >>>>>>...>>>>........<<<<.>>>>>.......<<<<<....>>>>>.......<<<<<.<<<<<<.
+

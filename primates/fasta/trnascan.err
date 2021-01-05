@@ -1,0 +1,40 @@
+
+tRNAscan-SE v.2.0.3 (April 2019) - scan sequences for transfer RNAs
+Copyright (C) 2019 Patricia Chan and Todd Lowe
+                   University of California Santa Cruz
+Freely distributed under the GNU General Public License (GPLv3)
+
+------------------------------------------------------------
+Sequence file(s) to search:        Chiropotes_albinasus_NC_021946.1.fa
+Search Mode:                       Mitochondrial in mammals
+Results written to:                Standard output
+Output format:                     Tabular
+Searching with:                    Infernal single-pass scan
+                                   Fast mode
+Covariance model:                  /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-Ala.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-Arg.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-Asn.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-Asp.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-Cys.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-Gln.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-Glu.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-Gly.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-His.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-Ile.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-LeuTAA.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-LeuTAG.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-Lys.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-Met.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-Phe.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-Pro.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-SerGCT.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-SerTGA.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-Thr.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-Trp.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-Tyr.cm
+                                   /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/models/TRNAinf-mito-mammal-Val.cm
+Alternate transl code used:        from file /home/gabriel/bioinfo/anaconda3/lib/tRNAscan-SE/gcode/gcode.vertmito
+
+Temporary directory:               /tmp
+------------------------------------------------------------
+
