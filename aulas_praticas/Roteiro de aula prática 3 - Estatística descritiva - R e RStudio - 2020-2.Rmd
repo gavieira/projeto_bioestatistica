@@ -1,0 +1,129 @@
+---
+title: "Prática Aula 3 - Estatística descritiva - 2020-2"
+author: "Clarissa F. D. Carneiro"
+date: "28/12/2020"
+output: html_document
+---
+
+O objetivo desta prática é o de explorar os recursos do R para trabalhar com gráficos e diversas medidas sumarizadoras.
+
+1. Carregue o banco de dados “ToothGrowth”, que corresponde a um experimento que mediu o crescimento de osteoblastos em porquinhos-da-índia após administração de vitamina C na forma de ácido ascórbico ou suco de laranja em três doses. Como este é um banco de dados que já vem com os pacotes base de R, basta digitar o comando abaixo no console ou clicar no triângulo verde abaixo:
+```{r}
+data("ToothGrowth")
+```
+
+2. Abra a planilha clicando no símbolo de tabela ao lado do item ToothGrowth que apareceu no ‘Environment’ (no quadrante superior direito).
+
+3. A coluna ‘len’ contém os valores de crescimento dos osteoblastos. A coluna ‘supp’ indica se o tratamento foi com ácido ascórbico (VC) ou com suco de laranja (OJ). A coluna ‘dose’ indica a dose em miligramas por dia.
+
+4. Vamos precisar de dois pacotes adicionais para as próximas atividades: dplyr e ggplot2. Para instalá-los você pode ir na aba “Packages” (no quandrante inferior direito) e clicar em ‘Install’ (canto superior esquerdo deste quadrante). Digite o nome do pacote e clique em ‘Install’. Uma outra opção é digitar:
+install.packages(x)
+Onde x deve ser o nome do pacote desejado.
+
+5. A instalação será necessária apenas no primeiro uso, mas todas as vezes que abrir o RStudio e quiser usar estes pacotes será necessário carregá-los. Para isso, você pode encontrar o pacote na lista e clicar nele ou você pode digitar:
+library(x)
+Onde x deve ser o nome do pacote desejado.
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+6. Após carregar estes dois pacotes, vamos calcular as medidas de tendência central e de dispersão. Para obter as medidas de cada tratamento e em cada dosagem, é preciso agrupar essas observações. Para isso, vamos usar a função group_by(x,...). Dentro dela, iremos colocar as colunas pelas quais queremos agrupar nossos valores, ou seja, ‘supp’ e ‘dose’. 
+A sintaxe usada pelo dplyr envolve o uso de ‘pipes’, representados por %>%. Isso irá indicar a ordem que queremos processar nosso banco de dados. Com isso, por enquanto nós temos:
+```{r}
+ ToothGrowth %>% group_by(supp, dose)
+# como não queremos que ele rode o código ainda, colocamos o # no início da linha.
+```
+
+7. Para incluir os cálculos que estamos interessados, vamos usar um outro pipe e a função summarise(). Dentro desta função nós podemos pedir, por exemplo, a média dos crescimentos:
+```{r}
+ToothGrowth %>% group_by(supp, dose) %>% summarise(mean(len))
+```
+
+8. Para obter o desvio padrão, substituímos mean por sd.
+```{r}
+ToothGrowth %>% group_by(supp, dose) %>% summarise(sd(len))
+```
+
+9. Podemos ainda guardar estes valores, vamos precisar deles daqui a pouco:
+```{r}
+media = ToothGrowth %>% group_by(supp, dose) %>% summarise(media = mean(len))
+desvio = ToothGrowth %>% group_by(supp, dose) %>% summarise(sd = sd(len))
+ambos = full_join(media, desvio)
+```
+
+10. Para visualizar esse conjunto de dados, o pacote ggplot2 usa uma sintaxe de camadas. Primeiro vem a função base ggplot(), onde definimos qual o banco de dados que queremos usar e que variáveis devem corresponder a que elementos no gráfico (em cada eixo, ou ainda cores, tamanhos, transparência...). Depois, vem a camada geom, que irá variar de acordo com o tipo de gráfico. Para um scatter plot, nós temos:
+```{r}
+ggplot(ToothGrowth, aes(x = as.factor(dose), y = len, fill = supp)) + 
+  geom_dotplot(binaxis = "y")
+```
+
+Observe que pedimos para que a dose seja considerada uma variável discreta usando a função as.factor(). Para que a cor corresponda ao tratamento, usamos o parâmetro fill e o R escolheu cores automaticamente e criou uma legenda. Para alterar as cores manualmente, podemos usar uma terceira camada adicionando + scale_fill_manual(values = c(“...”)). Os parâmetros a serem usados são as cores em código HEX (uma forma fácil de encontrar os códigos é com este site https://htmlcolorcodes.com/). Então temos agora:
+```{r}
+ggplot(ToothGrowth, aes(x = as.factor(dose), y = len, fill = supp)) + 
+  geom_dotplot(binaxis = "y") + 
+  scale_fill_manual(values = c("#ffaf33","#ffff33"))
+```
+
+11. Observe o eixo y gerado automaticamente. Se ele não começa do zero, nós podemos definir isso manualmente também adicionando mais uma camada ao nosso código:
+```{r}
+ggplot(ToothGrowth, aes(x = as.factor(dose), y = len, fill = supp)) + 
+  geom_dotplot(binaxis = "y") + 
+  scale_fill_manual(values = c("#ffaf33","#ffff33")) + 
+  scale_y_continuous(limits = c(0,35))
+```
+
+Usando ainda esta mesma camada, podemos alterar o título do eixo para algo mais elucidativo usando o parâmetro ‘name’.
+```{r}
+ggplot(ToothGrowth, aes(x = as.factor(dose), y = len, fill = supp)) + 
+  geom_dotplot(binaxis = "y") + 
+  scale_fill_manual(values = c("#ffaf33","#ffff33")) + 
+  scale_y_continuous(limits = c(0,35), name = "Tamanho do osteoblasto (µm)")
+```
+
+Mais alguns ajustes estéticos para tornar o gráfico mais legível:
+```{r}
+ggplot(ToothGrowth, aes(x = as.factor(dose), y = len, fill = supp)) + 
+  geom_dotplot(binaxis = "y", position = "dodge", stackdir = "center") + 
+  scale_fill_manual(values = c("#ffaf33","#ffff33")) + 
+  scale_y_continuous(limits = c(0,35), name = "Tamanho do osteoblasto (µm)") + 
+  labs(x = "Dose (mg/dia)", fill = "Tratamento") + 
+  theme_classic()
+```
+
+12. Vamos agora fazer um gráfico de barras com a média e desvio padrão calculados anteriormente. Para isso, copiamos o código anterior com algumas alterações: mudamos o dataset para “ambos” (com isso o nome da variável y também muda) e mudamos a função geom para geom_bar (com isso, os parâmetros também mudam).
+```{r}
+ggplot(ambos, aes(x = as.factor(dose), y = media, fill = supp)) + 
+  geom_bar(stat = "identity", position = "dodge") + 
+  scale_fill_manual(values = c("#ffaf33","#ffff33")) + 
+  scale_y_continuous(limits = c(0,35), name = "Tamanho do osteoblasto (µm)") + 
+  labs(x = "Dose (mg/dia)", fill = "Tratamento") + 
+  theme_classic()
+```
+
+Para adicionar o desvio padrão, precisamos adicionar outra camada:
+```{r}
+ggplot(ambos, aes(x = as.factor(dose), y = media, fill = supp)) + 
+  geom_bar(stat = "identity", position = "dodge") + 
+  scale_fill_manual(values = c("#ffaf33","#ffff33")) + 
+  scale_y_continuous(limits = c(0,35), name = "Tamanho do osteoblasto (µm)") + 
+  labs(x = "Dose (mg/dia)", fill = "Tratamento") + 
+  theme_classic() +
+  geom_errorbar(aes(ymin=media-sd, ymax=media+sd), position = "dodge")
+```
+
+13. Também podemos combinar os gráficos criados, por exemplo adicionando o geom_dotplot ao gráfico de barras. Como eles usam dados diferentes, algumas pequenas alterações são necessárias dentro desta camada:
+```{r}
+ggplot(ambos, aes(x = as.factor(dose), y = media, fill = supp)) + 
+  geom_bar(stat = "identity", position = "dodge") + 
+  scale_fill_manual(values = c("#ffaf33","#ffff33")) + 
+  scale_y_continuous(limits = c(0,35), name = "Tamanho do osteoblasto (µm)") + 
+  labs(x = "Dose (mg/dia)", fill = "Tratamento") + 
+  theme_classic() + 
+  geom_errorbar(aes(ymin=media-sd, ymax=media+sd), position = "dodge") + 
+  geom_dotplot(data = ToothGrowth, aes(x = as.factor(dose), y = len, fill = supp), binaxis = "y", position = "dodge", stackdir = "center")
+```
+
+14. Mantendo esta estrutura de camadas é possível criar uma variedade enorme de gráficos, dê uma olhada em https://www.r-graph-gallery.com/ para uma lista de possibilidades.
+
+15. Agora experimente fazer um gráfico usando seus próprios dados. Para isso, é preciso que você tenha o arquivo .xlsx ou .csv com a mesma estrutura apresentada acima – ou seja, cada linha deve ser uma observação e cada coluna uma variável. Para importar os dados para o RStudio, você pode usar o botão “Import dataset” (localizado no quadrante superior esquerdo). Observe que usando este botão o programa vai escrever os comandos por você, mas o mesmo código poderia ter sido escrito diretamente em “Console”.
