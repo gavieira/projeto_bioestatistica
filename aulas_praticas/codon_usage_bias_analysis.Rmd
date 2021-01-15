@@ -1,0 +1,80 @@
+---
+title: "Codon usage bias R analysis"
+author: "Gabriel Alves Vieira"
+date: "1/12/2021"
+output: html_document
+---
+
+# Data exploration/transformation
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#, warning = FALSE, message = FALSE)
+```
+
+First, let's import all the libraries we'll need:
+
+```{r libraries, results='hide'}
+library('readxl') # Read Excel files
+library('dplyr') # For data manipulation
+library('ggplot2') # For data visualization
+```
+
+Loading codon_usage table into R:
+
+```{r}
+table_raw = read_excel("../primates/Primates_codon_usage.xlsx")[,c(1, 3:4, 8)]
+#Taking only the columns we're interested in (1,3,4,8)
+```
+
+Viewing the first rows:
+
+```{r}
+head(table_raw)
+```
+
+Grouping by Aminoacid and Codon and obtaining the `mean, median, sd, min, max and 90th quantile` for each group:
+
+```{r}
+grouped_summary <- table_raw %>% 
+  group_by(Aminoacid, Codon) %>%
+  summarise(mean = mean(Fraction),
+            median = median(Fraction),
+            sd = sd(Fraction),
+            min = min(Fraction),
+            max = max(Fraction),
+            quant90 = quantile(Fraction, probs = 0.9))
+# grouping doesn't change how the data looks (apart from listing
+# how it's grouped):
+# However, it changes how it acts with the other dplyr verbs
+head(grouped_summary) # outputting the resulting table
+```
+
+# Data visualization
+
+## Scatterplot (mean fraction)
+
+Scatterplot with frac_mean as dependent variable and aminoacid as independent variable:
+
+```{r}
+ggplot(grouped_summary, aes(x = as.factor(Aminoacid), y = mean, fill = Aminoacid)) + 
+  geom_dotplot(binaxis = "y", stackdir = "center") +
+  labs(title = "Codon usage in primates",
+    subtitle = "Fraction mean per aminoacid in mitochondrial PCG's",
+    caption = "Those were observed by using the mean of 199 mitochondrial coding sequences from different primate species",
+    x = "Aminoacid",
+    y = "Fraction")
+```
+
+Judging by this plot alone, it looks like there are more evident biases for some aminoacids, specially those with only two synonymous codons: (Gln, Glu, Lys, Met, Trp). The stop codon also has a clear bias.  Other aminoacids might have biases, but such are not that evident, since they have more synonymous codons.
+
+Let's visualize which are the most representative codons in the more evident biases:
+
+```{r}
+grouped_summary[]
+```
+
+
+## Barplot (Mean fraction + standard deviation)
+
+Barplot of mean fraction with standard deviation
