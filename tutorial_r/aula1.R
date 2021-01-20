@@ -12,8 +12,6 @@ x = c(3,5)
 x ^ 2
 
 #Criando range:
-x = 1:5
-y = 11:15
 
 (x + y) * 2
 
@@ -119,3 +117,100 @@ bhaskara = function (coefa,coefb,coefc) {
 
 
 bhaskara(1,3,-1)
+
+
+
+################################
+# Exercícios
+#############################
+
+# 1- Escrever função que receba um vetor de números e retorne a soma dos números no vetor (sem usar a função sum):
+
+calcular_soma <- function(vector) {
+  soma <- 0
+  for (num in vector) {
+    soma <- soma + num
+  }
+  return (soma)
+}
+
+calcular_soma(c(1,4,6,9))
+calcular_soma(1:5)
+
+
+# 2- Função que diz se um número é par ou ímpar:
+
+e_par_ou_impar_um <- function (num) {
+ if (num == 0) { return ("zero") }
+ if (num %% 2 == 0) { return ("par") }
+ if ((num %% 2) != 0) { return ("impar") }
+}
+
+e_par_ou_impar_um(7)
+e_par_ou_impar_um(4)
+e_par_ou_impar_um(0)
+
+# 3- Função que recebe um vetor de números e diz se cada elemento é par ou ímpar.
+
+e_par_ou_impar = function (vetor) {
+  result = c()
+  for (element in vetor) {
+   result = append(result, e_par_ou_impar_um(element)) 
+  }
+  return (result)
+}
+
+e_par_ou_impar(c(2,10,9,1))
+e_par_ou_impar(4)
+
+par_ou_impar_named_vector <- function (vector) {
+  pair_or_not = c()
+  for (element in vector) {
+   pair_or_not = append(pair_or_not, e_par_ou_impar_um(element)) 
+  }
+  names(vector) <- pair_or_not
+  return (vector)
+}
+
+par_ou_impar_named_vector(c(2,10,9,1))
+par_ou_impar_named_vector(4)
+
+# 3- Função que receber um vetor de números e diz a porcentagem de elementos que é par e ímpar.
+
+porcento_par_ou_impar = function (vetor) {
+  par_impar = e_par_ou_impar(vetor)
+  count_par = 0
+  count_impar = 0
+  count_zero = 0
+  for (element in par_impar) {
+   if (element == "par") { count_par = count_par + 1 }
+   if (element == "impar") { count_impar = count_impar + 1 }
+   if (element == "zero") { count_zero = count_zero + 1 }
+  }
+  message("Porcentagem par: ", (count_par/length(vetor))*100, "%")
+  message("Porcentagem impar: ", (count_impar/length(vetor))*100, "%")
+  message("Porcentagem zero: ", (count_zero/length(vetor))*100, "%")
+}
+
+porcento_par_ou_impar(c(2,10,9,1))
+porcento_par_ou_impar(4)
+
+
+# 4- Função que mostra elementos da sequência de Fibonacci.
+
+calcular_fibonacci = function (quantos_elementos) {
+  if (quantos_elementos <= 0) { return ("Please provide a number larger than 0") }
+  fib = c()
+  for (i in 1:quantos_elementos) {
+    if (i == 1 | i == 2) {
+     fib = append(fib, 1) 
+    }
+    else {
+      fib = append(fib, sum(tail(fib, 2)))
+    }
+  }
+  return (fib)
+}
+
+calcular_fibonacci(4) # resultado: 1 1 2 3
+calcular_fibonacci(7) # resultado: 1 1 2 3 5 8 13
