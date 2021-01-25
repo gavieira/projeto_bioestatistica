@@ -1,0 +1,710 @@
+Code;Structure;Hemisphere;Structure mass(g);Cells;%NeuN+
+A1;Cerebellum;Left;34;28025000;83.20%
+A1;Cortex (Anterior);Left;17;2112500;39.69%
+A1;Cortex (Posterior);Left;69;8043750;33.07%
+A1;Hippocampus;Left;0.01;790000;41.60%
+A1;Olfactory Bulb;Left;7;3456250;64.08%
+A1;Rest of Brain;Left;67;6403125;23.02%
+A2;Cerebellum;Left;31;20171875;85.85%
+A2;Cortex (Anterior);Left;24;3504375;50.56%
+A2;Cortex (Posterior);Left;48;8250000;50.29%
+A2;Hippocampus;Left;16;2273438;43.12%
+A2;Olfactory Bulb;Left;1;2050000;44.47%
+A2;Rest of Brain;Left;64;9450000;22.79%
+A3;Cerebellum;Left;42;23653125;83.99%
+A3;Cortex (Anterior);Left;12;1531750;47.61%
+A3;Cortex (Posterior);Left;74;8640625;42.06%
+A3;Hippocampus;Left;17;1608750;26.42%
+A3;Olfactory Bulb;Left;8;3618750;41.01%
+A3;Rest of Brain;Left;61;5276250;25.48%
+A4;Cerebellum;Left;31;20981250;86.25%
+A4;Cortex (Anterior);Left;12;1568750;39.77%
+A4;Cortex (Posterior);Left;58;5537500;30.54%
+A4;Hippocampus;Left;12;1155000;28.74%
+A4;Olfactory Bulb;Left;4;2856250;47.10%
+A4;Rest of Brain;Left;61;8468750;31.47%
+B1;Cerebellum;Left;39;23475000;80.69%
+B1;Cortex (Anterior);Left;16;1968750;29.68%
+B1;Cortex (Posterior);Left;76;7362500;36.35%
+B1;Hippocampus;Left;8;825000;34.86%
+B1;Olfactory Bulb;Left;5;4500000;49.54%
+B1;Rest of Brain;Left;63;6268750;19.74%
+B3;Cerebellum;Left;39;23737500;82.85%
+B3;Cortex (Anterior);Left;19;1603125;39.84%
+B3;Cortex (Posterior);Left;0.08;7893750;32.93%
+B3;Hippocampus;Left;14;1362375;27.01%
+B3;Olfactory Bulb;Left;8;3000000;56.83%
+B3;Rest of Brain;Left;57;6253125;24.02%
+B4;Cerebellum;Left;28;17650000;91.06%
+B4;Cortex (Anterior);Left;15;1893750;34.95%
+B4;Cortex (Posterior);Left;59;7350000;47.50%
+B4;Hippocampus;Left;15;1793750;43.20%
+B4;Olfactory Bulb;Left;1;3531250;48.90%
+B4;Rest of Brain;Left;65;8367857;32.35%
+C1;Cerebellum;Left;34;20100000;86.80%
+C1;Cortex (Anterior);Left;13;1650000;36.20%
+C1;Cortex (Posterior);Left;51;4750000;47.29%
+C1;Hippocampus;Left;0.01;1015625;26.79%
+C1;Olfactory Bulb;Left;4;3500000;56.00%
+C1;Rest of Brain;Left;51;6675000;29.94%
+C2;Cerebellum;Left;0.05;21731250;84.72%
+C2;Cortex (Anterior);Left;13;1365500;32.09%
+C2;Cortex (Posterior);Left;73;6993750;36.99%
+C2;Hippocampus;Left;17;1368750;23.08%
+C2;Olfactory Bulb;Left;3;1928125;46.67%
+C2;Rest of Brain;Left;0.06;7012500;23.80%
+C3;Cerebellum;Left;36;24593750;86.27%
+C3;Cortex (Anterior);Left;21;2218750;37.65%
+C3;Cortex (Posterior);Left;68;9500000;35.24%
+C3;Hippocampus;Left;18;1781250;31.23%
+C3;Olfactory Bulb;Left;9;3587500;46.29%
+C3;Rest of Brain;Left;61;5390625;25.47%
+D1;Cerebellum;Left;36;21318750;84.96%
+D1;Cortex (Anterior);Left;13;3056250;47.84%
+D1;Cortex (Posterior);Left;71;9028125;50.46%
+D1;Hippocampus;Left;7;1465000;37.62%
+D1;Olfactory Bulb;Left;3;2915000;55.88%
+D1;Rest of Brain;Left;46;6412500;40.15%
+D2;Cerebellum;Left;24;19359375;88.80%
+D2;Cortex (Anterior);Left;4;1361250;42.75%
+D2;Cortex (Posterior);Left;59;8140625;45.19%
+D2;Hippocampus;Left;14;1601250;28.74%
+D2;Olfactory Bulb;Left;1;2653125;64.40%
+D2;Rest of Brain;Left;45;6425000;38.42%
+D3;Cerebellum;Left;33;24730000;82.00%
+D3;Cortex (Anterior);Left;8;1620000;46.84%
+D3;Cortex (Posterior);Left;51;10275000;57.84%
+D3;Hippocampus;Left;17;2720000;32.77%
+D3;Olfactory Bulb;Left;1;2250000;53.97%
+D3;Rest of Brain;Left;38;5320313;33.65%
+E0;Cerebellum;Left;31;22931250;73.80%
+E0;Cortex (Anterior);Left;7;1017500;35.80%
+E0;Cortex (Posterior);Left;77;10303125;44.47%
+E0;Hippocampus;Left;11;1292969;59.22%
+E0;Olfactory Bulb;Left;6;3359375;49.53%
+E0;Rest of Brain;Left;54;6112500;40.59%
+E1;Cerebellum;Left;36;22162500;73.57%
+E1;Cortex (Anterior);Left;16;1506250;32.31%
+E1;Cortex (Posterior);Left;66;10125000;44.51%
+E1;Hippocampus;Left;19;1980468;37.83%
+E1;Olfactory Bulb;Left;2;3290625;55.79%
+E1;Rest of Brain;Left;56;5765625;27.24%
+F0;Cerebellum;Left;44;28987500;82.19%
+F0;Cortex (Anterior);Left;12;1429688;46.11%
+F0;Cortex (Posterior);Left;84;9721875;44.97%
+F0;Hippocampus;Left;23;1987500;49.15%
+F0;Rest of Brain;Left;0.06;8296875;32.74%
+F1;Cerebellum;Left;29;19762500;76.62%
+F1;Cortex (Anterior);Left;12;1540000;46.95%
+F1;Cortex (Posterior);Left;63;8465625;51.08%
+F1;Hippocampus;Left;17;1937500;63.38%
+F1;Olfactory Bulb;Left;2;2507813;69.34%
+F1;Rest of Brain;Left;57;7415625;25.74%
+G0;Cerebellum;Left;33;28837500;86.62%
+G0;Cortex (Anterior);Left;0.01;791250;47.85%
+G0;Cortex (Posterior);Left;77;8906250;36.91%
+G0;Hippocampus;Left;17;418750;39.64%
+G0;Olfactory Bulb;Left;2;3781250;64.14%
+G0;Rest of Brain;Left;0.07;7921875;29.17%
+G1;Cerebellum;Left;0.03;25125000;74.86%
+G1;Cortex (Anterior);Left;0.01;1009375;33.45%
+G1;Cortex (Posterior);Left;79;8156250;50.00%
+G1;Hippocampus;Left;0.01;1453125;43.53%
+G1;Rest of Brain;Left;64;8765625;37.74%
+G2;Cerebellum;Left;36;21853125;72.66%
+G2;Cortex (Anterior);Left;9;1191406;47.51%
+G2;Cortex (Posterior);Left;93;8756250;52.16%
+G2;Hippocampus;Left;14;1371094;35.33%
+G2;Olfactory Bulb;Left;1;2906250;55.05%
+G2;Rest of Brain;Left;72;6768750;43.25%
+H0;Cerebellum;Left;32;25556250;84.69%
+H0;Cortex (Anterior);Left;0.01;955000;36.61%
+H0;Cortex (Posterior);Left;73;9515625;39.84%
+H0;Hippocampus;Left;16;882813;39.11%
+H0;Olfactory Bulb;Left;5;3871875;65.14%
+H0;Rest of Brain;Left;0.07;6975000;35.79%
+H1;Cerebellum;Left;36;24937500;74.48%
+H1;Cortex (Anterior);Left;16;1132813;37.83%
+H1;Cortex (Posterior);Left;83;7781250;41.75%
+H1;Hippocampus;Left;11;877500;37.35%
+H1;Olfactory Bulb;Left;6;3628125;61.61%
+H1;Rest of Brain;Left;64;6768750;22.82%
+A1;Cerebellum;Right;36;19578125;82.78%
+A1;Cortex (Anterior);Right;16;1563750;34.19%
+A1;Cortex (Posterior);Right;81;6800000;39.22%
+A1;Hippocampus;Right;12;787500;27.85%
+A1;Olfactory Bulb;Right;5;3325000;49.42%
+A1;Rest of Brain;Right;54;5953125;29.02%
+A2;Cerebellum;Right;31;27806250;90.06%
+A2;Cortex (Anterior);Right;13;1346875;48.07%
+A2;Cortex (Posterior);Right;57;5706250;43.45%
+A2;Hippocampus;Right;15;2492188;34.71%
+A2;Olfactory Bulb;Right;1;2387500;49.60%
+A2;Rest of Brain;Right;48;685000;20.23%
+A3;Cerebellum;Right;32;25298125;83.70%
+A3;Cortex (Anterior);Right;18;1943750;38.23%
+A3;Cortex (Posterior);Right;76;6862500;54.92%
+A3;Hippocampus;Right;8;735000;29.81%
+A3;Olfactory Bulb;Right;6;2856250;50.10%
+A3;Rest of Brain;Right;47;5718750;29.94%
+A4;Cerebellum;Right;31;22550000;82.00%
+A4;Cortex (Anterior);Right;15;2146875;39.65%
+A4;Cortex (Posterior);Right;64;5768750;39.64%
+A4;Hippocampus;Right;15;1431250;21.22%
+A4;Olfactory Bulb;Right;3;1818750;53.10%
+A4;Rest of Brain;Right;51;5975000;21.20%
+B1;Cerebellum;Right;36;22750000;84.20%
+B1;Cortex (Anterior);Right;17;1785000;48.52%
+B1;Cortex (Posterior);Right;89;8962500;42.61%
+B1;Hippocampus;Right;13;1062500;48.30%
+B1;Olfactory Bulb;Right;0.01;4134375;62.40%
+B1;Rest of Brain;Right;58;6037500;22.99%
+B3;Cerebellum;Right;42;23643750;76.11%
+B3;Cortex (Posterior);Right;83;8887500;39.14%
+B3;Hippocampus;Right;22;2128125;22.84%
+B3;Olfactory Bulb;Right;4;1825000;42.72%
+B3;Rest of Brain;Right;52;5634375;25.09%
+B4;Cerebellum;Right;27;16396875;84.38%
+B4;Cortex (Anterior);Right;11;1597656;41.15%
+B4;Cortex (Posterior);Right;68;6507813;35.76%
+B4;Hippocampus;Right;13;3018750;45.37%
+B4;Olfactory Bulb;Right;1;4814063;61.97%
+B4;Rest of Brain;Right;54;7650000;20.56%
+C1;Cerebellum;Right;28;19893750;80.82%
+C1;Cortex (Anterior);Right;12;1115000;32.68%
+C1;Cortex (Posterior);Right;68;5775000;38.60%
+C1;Hippocampus;Right;9;1412500;25.84%
+C1;Olfactory Bulb;Right;4;3447500;45.67%
+C1;Rest of Brain;Right;56;6928125;21.62%
+C2;Cerebellum;Right;35;14643750;85.94%
+C2;Cortex (Anterior);Right;13;988750;21.87%
+C2;Cortex (Posterior);Right;79;7612500;31.60%
+C2;Hippocampus;Right;8;756600;30.51%
+C2;Rest of Brain;Right;46;4625000;23.57%
+C3;Cerebellum;Right;32;22000000;88.05%
+C3;Cortex (Anterior);Right;17;1931250;46.20%
+C3;Cortex (Posterior);Right;72;7150000;44.95%
+C3;Hippocampus;Right;18;1850000;27.18%
+C3;Olfactory Bulb;Right;7;3300000;42.32%
+C3;Rest of Brain;Right;69;8765625;32.69%
+D1;Cerebellum;Right;39;19978125;84.10%
+D1;Cortex (Anterior);Right;9;2012500;48.04%
+D1;Cortex (Posterior);Right;76;10912500;51.15%
+D1;Hippocampus;Right;7;3853125;35.27%
+D1;Olfactory Bulb;Right;3;1809000;49.43%
+D1;Rest of Brain;Right;43;5625000;33.64%
+D2;Cerebellum;Right;29;18037500;85.99%
+D2;Cortex (Anterior);Right;6;1459500;37.93%
+D2;Cortex (Posterior);Right;63;8906250;33.40%
+D2;Hippocampus;Right;11;1921875;52.08%
+D2;Olfactory Bulb;Right;3;3450000;63.42%
+D2;Rest of Brain;Right;44;7087500;26.30%
+D3;Cerebellum;Right;26;21853125;92.26%
+D3;Cortex (Anterior);Right;11;1410938;37.50%
+D3;Cortex (Posterior);Right;55;10912500;55.18%
+D3;Hippocampus;Right;13;1631250;25.74%
+D3;Olfactory Bulb;Right;1;2325000;61.47%
+D3;Rest of Brain;Right;0.05;6812500;25.00%
+E0;Cerebellum;Right;32;20306250;79.13%
+E0;Cortex (Anterior);Right;12;1976563;40.15%
+E0;Cortex (Posterior);Right;68;9018750;40.28%
+E0;Hippocampus;Right;9;937500;NA
+E0;Olfactory Bulb;Right;7;3506250;66.07%
+E0;Rest of Brain;Right;58;5906250;29.70%
+E1;Cerebellum;Right;32;27075000;73.63%
+E1;Cortex (Anterior);Right;12;1230000;41.78%
+E1;Cortex (Posterior);Right;75;9290625;56.60%
+E1;Hippocampus;Right;12;1554688;53.39%
+E1;Olfactory Bulb;Right;1;3834375;60.77%
+E1;Rest of Brain;Right;43;5821875;25.70%
+F0;Cerebellum;Right;41;24131250;70.89%
+F0;Cortex (Anterior);Right;0.01;1125000;37.80%
+F0;Cortex (Posterior);Right;0.08;9881250;47.91%
+F0;Hippocampus;Right;22;1566406;47.40%
+F0;Olfactory Bulb;Right;1;3429687;62.50%
+F0;Rest of Brain;Right;67;8062500;48.94%
+F1;Cerebellum;Right;27;21000000;85.01%
+F1;Cortex (Anterior);Right;8;1187500;41.33%
+F1;Cortex (Posterior);Right;77;10246875;51.72%
+F1;Hippocampus;Right;12;1281250;41.80%
+F1;Olfactory Bulb;Right;3;2600000;59.60%
+F1;Rest of Brain;Right;56;8118750;33.01%
+G0;Cerebellum;Right;31;26943750;75.31%
+G0;Cortex (Anterior);Right;14;1548750;41.51%
+G0;Cortex (Posterior);Right;75;7471875;47.42%
+G0;Hippocampus;Right;15;633750;51.15%
+G0;Olfactory Bulb;Right;1;3000000;51.66%
+G0;Rest of Brain;Right;68;9328125;28.28%
+G1;Cerebellum;Right;35;22912500;80.00%
+G1;Cortex (Anterior);Right;6;716250;48.73%
+G1;Cortex (Posterior);Right;0.08;9093750;65.28%
+G1;Hippocampus;Right;19;2128125;39.68%
+G1;Olfactory Bulb;Right;1;3037500;42.12%
+G1;Rest of Brain;Right;76;8550000;25.09%
+G2;Cerebellum;Right;38;25818750;77.74%
+G2;Cortex (Anterior);Right;11;771484;45.83%
+G2;Cortex (Posterior);Right;87;8718750;40.12%
+G2;Hippocampus;Right;13;875000;41.43%
+G2;Olfactory Bulb;Right;4;3062500;61.68%
+G2;Rest of Brain;Right;0.08;7471875;25.75%
+H0;Cerebellum;Right;38;22050000;76.10%
+H0;Cortex (Posterior);Right;87;8371875;48.23%
+H0;Hippocampus;Right;14;1031250;30.73%
+H0;Olfactory Bulb;Right;4;3478125;67.44%
+H0;Rest of Brain;Right;62;5531250;28.90%
+H1;Cerebellum;Right;34;16587750;76.98%
+H1;Cortex (Anterior);Right;16;1324219;50.29%
+H1;Cortex (Posterior);Right;87;8587500;47.81%
+H1;Hippocampus;Right;12;996093;27.49%
+H1;Olfactory Bulb;Right;8;4218750;62.00%
+H1;Rest of Brain;Right;62;4968750;37.85%
+J0;Cerebellum;Whole;72;38150000;88.28%
+J0;Cortex (Anterior);Left;11;1312500;39.49%
+J0;Cortex (Anterior);Right;13;1368750;37.94%
+J0;Cortex (Anterior);Whole;24;2681250;38.70%
+J0;Cortex (Posterior);Left;66;3125000;44.93%
+J0;Cortex (Posterior);Right;0.06;5675000;37.79%
+J0;Cortex (Posterior);Whole;126;8800000;40.33%
+J0;Hippocampus;Left;17;2050000;35.57%
+J0;Hippocampus;Right;19;2481250;34.94%
+J0;Olfactory Bulb;Whole;18;5859375;50.47%
+J0;Rest of Brain;Whole;136;14906250;26.69%
+J1;Cerebellum;Whole;64;43425000;84.30%
+J1;Cortex (Anterior);Left;15;1112500;44.47%
+J1;Cortex (Anterior);Right;15;2015625;29.60%
+J1;Cortex (Anterior);Whole;0.03;3128125;34.89%
+J1;Cortex (Posterior);Left;75;8100000;37.52%
+J1;Cortex (Posterior);Right;46;4398438;50.00%
+J1;Cortex (Posterior);Whole;121;12498438;41.91%
+J1;Hippocampus;Left;19;1262500;35.42%
+J1;Hippocampus;Right;0.02;2418750;33.53%
+J1;Olfactory Bulb;Whole;17;4150000;62.88%
+J1;Rest of Brain;Whole;119;9431250;20.40%
+J2;Cerebellum;Whole;64;45925000;87.67%
+J2;Cortex (Anterior);Left;18;1382813;38.39%
+J2;Cortex (Anterior);Right;18;2039063;40.96%
+J2;Cortex (Anterior);Whole;36;3421876;39.92%
+J2;Cortex (Posterior);Left;69;7265625;35.24%
+J2;Cortex (Posterior);Right;71;6675000;51.25%
+J2;Cortex (Posterior);Whole;0.14;13940625;42.91%
+J2;Hippocampus;Right;13;1812500;29.84%
+J2;Olfactory Bulb;Whole;12;4609375;54.06%
+J2;Rest of Brain;Whole;123;8250000;34.82%
+J3;Cerebellum;Whole;66;53650000;84.69%
+J3;Cortex (Anterior);Left;13;1775000;33.93%
+J3;Cortex (Anterior);Right;16;2507813;47.53%
+J3;Cortex (Anterior);Whole;29;4282813;41.90%
+J3;Cortex (Posterior);Left;72;6453125;45.19%
+J3;Cortex (Posterior);Right;65;6289062;50.75%
+J3;Cortex (Posterior);Whole;137;12742187;47.94%
+J3;Hippocampus;Left;14;1756250;38.70%
+J3;Hippocampus;Right;12;1906250;48.88%
+J3;Olfactory Bulb;Whole;16;6200000;72.64%
+J3;Rest of Brain;Whole;155;9012500;29.54%
+J4;Cerebellum;Whole;82;46925000;87.87%
+J4;Cortex (Anterior);Left;0.02;1781250;47.01%
+J4;Cortex (Anterior);Right;19;2375000;36.89%
+J4;Cortex (Anterior);Whole;39;4156250;41.23%
+J4;Cortex (Posterior);Left;64;8734375;46.63%
+J4;Cortex (Posterior);Right;0.07;3242188;45.45%
+J4;Cortex (Posterior);Whole;134;11976563;46.31%
+J4;Hippocampus;Left;11;1612500;41.79%
+J4;Hippocampus;Right;0.02;2601253;47.21%
+J4;Olfactory Bulb;Whole;14;3462500;68.90%
+J4;Rest of Brain;Whole;136;8987500;39.62%
+K0;Cerebellum;Whole;79;49925000;84.79%
+K0;Cortex (Anterior);Left;12;1931250;42.51%
+K0;Cortex (Anterior);Right;11;1431250;39.45%
+K0;Cortex (Anterior);Whole;23;3362500;41.21%
+K0;Cortex (Posterior);Left;72;6056250;40.60%
+K0;Hippocampus;Left;16;1612500;39.44%
+K0;Hippocampus;Right;13;1468750;37.21%
+K0;Olfactory Bulb;Whole;12;6871875;58.44%
+K0;Rest of Brain;Whole;121;12703125;29.26%
+K1;Cerebellum;Whole;79;51125000;84.79%
+K1;Cortex (Anterior);Left;7;1192500;52.65%
+K1;Cortex (Anterior);Right;13;1640625;38.92%
+K1;Cortex (Anterior);Whole;0.02;2833125;44.70%
+K1;Cortex (Posterior);Left;75;5446875;40.74%
+K1;Cortex (Posterior);Right;67;5193750;41.41%
+K1;Cortex (Posterior);Whole;142;10640625;41.07%
+K1;Hippocampus;Left;13;1080000;37.65%
+K1;Hippocampus;Right;16;1331250;34.00%
+K1;Olfactory Bulb;Whole;14;6553125;55.95%
+K1;Rest of Brain;Whole;115;9265625;25.78%
+K2;Cerebellum;Whole;75;50175000;87.99%
+K2;Cortex (Anterior);Left;4;1081250;46.81%
+K2;Cortex (Anterior);Right;13;1481250;31.26%
+K2;Cortex (Anterior);Whole;17;2562500;37.82%
+K2;Cortex (Posterior);Left;62;4200000;38.25%
+K2;Cortex (Posterior);Right;63;5737500;39.81%
+K2;Cortex (Posterior);Whole;125;9937500;39.15%
+K2;Hippocampus;Left;13;1531250;29.00%
+K2;Hippocampus;Right;0.01;1390625;44.47%
+K2;Olfactory Bulb;Whole;15;7106250;59.45%
+K2;Rest of Brain;Whole;122;14118750;30.08%
+K3;Cerebellum;Whole;55;47400000;88.50%
+K3;Cortex (Anterior);Left;3;1381250;33.27%
+K3;Cortex (Anterior);Right;3;1228125;34.50%
+K3;Cortex (Anterior);Whole;6;2609375;33.85%
+K3;Cortex (Posterior);Left;73;6768750;39.10%
+K3;Cortex (Posterior);Right;75;6290625;38.39%
+K3;Cortex (Posterior);Whole;148;13059375;38.75%
+K3;Hippocampus;Left;8;979166;53.88%
+K3;Hippocampus;Right;11;1659375;32.07%
+K3;Olfactory Bulb;Whole;14;6200000;59.02%
+K3;Rest of Brain;Whole;122;16362500;27.15%
+K4;Cerebellum;Whole;0.06;49225000;89.96%
+K4;Cortex (Anterior);Left;12;1603125;47.72%
+K4;Cortex (Anterior);Right;11;1275000;45.19%
+K4;Cortex (Anterior);Whole;23;2878125;46.60%
+K4;Cortex (Posterior);Left;66;8371875;35.86%
+K4;Cortex (Posterior);Right;64;3712500;40.78%
+K4;Cortex (Posterior);Whole;0.13;12084375;37.37%
+K4;Hippocampus;Left;12;2053125;42.36%
+K4;Hippocampus;Right;14;1706250;33.60%
+K4;Olfactory Bulb;Whole;14;3290625;79.29%
+K4;Rest of Brain;Whole;124;15318750;25.70%
+L0;Cerebellum;Whole;62;46500000;90.98%
+L0;Cortex (Anterior);Left;13;1793750;48.64%
+L0;Cortex (Anterior);Right;7;1356250;33.46%
+L0;Cortex (Anterior);Whole;0.02;3150000;42.11%
+L0;Cortex (Posterior);Left;69;5693750;41.73%
+L0;Cortex (Posterior);Right;87;5968750;48.21%
+L0;Cortex (Posterior);Whole;156;11662500;45.05%
+L0;Hippocampus;Left;13;2275000;46.23%
+L0;Hippocampus;Right;12;2406250;39.34%
+L0;Olfactory Bulb;Whole;7;4859375;53.13%
+L0;Rest of Brain;Whole;118;7975000;38.57%
+L1;Cerebellum;Whole;0.05;45200000;86.79%
+L1;Cortex (Anterior);Left;6;1368750;50.59%
+L1;Cortex (Anterior);Right;9;2168750;31.49%
+L1;Cortex (Anterior);Whole;15;3537500;38.88%
+L1;Cortex (Posterior);Left;64;8712500;46.40%
+L1;Cortex (Posterior);Right;57;2831250;53.68%
+L1;Cortex (Posterior);Whole;121;11543750;48.19%
+L1;Hippocampus;Left;14;2300000;34.78%
+L1;Hippocampus;Right;12;1950000;38.81%
+L1;Olfactory Bulb;Whole;6;3650000;41.24%
+L1;Rest of Brain;Whole;97;8687500;38.64%
+L2;Cerebellum;Whole;58;43400000;85.82%
+L2;Cortex (Anterior);Left;15;2156250;37.72%
+L2;Cortex (Anterior);Right;11;2203125;42.13%
+L2;Cortex (Anterior);Whole;26;4359375;39.95%
+L2;Cortex (Posterior);Left;63;2453125;50.00%
+L2;Cortex (Posterior);Right;58;3039063;45.70%
+L2;Cortex (Posterior);Whole;121;5492188;47.62%
+L2;Hippocampus;Left;17;3195313;40.90%
+L2;Hippocampus;Right;15;2662500;55.07%
+L2;Olfactory Bulb;Whole;4;3046875;40.58%
+L2;Rest of Brain;Whole;0.11;8975000;36.72%
+L3;Cerebellum;Whole;0.06;48475000;19.20%
+L3;Cortex (Anterior);Left;13;2243750;38.95%
+L3;Cortex (Anterior);Right;9;1206250;38.07%
+L3;Cortex (Anterior);Whole;22;3450000;38.64%
+L3;Cortex (Posterior);Left;69;5000000;47.34%
+L3;Cortex (Posterior);Right;61;3756250;44.62%
+L3;Cortex (Posterior);Whole;0.13;8756250;46.17%
+L3;Hippocampus;Left;16;2117188;33.00%
+L3;Hippocampus;Right;19;1992188;29.45%
+L3;Olfactory Bulb;Whole;14;4023438;37.15%
+L3;Rest of Brain;Whole;138;8950000;30.64%
+M0;Cerebellum;Whole;58;40621875;92.32%
+M0;Cortex (Anterior);Left;8;1671875;40.31%
+M0;Cortex (Anterior);Right;7;2414063;39.96%
+M0;Cortex (Anterior);Whole;15;4085938;40.10%
+M0;Cortex (Posterior);Left;61;7039062;53.03%
+M0;Cortex (Posterior);Right;62;7543750;45.03%
+M0;Cortex (Posterior);Whole;123;14582812;48.89%
+M0;Hippocampus;Left;13;2068750;45.35%
+M0;Hippocampus;Right;12;2043750;38.64%
+M0;Olfactory Bulb;Whole;9;5596875;53.14%
+M0;Rest of Brain;Whole;0.12;13500000;29.09%
+M1;Cerebellum;Whole;0.06;34075000;90.06%
+M1;Cortex (Anterior);Left;13;2312500;36.56%
+M1;Cortex (Anterior);Right;15;2562500;42.97%
+M1;Cortex (Anterior);Whole;28;4875000;39.93%
+M1;Cortex (Posterior);Left;76;8868750;48.05%
+M1;Cortex (Posterior);Right;65;7790625;43.11%
+M1;Cortex (Posterior);Whole;141;16659375;45.74%
+M1;Hippocampus;Left;19;2475000;36.22%
+M1;Hippocampus;Right;19;2193750;35.88%
+M1;Olfactory Bulb;Whole;16;6031250;59.10%
+M1;Rest of Brain;Whole;135;9031250;27.40%
+M2;Cerebellum;Whole;59;43175000;86.69%
+M2;Cortex (Anterior);Left;15;1601562;40.58%
+M2;Cortex (Anterior);Right;17;1331250;46.31%
+M2;Cortex (Anterior);Whole;32;2932812;43.18%
+M2;Cortex (Posterior);Left;74;5390625;43.03%
+M2;Cortex (Posterior);Right;71;3156250;40.27%
+M2;Cortex (Posterior);Whole;145;8546875;42.01%
+M2;Hippocampus;Left;16;1726562;30.37%
+M2;Hippocampus;Right;18;1956250;36.33%
+M2;Olfactory Bulb;Whole;14;3226562;69.25%
+M2;Rest of Brain;Whole;0.13;15300000;23.90%
+O0;Cerebellum;Whole;43;30600000;90.20%
+O0;Cortex (Anterior);Left;8;796875;40.95%
+O0;Cortex (Anterior);Right;4;1429687;39.80%
+O0;Cortex (Anterior);Whole;12;2226562;40.22%
+O0;Cortex (Posterior);Left;58;6684375;51.16%
+O0;Cortex (Posterior);Right;72;6196875;51.97%
+O0;Cortex (Posterior);Whole;0.13;12881250;51.55%
+O0;Hippocampus;Left;9;1718750;38.60%
+O0;Hippocampus;Right;11;1712500;24.80%
+O0;Olfactory Bulb;Whole;9;5684437;72.76%
+O0;Rest of Brain;Whole;123;15112500;35.80%
+O1;Cerebellum;Whole;56;33350000;89.24%
+O1;Cortex (Anterior);Left;13;1309375;37.74%
+O1;Cortex (Anterior);Right;0.01;1081250;32.61%
+O1;Cortex (Anterior);Whole;23;2390625;35.42%
+O1;Cortex (Posterior);Left;52;5690625;45.15%
+O1;Cortex (Posterior);Right;59;5312500;38.73%
+O1;Cortex (Posterior);Whole;111;11003125;42.05%
+O1;Hippocampus;Left;0.02;2406250;33.59%
+O1;Hippocampus;Right;15;2918750;43.92%
+O1;Rest of Brain;Whole;0.11;12000000;35.04%
+P0;Cerebellum;Whole;57;46468750;86.71%
+P0;Cortex (Anterior);Left;8;1350000;48.13%
+P0;Cortex (Anterior);Right;13;1875000;45.10%
+P0;Cortex (Anterior);Whole;21;3225000;46.37%
+P0;Cortex (Posterior);Left;73;6398438;34.18%
+P0;Cortex (Posterior);Right;83;5203125;41.18%
+P0;Cortex (Posterior);Whole;156;11601563;37.32%
+P0;Hippocampus;Left;11;1337500;33.78%
+P0;Olfactory Bulb;Whole;8;1687500;51.87%
+P0;Rest of Brain;Whole;139;9543750;28.41%
+P1;Cerebellum;Whole;56;58937500;86.60%
+P1;Cortex (Anterior);Left;7;1118750;44.04%
+P1;Cortex (Anterior);Right;9;1468750;38.92%
+P1;Cortex (Anterior);Whole;16;2587500;41.13%
+P1;Cortex (Posterior);Left;83;5781250;37.50%
+P1;Cortex (Posterior);Right;85;5429688;39.96%
+P1;Cortex (Posterior);Whole;168;11210938;38.69%
+P1;Hippocampus;Left;0.01;2273438;32.43%
+P1;Hippocampus;Right;15;1400000;35.03%
+P1;Hippocampus;Whole;25;3673438;33.42%
+P1;Olfactory Bulb;Whole;5;4581250;51.58%
+P1;Rest of Brain;Whole;153;10312500;21.60%
+P2;Cerebellum;Whole;56;55000000;90.30%
+P2;Cortex (Anterior);Left;0.01;1337500;37.21%
+P2;Cortex (Anterior);Right;7;1231250;46.41%
+P2;Cortex (Anterior);Whole;17;2568750;41.62%
+P2;Cortex (Posterior);Left;0.07;4898438;32.00%
+P2;Cortex (Posterior);Right;72;4625000;32.14%
+P2;Cortex (Posterior);Whole;142;9523438;32.07%
+P2;Hippocampus;Left;12;1225000;38.60%
+P2;Hippocampus;Right;16;1850000;42.02%
+P2;Hippocampus;Whole;28;3075000;40.65%
+P2;Olfactory Bulb;Whole;11;4187500;59.51%
+P2;Rest of Brain;Whole;126;10181250;24.66%
+P3;Cerebellum;Whole;0.06;49156250;90.07%
+P3;Cortex (Anterior);Left;12;1731250;37.97%
+P3;Cortex (Anterior);Right;12;1131250;35.01%
+P3;Cortex (Anterior);Whole;24;2862500;36.80%
+P3;Cortex (Posterior);Left;67;6203125;39.53%
+P3;Cortex (Posterior);Right;63;3671875;39.64%
+P3;Cortex (Posterior);Whole;0.13;9875000;39.57%
+P3;Hippocampus;Left;16;1959375;39.37%
+P3;Hippocampus;Right;12;1992188;52.42%
+P3;Hippocampus;Whole;28;3951563;45.95%
+P3;Olfactory Bulb;Whole;9;6203125;45.35%
+P3;Rest of Brain;Whole;152;7856250;27.25%
+P4;Cerebellum;Whole;0.06;32687500;87.96%
+P4;Cortex (Anterior);Left;11;2425000;35.09%
+P4;Cortex (Anterior);Right;12;2425000;44.66%
+P4;Cortex (Anterior);Whole;23;4850000;39.87%
+P4;Cortex (Posterior);Left;0.09;8351563;38.80%
+P4;Cortex (Posterior);Right;77;6914063;46.60%
+P4;Cortex (Posterior);Whole;167;15265626;42.33%
+P4;Hippocampus;Left;12;1976563;40.51%
+P4;Hippocampus;Right;9;1875000;47.39%
+P4;Hippocampus;Whole;21;3851563;43.86%
+P4;Olfactory Bulb;Whole;6;3612500;60.74%
+P4;Rest of Brain;Whole;121;10143750;37.06%
+Q0;Cerebellum;Whole;0.06;41156250;91.79%
+Q0;Cortex (Anterior);Left;8;1256250;45.87%
+Q0;Cortex (Anterior);Right;0.01;1390625;38.31%
+Q0;Cortex (Anterior);Whole;18;2646875;41.90%
+Q0;Cortex (Posterior);Left;69;6070313;39.76%
+Q0;Cortex (Posterior);Right;74;5296875;33.91%
+Q0;Cortex (Posterior);Whole;143;11367188;37.04%
+Q0;Hippocampus;Left;16;2156250;48.82%
+Q0;Hippocampus;Right;16;1950000;38.80%
+Q0;Hippocampus;Whole;32;4106250;44.06%
+Q0;Olfactory Bulb;Whole;9;6000000;50.75%
+Q0;Rest of Brain;Whole;128;10218750;22.59%
+Q1;Cerebellum;Whole;65;52656250;89.83%
+Q1;Cortex (Anterior);Left;9;1000000;52.76%
+Q1;Cortex (Anterior);Right;9;1012500;47.45%
+Q1;Cortex (Anterior);Whole;18;2012500;50.09%
+Q1;Cortex (Posterior);Left;85;7289063;43.02%
+Q1;Cortex (Posterior);Right;0.08;8148438;47.41%
+Q1;Cortex (Posterior);Whole;165;15437501;45.34%
+Q1;Hippocampus;Left;0.01;2046875;38.57%
+Q1;Hippocampus;Right;12;1162500;27.34%
+Q1;Hippocampus;Whole;22;3209375;34.50%
+Q1;Olfactory Bulb;Whole;12;4643750;54.25%
+Q1;Rest of Brain;Whole;0.14;12775000;26.18%
+Q2;Cerebellum;Whole;0.07;40281250;88.80%
+Q2;Cortex (Anterior);Left;0.01;1693750;56.75%
+Q2;Cortex (Anterior);Right;9;1400000;36.61%
+Q2;Cortex (Anterior);Whole;19;3093750;47.63%
+Q2;Cortex (Posterior);Left;101;7921875;30.94%
+Q2;Cortex (Posterior);Right;93;6250000;31.75%
+Q2;Cortex (Posterior);Whole;194;14171875;31.29%
+Q2;Hippocampus;Left;15;1812500;26.64%
+Q2;Hippocampus;Right;17;1750000;35.10%
+Q2;Hippocampus;Whole;32;3562500;30.80%
+Q2;Olfactory Bulb;Whole;12;5412500;57.58%
+Q2;Rest of Brain;Whole;145;9906250;35.25%
+R0;Cerebellum;Whole;78;51687500;84.88%
+R0;Cortex (Anterior);Left;11;1262500;47.54%
+R0;Cortex (Anterior);Right;9;1406250;49.50%
+R0;Cortex (Anterior);Whole;0.02;2668750;48.57%
+R0;Cortex (Posterior);Left;91;7835938;38.77%
+R0;Cortex (Posterior);Right;93;9843750;36.81%
+R0;Cortex (Posterior);Whole;184;17679688;37.68%
+R0;Hippocampus;Left;18;1987500;33.40%
+R0;Hippocampus;Right;17;2804688;36.17%
+R0;Hippocampus;Whole;35;4792188;35.02%
+R0;Olfactory Bulb;Whole;17;7206250;51.85%
+R0;Rest of Brain;Whole;0.14;11793750;25.27%
+R1;Cerebellum;Whole;65;60375000;85.12%
+R1;Cortex (Anterior);Left;17;1734375;33.47%
+R1;Cortex (Anterior);Right;18;1812500;32.28%
+R1;Cortex (Anterior);Whole;35;3546875;32.86%
+R1;Cortex (Posterior);Left;71;4712500;33.27%
+R1;Cortex (Posterior);Right;53;5131250;42.08%
+R1;Cortex (Posterior);Whole;124;9843750;37.86%
+R1;Hippocampus;Left;16;2481250;25.54%
+R1;Hippocampus;Right;17;1937500;27.47%
+R1;Hippocampus;Whole;33;4418750;26.39%
+R1;Rest of Brain;Whole;126;11906250;32.44%
+R2;Cerebellum;Whole;0.07;54562500;87.02%
+R2;Cortex (Anterior);Left;14;2425000;40.08%
+R2;Cortex (Anterior);Right;12;2239583;40.51%
+R2;Cortex (Anterior);Whole;26;4664583;40.29%
+R2;Cortex (Posterior);Left;69;7742188;39.96%
+R2;Cortex (Posterior);Right;78;5706250;53.20%
+R2;Cortex (Posterior);Whole;147;13448438;45.58%
+R2;Hippocampus;Left;14;1487500;35.00%
+R2;Hippocampus;Right;16;2268750;34.38%
+R2;Hippocampus;Whole;0.03;3756250;34.63%
+R2;Rest of Brain;Whole;132;10912500;26.20%
+R3;Cerebellum;Whole;79;63093750;82.35%
+R3;Cortex (Anterior);Left;12;1350000;42.83%
+R3;Cortex (Anterior);Right;12;1606250;43.40%
+R3;Cortex (Anterior);Whole;24;2956250;43.14%
+R3;Cortex (Posterior);Left;0.08;6835938;42.63%
+R3;Cortex (Posterior);Right;0.09;6281250;42.99%
+R3;Cortex (Posterior);Whole;0.17;13117188;42.80%
+R3;Hippocampus;Left;18;1362500;38.18%
+R3;Hippocampus;Right;17;2460938;36.68%
+R3;Hippocampus;Whole;35;3823438;37.21%
+R3;Olfactory Bulb;Whole;16;5137500;53.70%
+R3;Rest of Brain;Whole;127;10893750;34.55%
+R4;Cerebellum;Whole;0.08;63031250;81.41%
+R4;Cortex (Anterior);Left;18;2418750;31.80%
+R4;Cortex (Anterior);Right;16;2101563;38.05%
+R4;Cortex (Anterior);Whole;34;4520313;34.71%
+R4;Cortex (Posterior);Left;89;8820313;43.76%
+R4;Cortex (Posterior);Right;88;6187500;36.89%
+R4;Cortex (Posterior);Whole;177;15007813;40.93%
+R4;Hippocampus;Left;16;2262500;38.29%
+R4;Hippocampus;Right;14;2050000;32.73%
+R4;Hippocampus;Whole;0.03;4312500;35.65%
+R4;Olfactory Bulb;Whole;16;5987500;47.84%
+R4;Rest of Brain;Whole;0.15;8093750;21.34%
+S0;Cerebellum;Whole;67;65687500;91.45%
+S0;Cortex (Anterior);Left;13;1037500;37.13%
+S0;Cortex (Anterior);Right;14;1562500;44.19%
+S0;Cortex (Anterior);Whole;27;2600000;41.37%
+S0;Cortex (Posterior);Left;69;7237500;41.00%
+S0;Cortex (Posterior);Right;84;5225000;47.34%
+S0;Cortex (Posterior);Whole;153;12462500;43.66%
+S0;Hippocampus;Left;15;2131250;29.94%
+S0;Hippocampus;Right;0.01;1256250;27.00%
+S0;Hippocampus;Whole;25;3387500;28.85%
+S0;Olfactory Bulb;Whole;9;3031250;42.46%
+S0;Rest of Brain;Whole;67;12825000;28.14%
+S1;Cerebellum;Whole;71;50343750;86.67%
+S1;Cortex (Anterior);Left;16;1937500;35.47%
+S1;Cortex (Anterior);Right;18;2262500;48.71%
+S1;Cortex (Anterior);Whole;34;4200000;42.60%
+S1;Cortex (Posterior);Left;66;7950000;31.67%
+S1;Cortex (Posterior);Right;69;7476563;44.27%
+S1;Cortex (Posterior);Whole;135;15426563;37.78%
+S1;Hippocampus;Left;16;2431250;42.08%
+S1;Hippocampus;Right;17;1831250;46.08%
+S1;Hippocampus;Whole;33;4262500;43.80%
+S1;Olfactory Bulb;Whole;15;8931250;52.02%
+S1;Rest of Brain;Whole;134;14156250;31.58%
+S2;Cerebellum;Whole;78;67093750;86.47%
+S2;Cortex (Anterior);Left;11;2250000;45.22%
+S2;Cortex (Anterior);Right;12;1362500;41.63%
+S2;Cortex (Anterior);Whole;23;3612500;43.87%
+S2;Cortex (Posterior);Left;53;6125000;53.56%
+S2;Cortex (Posterior);Right;78;8867188;42.35%
+S2;Cortex (Posterior);Whole;131;14992188;46.93%
+S2;Hippocampus;Left;16;1468750;43.06%
+S2;Hippocampus;Right;19;2343750;35.93%
+S2;Hippocampus;Whole;35;3812500;38.68%
+S2;Olfactory Bulb;Whole;11;3675000;42.94%
+S2;Rest of Brain;Whole;143;13143750;36.20%
+S3;Cerebellum;Whole;64;50531250;85.38%
+S3;Cortex (Anterior);Left;14;1218750;43.84%
+S3;Cortex (Anterior);Right;17;1856250;43.01%
+S3;Cortex (Anterior);Whole;31;3075000;43.34%
+S3;Cortex (Posterior);Left;79;7959375;34.92%
+S3;Hippocampus;Left;11;2512500;42.94%
+S3;Hippocampus;Right;9;2000000;25.25%
+S3;Hippocampus;Whole;0.02;4512500;35.10%
+S3;Olfactory Bulb;Whole;9;4781250;50.19%
+S3;Rest of Brain;Whole;0.15;13593750;25.57%
+S4;Cerebellum;Whole;68;63406250;81.87%
+S4;Cortex (Anterior);Left;19;1987500;42.67%
+S4;Cortex (Anterior);Right;18;2132813;38.78%
+S4;Cortex (Anterior);Whole;37;4120313;40.65%
+S4;Cortex (Posterior);Left;75;8578125;47.94%
+S4;Cortex (Posterior);Right;76;7481250;41.33%
+S4;Cortex (Posterior);Whole;151;16059375;44.86%
+S4;Hippocampus;Left;16;2231250;44.31%
+S4;Hippocampus;Right;19;1640625;29.77%
+S4;Hippocampus;Whole;35;3871875;38.15%
+S4;Olfactory Bulb;Whole;8;3625000;54.14%
+S4;Rest of Brain;Whole;128;13293750;29.39%
+T0;Cerebellum;Whole;65;67531250;88.36%
+T0;Cortex (Anterior);Left;14;1906250;36.89%
+T0;Cortex (Anterior);Right;11;1593750;40.77%
+T0;Cortex (Anterior);Whole;25;3500000;38.66%
+T0;Cortex (Posterior);Left;83;7843750;39.80%
+T0;Cortex (Posterior);Right;77;7578125;42.60%
+T0;Cortex (Posterior);Whole;0.16;15421875;41.18%
+T0;Hippocampus;Left;16;1750000;36.36%
+T0;Hippocampus;Right;17;3168750;44.93%
+T0;Hippocampus;Whole;33;4918750;41.88%
+T0;Olfactory Bulb;Whole;14;5581250;59.44%
+T0;Rest of Brain;Whole;149;15837500;23.08%
+T1;Cerebellum;Whole;64;60250000;87.07%
+T1;Cortex (Anterior);Left;16;1887500;40.04%
+T1;Cortex (Anterior);Right;15;1475000;41.00%
+T1;Cortex (Anterior);Whole;31;3362500;40.46%
+T1;Cortex (Posterior);Left;74;6215625;40.56%
+T1;Cortex (Posterior);Right;71;7804688;45.00%
+T1;Cortex (Posterior);Whole;145;14020313;43.03%
+T1;Hippocampus;Left;0.02;2618750;32.23%
+T1;Hippocampus;Right;21;1925000;47.61%
+T1;Hippocampus;Whole;41;4543750;38.75%
+T1;Olfactory Bulb;Whole;11;4525000;45.27%
+T1;Rest of Brain;Whole;147;12637500;23.96%
+T2;Cerebellum;Whole;76;66875000;85.23%
+T2;Cortex (Anterior);Left;15;1900000;33.59%
+T2;Cortex (Anterior);Right;13;1737500;46.41%
+T2;Cortex (Anterior);Whole;28;3637500;39.72%
+T2;Cortex (Posterior);Left;0.08;7640625;43.60%
+T2;Cortex (Posterior);Right;65;8350000;46.35%
+T2;Cortex (Posterior);Whole;145;15990625;45.03%
+T2;Hippocampus;Left;21;3093750;37.38%
+T2;Hippocampus;Right;13;1506250;46.72%
+T2;Hippocampus;Whole;34;4600000;40.44%
+T2;Rest of Brain;Whole;126;13218750;29.82%
