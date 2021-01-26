@@ -243,31 +243,43 @@ mtcars %>%
 
 # • Crie um novo data frame mtcars3 que só tem os carros que tem mpg > 20. Dica: use a função filter().
 
+mtcars3 <- mtcars %>% filter(mpg > 20)
+
 
 # • Crie um novo data frame mtcars4 que só tem os carros que tem mpg > 20 ou hp > 150. Dica: em R, a barra vertical (|) significa "ou" (o E comercial (&) significa "e", mas não precisa dele aqui).
 
-
-
-
-
-
+mtcars4 <- mtcars %>% filter(mpg > 20 | hp > 150)
 
 
 #DATASET: msleep.csv (disponível na pasta)
 
 # • Carregue os dados da tabela "msleep.csv" num data frame chamado msleep.
 
+msleep <- msleep
+View(msleep)
 
 # • Crie um data frame msleep_primates contendo apenas os primatas.
 
+msleep_primates <- msleep %>% filter(order == 'Primates')
 
 # • Faça o data frame conter apenas a coluna sleep_total dos primatas. Escreva isso como continuação da linha de cima.
 
+msleep_primates <- msleep %>% 
+  filter(order == 'Primates') %>%
+  select(sleep_total)
 
 # • Escreva uma linha que imprima na tela o número de primatas. Dica: use a função nrow().
 
+nrow(msleep_primates)
 
 # • Crie uma variável sono_medio que contenha a duração média do sono de primatas.
 
+sono_medio <- sum(msleep_primates$sleep_total) / nrow(msleep_primates)
 
 # • Calcule a média de sleep_total e a média de brainwt para todas as outras ordens (coluna order), excluindo primatas, e junte tudo em um data frame. Dica: use as funções group_by() e summarise().
+
+sono_ex_primata <- msleep %>%
+  group_by(order) %>%
+  filter(order != "Primates", !is.na(brainwt)) %>%
+  summarise(média_sono = mean(sleep_total), média_cerebro = mean(brainwt))
+  
