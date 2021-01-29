@@ -278,8 +278,25 @@ sono_medio <- sum(msleep_primates$sleep_total) / nrow(msleep_primates)
 
 # • Calcule a média de sleep_total e a média de brainwt para todas as outras ordens (coluna order), excluindo primatas, e junte tudo em um data frame. Dica: use as funções group_by() e summarise().
 
+View(msleep %>%
+  group_by(order) %>%
+  filter(order != "Primates", !is.na(brainwt)) %>% #Nesse caso, vc perde alguns valores de média_sono tbm (e.g. quanto brainwt é NA)
+  summarise(média_sono = mean(sleep_total), média_cerebro = mean(brainwt)))
+
 sono_ex_primata <- msleep %>%
   group_by(order) %>%
-  filter(order != "Primates", !is.na(brainwt)) %>%
-  summarise(média_sono = mean(sleep_total), média_cerebro = mean(brainwt))
-  
+  filter(order != "Primates") %>%
+  summarise(média_sono = mean(sleep_total), média_cerebro = mean(brainwt, na.rm = T)) #Nesse caso, vc não perde valores da média de sono, mesmo quando brainwt é NA
+
+View(sono_ex_primata) # A resposta é essa!!!
+
+#Checando o número de ordens...
+View(unique(msleep$order))
+num_order <- length(unique(msleep$order))  
+num_order #Temos 19 ordens ao todo - o dataframe final deve ter 18 linhas (19 - primatas)
+
+#Checando as ordens que deram NA para a média do cérebro
+View(msleep %>%
+  group_by(order) %>%
+  filter(order %in% c("Pilosa", "Cetacea")) %>%
+  select(order, sleep_total, brainwt))
