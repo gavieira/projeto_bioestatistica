@@ -431,3 +431,18 @@ ggplot(DF) +
   theme(axis.title.y = element_blank(),
           axis.text.y = element_blank(),
         axis.ticks.y = element_blank())
+
+##Flipando coordenadas (não fica tão bom nesse caso)
+
+ggplot(DF) +
+  aes(x = mpg, y = modelos) +
+  geom_text(aes(label = modelos), 
+            position = position_nudge(x = .5),
+            size = 3, check_overlap = T, hjust = 0) +
+  xlim(10,37) +
+  geom_point() +
+  coord_flip() +
+  theme_minimal() +
+  theme(axis.title.x = element_blank(),
+          axis.text.x = element_blank(),
+        axis.ticks.x = element_blank())
