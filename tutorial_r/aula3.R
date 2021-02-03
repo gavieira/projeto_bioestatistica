@@ -1,8 +1,10 @@
 #Aula3 - Visualização de dados no ggplot2
 
-#Olhar cheatsheet do ggplot2 no site do Rstudio
-#ggplot2 - grammar 
-#Incorpora fundamentos de como fazer uma sintaxe limpa 
+#Rstudio possui diversas cheatsheets. Bom dar uma olhada
+#Em especial, olhar cheatsheet do ggplot2 no site do Rstudio
+#ggplot2 - grammar graphics - gramática de gráficos
+#Incorpora fundamentos de como fazer uma sintaxe limpa
+#Em especial, a teoria de que graficos mapeiam propriedades estéticas em dados
 
 library(tidyverse) #Carregando o tidyverse (e consequentemente o ggplot2)
 
@@ -82,16 +84,16 @@ ggplot(DF %>% filter(Chick <4)) +
 
 ###########
 
-DF = ascombe
+DF = anscombe
 coeficiente = cor(DF$x1, DF$y1) #Calculando coeficiente de correlação
 
 ggplot(DF) +
-  aes(x = x1, y = y1, size = x1) + # O size aumenta o tamanho do ponto de acordo com o valor
-  geom_ponint(color = "green") +
+  aes(x = x1, y = y1, size = x1, label = x1) + # O size aumenta o tamanho do ponto de acordo com o valor
+  geom_point(color = "green") +
   geom_smooth(method = "lm", se = F, color = "red", size = 3) + # geom_smooth dá a regressão da reta
-  geom_text(position = position_nudge(y = 1)) + #Adicionando os labels correspondentes aos valores de x. O nudge empurra o texto dos labels 
+  geom_text(position = position_nudge(y = 1)) + #Adicionando os labels correspondentes aos valores de x. O nudge empurra o texto dos labels. Precisa ter o label definido 
   scale_size_continuous(range = c(3,12)) + # Muda a escala do tamanho dos elementos visuais. Serve para aumentar bastante os tamanhos
-  annotate("text", x = 12, y = 6, label = paste0("r = ", signif(coeficiente,3), size = 6)) #Plota o coeficiente de correlação no gráfico
+  annotate("text", x = 12, y = 6, label = paste0("r = ", signif(coeficiente,3), size = 6)) #Plota o coeficiente de correlação no gráfico. Annotate adiciona algum (qqr) texto no gráfico
 
 #paste() cola adicionando espaço
 #paste0() cola sem adicionar espaço
@@ -173,24 +175,33 @@ ggplot(DF) +
 
 #power.t.test -> é uma função que recebe valores e calcula o que vc não especificar (seja o poder, o n, etc...)
 
-calcular_n = function (sample_size) {
-  resultado_poder = power.t.test(n = sample_size, delta = 0.5, sign.level = 0.05, power = NULL)
+calcula_n = function (sample_size) {
+  resultado_poder = power.t.test(n = sample_size, delta = 0.5, sig.level = 0.05, power = NULL)
   resultado_poder$power
 }
 
-poderes = numeric(100)
+#Retornando a curva de poder inteira (para sample_size de 5 até 100, por exemplo)
 
-###Rever como ele fez isso na aula
-poderes = data.frame()
+poderes = numeric(100) #Cria um array numérico de 100 elementos, todos eles com 0.
+
 for (n in 5:100) {
- rbind(poderes(calcular_n(n)))
+  poderes[n] = calcula_n(n) #Calcula o n para aquele valor amostral e o guarda na posição correspondente no vetor poderes
 }
 
-#mas o for é mto lento em R e é desencorajado
-#usa o map então
+#Agora temos a curva de poder dentro de um vetor
+poderes[10] #Retorna poder para sample_size de 10
+poderes[25] #Retorna poder para sample_size de 25
+poderes[95] #Retorna poder para sample_size de 95
 
-calcular_n = function (sample_size) {
-  resultado_poder = power.t.test(n = sample_size, delta = 0.5, sign.level = 0.05, power = NULL)
+
+#mas o for é mto lento em R e é desencorajado.
+#usa o map então. Ele está dentro do purr
+#O map aplica uma função a cada um dos elementos de um vetor que vc passa para ele. Mto mais rápido que o for
+
+#Para além disso, o dataframe é melhor para plotar, então vamos fazer o cacula_n retornar um dataframe com duas colunas: N e Poder
+
+calcula_n = function (sample_size) {
+  resultado_poder = power.t.test(n = sample_size, delta = 0.5, sig.level = 0.05, power = NULL)
   return (data.frame(
     N = sample_size,
     Poder = resultado_poder$power
@@ -199,11 +210,224 @@ calcular_n = function (sample_size) {
 
 calcula_n(10)
 
-poderes = map_dfr(5:100, calcula_n)
+poderes = map_dfr(5:100, calcula_n) #map_dfr pega um vetor (no caso, os possíveis sample_sizes) e aplica uma função a cada elemento (no caso, a função 'calcula_n') e retorna um dataframe. dfr = dataframe_rows
 
 ggplot(poderes) +
   aes(x = N, y = Poder) +
   geom_line() +
-  geom_hline(yintercept = 0.8, linetype = 'dashed', color = 'gray')
+  #geom_point() +
+  geom_hline(yintercept = 0.8, linetype = 'dashed', color = 'red') #Linha horizontal passando por onde o poder = 80%
 
-poderes %>% filter(Poder > 0.6) %>% slice(1) %>% pull(N)
+poderes %>% filter(Poder > 0.6) %>% slice(1) %>% pull(N) # Mostra o valor de sample size a partir do qual o poder é maior q 60%. O slice te retorna só o primeiro valor.
+
+
+#O slice é compatível com slicing notation. Ele pode retornar os primeiros 3 valores, por exemplo.
+
+poderes %>% filter(Poder > 0.6) %>% slice(1:3) %>% pull(N) 
+
+#Outra possibilidade com o for (para gerar um dataframe) é usar o rbind (rowbind)
+
+poderes = data.frame()
+
+for (n in 5:100) {
+ poderes = rbind(poderes, calcula_n(n))
+}
+
+
+###############################################
+#EXERCICIOS
+
+#Plot1
+
+ggplot(chickwts) +
+  aes(x = feed, y = weight) +
+  geom_point()
+
+
+#Plot2
+
+#Primeira resposta (não consegui adicionar a legenda)
+weight_mean = mean(chickwts$weight)
+  
+ggplot(chickwts) +
+  aes(x = feed, y = weight) +
+  geom_point(data = chickwts %>% 
+               filter(weight <= weight_mean), 
+             color = "blue", 
+             alpha = 0.5) +
+  geom_point(data = chickwts %>% 
+               filter(weight > weight_mean), 
+             color = "red", 
+             alpha = 0.5) +
+  geom_hline(yintercept = weight_mean, linetype = 'dashed') +
+  theme_minimal()
+
+
+# Segunda resposta: deu mais trabalho, mas eu consegui
+
+weight_mean = mean(chickwts$weight)
+
+new_chickwts = chickwts %>%
+  mutate(avg_stats = case_when(
+    weight < weight_mean ~ "Below average",
+    weight >= weight_mean ~ "Equal or above average"
+  ))
+  
+ggplot(new_chickwts) +
+  geom_point(aes(x = feed, y = weight, color = avg_stats), alpha = .5) +
+  geom_hline(yintercept = weight_mean, linetype = 'dashed') +
+  theme_minimal() +
+  theme(legend.title=element_blank()) +
+  guides(fill = guide_legend(reverse = TRUE)) +
+  guides(color = guide_legend(reverse = TRUE)) +
+  scale_color_manual(
+    values = c("blue", "red")) +
+  scale_alpha_manual(values = c(.5, .5))
+  
+
+#Plot3
+
+#Foi o que eu conegui fazer por mim msm:
+new_chickwts = chickwts %>%
+  group_by(feed) %>%
+  mutate(means = mean(weight))
+
+ggplot(new_chickwts) +
+  aes(x = feed, y = weight, color = feed) +
+  geom_point() +
+  geom_hline(yintercept = new_chickwts$means) +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+
+#Resposta do Kleber:
+
+ggplot(chickwts) +
+  aes(x = feed, y = weight, color = feed) +
+  geom_point() +
+  stat_summary(fun.y = mean, fun.ymin = mean, fun.ymax = mean, geom = "crossbar", width = 0.5) +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+#Messing around - And avoiding deprecated options
+
+ggplot(chickwts) +
+  aes(x = feed, y = weight, color = feed) +
+  geom_point() +
+  stat_summary(fun = mean, fun.min = mean, fun.max = mean, geom = "crossbar", width = 0.5) +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+
+#Não precisa do fun.min and fun.max, aparentemente
+ggplot(chickwts) +
+  aes(x = feed, y = weight, color = feed) +
+  geom_point() +
+  stat_summary(fun = mean, geom = "crossbar", width = 0.8) +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+
+ggplot(chickwts) +
+  aes(x = feed, y = weight, color = feed) +
+  geom_point() +
+  stat_summary(fun = mean, geom = "point", size = 5, alpha = .5) +
+  theme_minimal() +
+  theme(legend.position = "top") +
+  labs(color = "Mean")
+
+
+ggplot(chickwts) +
+  aes(x = feed, y = weight, color = feed) +
+  geom_point() +
+  stat_summary(fun = mean, geom = "crossbar", width = .8, alpha = .5) +
+  theme_minimal() +
+  theme(legend.position = "top") +
+  labs(color = "Mean")
+
+
+##Plot4
+
+ggplot(iris) +
+  aes(x = Petal.Length, y = Petal.Width, 
+      color = Species) +
+  #theme_minimal() +
+  theme(legend.position = 'bottom') +
+  geom_point() +
+  geom_smooth(method = "loess") +
+  facet_wrap(~Species, scales = "free")
+
+
+##Plot5
+
+##Almost got it with facet_grid
+ggplot(iris) +
+  aes(x = Petal.Length, y = Petal.Width, 
+      color = Species) +
+  #theme_minimal() +
+  theme(legend.position = 'bottom') +
+  geom_point() +
+  geom_smooth(method = "loess") +
+  facet_grid(~Species, scales = "free", margins = T)
+
+##Olhei o do Kleber
+
+#Creating a dataframe with a duplicated dataframe: one untouched, one where the contents of columns 'Species' has been changed to 'ALL'
+
+DF = rbind(iris,
+           iris %>%
+             mutate(Species = "ALL"))
+
+ggplot(DF) +
+  aes(x = Petal.Length, y = Petal.Width, 
+      color = Species) +
+  #theme_minimal() +
+  theme(legend.position = 'bottom') +
+  geom_point() +
+  geom_smooth(method = "loess") +
+  facet_wrap(~Species, ncol = 2, scales = "free")
+
+##Plot6
+
+#Tive que dar uma olhada pra entender o q fazer (converter os nomes das colunas em uma coluna do dataframe)
+
+DF = mtcars %>%
+  select(mpg) %>%
+  mutate(modelos = row.names(mtcars))
+
+ggplot(DF) +
+  aes(x = mpg, y = modelos) +
+  geom_text(aes(label = modelos), 
+            position = position_nudge(x = .5),
+            size = 3, check_overlap = T, hjust = 0) +
+  xlim(10,37) +
+  geom_point() +
+  theme_minimal() +
+  theme(axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank())
+
+
+##Plot7
+
+##Ordena pela coluna numerica e gera um vetor com a variável categorica. Daí, vc vai ter seu plot ordenado
+##Tbm tem como ordenar da forma que vc quiser
+## Exemplos aqui: https://www.r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html
+
+DF = mtcars %>%
+  select(mpg) %>%
+  arrange(mpg) %>%
+  mutate(modelos = row.names(mtcars)) %>%
+  mutate(modelos = factor(modelos, levels = modelos))
+
+ggplot(DF) +
+  aes(x = mpg, y = modelos) +
+  geom_text(aes(label = modelos), 
+            position = position_nudge(x = .5),
+            size = 3, check_overlap = T, hjust = 0) +
+  xlim(10,37) +
+  geom_point() +
+  theme_minimal() +
+  theme(axis.title.y = element_blank(),
+          axis.text.y = element_blank(),
+        axis.ticks.y = element_blank())
