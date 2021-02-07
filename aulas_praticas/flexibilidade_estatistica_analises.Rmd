@@ -1,0 +1,45 @@
+---
+title: "Flexibilidade Estatística"
+author: "Gabriel Alves Vieira"
+date: "2/7/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Flexibilidade Estatística
+
+## Selecionando amostra aleatória dos dados
+
+Ao mesmo tempo em que forço o resultado para manter a primeira aleatorização onde o códon X ocorra mais do que 80% das vezes. É verdade que eu forço a barra aqui, mas escolher trabalhar com uma fração dos dados, vc sempre corre o risco de encontrar uma amostra dessas.
+
+```{r}
+library(tidyverse)
+library(readxl)
+
+dados = read_excel("../primates/Primates_codon_usage.xlsx")[,c(1, 3:4, 6:8)]
+#Taking only the columns we're interested in
+```
+
+
+```{r}
+for (i in 1:100) {
+controles = sample(DF$AnimalID, nrow(DF) / 2)
+DF = DF %>%
+  mutate(
+    Grupo = ifelse(AnimalID %in% controles, "Controle", "Tratado")
+  )
+  MEDIAS = DF %>% group_by(Grupo) %>%
+    summarise(Media = mean(Peso))
+  
+  peso1 = MEDIAS[1,2]
+  peso2 = MEDIAS[2,2]
+  
+  if (abs(peso1 - peso2) < 0.1) {
+    break
+  }
+}
+```
+

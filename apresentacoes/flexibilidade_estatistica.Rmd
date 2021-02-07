@@ -11,27 +11,18 @@ output:
 knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 ```
 
-## Codon Usage Bias
 
+## Codon usage bias
+
+:::::::::::::: {.columns}
+::: {.column width="60%"}
 - Código genético - Degenerado
 - Múltiplos códons - Um mesmo aa
 - Preferência por códons específicos
   - Viés de uso de codon (*codon usage bias*)
   - Comum no genoma mitocondrial
-
-
-
-## Genoma Mitocondrial
-
-:::::::::::::: {.columns}
-::: {.column width="60%"}
-- Menor genoma da célula metazoária
-- Circular, RNA policistrônico
-- Código genético próprio
-- 37 features
-  - 13 PCGs
-  - 22 tRNAs (importa alguns do citoplasma)
-  - 2 rRNAs
+- Possível explicação
+  - Maximizar a transcrição de seus genes (e.g. mais A-T) 
 :::
 ::: {.column width="40%"}
 ![]("./img/mitogenome.png")
@@ -40,24 +31,12 @@ knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 
 \vspace{12pt}
 
-### E o codon bias?
-- Duas explicações. O mitogenoma "prefere" códons que:
-  - Pareiam melhor com seus próprios tRNAs
-  - Maximizem a transcrição de seus genes (e.g. mais A-T) 
-
-## Obtenção dos dados
+## Dados
 
 - Clado escolhido: Primates
-- Script python [mitodownloader.py](https://github.com/gavieira/python_bioinfo/blob/master/mitodownloader.py):
-  - Baixa os dados pelo [Portal RefSeq de organelas do NCBI](https://www.ncbi.nlm.nih.gov/genome/browse#!/organelles/)
-- [tRNAscan-SE](https://github.com/UCSC-LoweLab/tRNAscan-SE) usado para identificar os anticodons
-- Python de novo:
-  - [Pandas](https://pandas.pydata.org/) e [Biopython](https://biopython.org/)
-  - Calcular métricas de codon usage
-  - Exportar para uma **tabela**
-- Tudo disponível em:
-
-    [https://github.com/gavieira/projeto_bioestatistica](https://github.com/gavieira/projeto_bioestatistica)
+  - Dados baixados pelo [Portal RefSeq de organelas do NCBI](https://www.ncbi.nlm.nih.gov/genome/browse#!/organelles/)
+  - 50 mitogenomas escolhidos aleatoriamente para a análise
+- Análise dos códons que codificam para o aminoácido X
 
 ## Tabela
 
@@ -79,20 +58,21 @@ length(unique(cubtable[["Species"]]))
 ```
 \normalsize
 
-## O que fazer com isso?
+## Resultado "real"
 
-Eu também não sei direito.
+```{r}
 
-\vspace{12pt}
+```
 
-### Hipótese 1 - Mitocôndria prioriza codons complementares aos seus tRNAs
-Comparar os códons complementares aos tRNAs mitcondriais com os outros
+## O que gerou o resultado significativo?
 
-::: {.block}
-### Hipótese 2 - Códons com mais A-T são priorizados
-Comparar os códons com 1, 2 ou 3 posições que possuam adenina ou timina entre si
-:::
+. . .
 
-\vspace{12pt}
+\only<1>- A amostragem
+```{r}
+#O resultado vem da randomização
+1+1
+```
 
-Mas ainda falta ler mais sobre o assunto e (claro) aprender mais sobre estatística...
+
+\only<2>- Teste
