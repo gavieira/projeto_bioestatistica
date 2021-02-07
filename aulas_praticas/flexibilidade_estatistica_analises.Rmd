@@ -11,23 +11,69 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Flexibilidade Estatística
 
-## Selecionando amostra aleatória dos dados
 
-Ao mesmo tempo em que forço o resultado para manter a primeira aleatorização onde o códon X ocorra mais do que 80% das vezes. É verdade que eu forço a barra aqui, mas escolher trabalhar com uma fração dos dados, vc sempre corre o risco de encontrar uma amostra dessas.
 
 ```{r}
 library(tidyverse)
 library(readxl)
+```
 
+```{r}
 dados = read_excel("../primates/Primates_codon_usage.xlsx")[,c(1, 3:4, 6:8)]
+dados = rename(dados, codon_num = `Number of Codon Occurences`)
 #Taking only the columns we're interested in
 ```
 
+```{r}
+#Dataframe só com aa dicodônicos...
+aa_dicodonicos = dados %>%
+  filter(Aminoacid %in% c("Phe", "Met", "Tyr", "Ile", "His", "Gln", "Asn", "Lys", "Asp", "Glu", "Cys", "Trp"))
+```
+
+```{r}
+#Diferença média dos aminoácidos dicodônicos...
+aa_dicodonicos_mean_diff = dados %>%
+  filter(Aminoacid %in% c("Phe", "Met", "Tyr", "Ile", "His", "Gln", "Asn", "Lys", "Asp", "Glu", "Cys", "Trp")) %>%
+  mutate(Diff = abs(Fraction - lag(Fraction))) %>%
+  group_by(Aminoacid) %>%
+  summarise(Diff_mean = mean(Diff, na.rm = T))
+
+```
+
+```{r}
+#Visualizando os pontos para os aa_dicodonicos (ocorrências absolutas)
+ggplot(aa_dicodonicos) +
+  aes(x = Codon, y = codon_num) + 
+  geom_boxplot() +
+  geom_point(size=2, alpha = 0.2, position = position_jitter(width = 0.2)) +
+  facet_wrap(~Aminoacid, scales = "free")
+```
+
+```{r}
+#Visualizando os pontos para os aa_dicodonicos (Fraction)
+ggplot(aa_dicodonicos) +
+  aes(x = Codon, y = Fraction) + 
+  geom_boxplot() +
+  geom_point(size=2, alpha = 0.2, position = position_jitter(width = 0.2)) +
+  facet_wrap(~Aminoacid, scales = "free")
+```
+`TAT` e `TAC` (que codificam para Tirosina) parecem ter uma boa variabilidade (que ainda por cima gravita em torno de 50%). O mesmo é válido para `ATC` e `ATT` (Isoleucina). Logo, qqr uma das duas parece ser uma boa pedida pra gente flexibilizar em cima e contar nossa história da carochinha.
+
+A distribuição dos códons que codificam para Tirosina para ser mais próxima a uma normal. Vamos começar tentando usar eles e, se não der certo, vamos para a Isoleucina.
+
+Então, iremos forçar um resultado significativo que corrobore a hipótese de que códons com mais conteúdo AT são mais comuns. No caso da tirosina, iremos favorecer a amostragem de indivíduos que possuam maior porcentagem de TAT em relação a TAC.
+
+## Testando se há diferença significativa (p < 0.05)
+
+
+
+## Selecionando amostra "aleatória" dos dados
+
+Primeiramente, iremos escolher 50 individuos aleatoriamente, mas só manteremos a amostra se o a porcentagem de `TAT` for consistentemente igual ou maior que 65%.
 
 ```{r}
 for (i in 1:100) {
-controles = sample(DF$AnimalID, nrow(DF) / 2)
-DF = DF %>%
+amostra = data %>%
   mutate(
     Grupo = ifelse(AnimalID %in% controles, "Controle", "Tratado")
   )
@@ -43,3 +89,36 @@ DF = DF %>%
 }
 ```
 
+
+No código acima, eu gero amostras aleatórias do dataset ao mesmo tempo em que forço o resultado para manter a primeira aleatorização onde o códon `TAT` ocorra mais do que 80% das vezes. É verdade que eu forço a barra aqui, mas escolher trabalhar com uma fração dos dados, vc sempre corre o risco de encontrar uma amostra dessas.
+
+Então, para fins práticos, é como se eu tivesse feito um msm experimento multiplas vezes e parado quando ele deu significativo, omitindo qualquer menção sobre as vezes nas quais não obtive p < 0.05.
+
+Quantas vezes o resultado foi não significativo? Qual o valor de p desses outros experimentos? Há alguma justificativa biológica pela qual eu acredito que esse resultado significativo é evidência o bastante da minha hipótese alternativa para chegar ao ponto de suplantar os outros testes que deram negativo?
+
+Citando as recomendações [desse artigo](https://journals.sagepub.com/doi/full/10.1177/0956797611417632):
+
+> For authors:
+
+> **Authors must decide the rule for terminating data collection before data collection begins and report this rule in the article.** Following this requirement may mean reporting the outcome of power calculations or disclosing arbitrary rules, such as “we decided to collect 100 observations” or “we decided to collect as many observations as we could before the end of the semester.” The rule itself is secondary, but it must be determined ex ante and be reported.
+
+> **Authors must report all experimental conditions, including failed manipulations.** This requirement prevents authors from selectively choosing only to report the condition comparisons that yield results that are consistent with their hypothesis. As with the previous requirement, we encourage authors to include the word “only” (e.g., “participants were randomly assigned to one of only three conditions”).
+
+> **If observations are eliminated, authors must also report what the statistical results are if those observations are included.** This requirement makes transparent the extent to which a finding is reliant on the exclusion of observations, puts appropriate pressure on authors to justify the elimination of data, and encourages reviewers to explicitly consider whether such exclusions are warranted. Correctly interpreting a finding may require some data exclusions; this requirement is merely designed to draw attention to those results that hinge on ex post decisions about which data to exclude.
+
+> For reviewers:
+
+> **Reviewers should ensure that authors follow the requirements.** Review teams are the gatekeepers of the scientific community, and they should encourage authors not only to rule out alternative explanations, but also to more convincingly demonstrate that their findings are not due to chance alone. This means prioritizing transparency over tidiness; if a wonderful study is partially marred by a peculiar exclusion or an inconsistent condition, those imperfections should be retained. If reviewers require authors to follow these requirements, they will.
+
+> **Reviewers should require authors to demonstrate that their results do not hinge on arbitrary analytic decisions.** Even if authors follow all of our guidelines, they will necessarily still face arbitrary decisions. For example, should they subtract the baseline measure of the dependent variable from the final result or should they use the baseline measure as a covariate? When there is no obviously correct way to answer questions like this, the reviewer should ask for alternatives. For example, reviewer reports might include questions such as, “Do the results also hold if the baseline measure is instead used as a covariate?” Similarly, reviewers should ensure that arbitrary decisions are used consistently across studies (e.g., “Do the results hold for Study 3 if gender is entered as a covariate, as was done in Study 2?”).5 If a result holds only for one arbitrary specification, then everyone involved has learned a great deal about the robustness (or lack thereof) of the effect.
+
+> **If justifications of data collection or analysis are not compelling, reviewers should require the authors to conduct an exact replication.** If a reviewer is not persuaded by the justifications for a given researcher degree of freedom or the results from a robustness check, the reviewer should ask the author to conduct an exact replication of the study and its analysis. We realize that this is a costly solution, and it should be used selectively; however, “never” is too selective.
+
+> **Not far enough**
+> (...) a reviewer of this article worried that our solution may not go far enough because authors have “tremendous disincentives” to disclose exploited researcher degrees of freedom. Although researchers obviously have incentives to publish, if editors and reviewers enforce our solution, authors will have even stronger incentives to accurately disclose their methodology. **Our solution turns inconsequential sins of omission (leaving out inconvenient facts) into consequential, potentially career-ending sins of commission (writing demonstrably false statements).** Journals implementing our disclosure requirements will create a virtuous cycle of transparency and accountability that eliminates the disincentive problem.
+
+> **Too far**
+> Alternatively, some readers may be concerned that our guidelines prevent researchers from conducting exploratory research. What if researchers do not know which dependent measures will be sensitive to the manipulation, for example, or how such dependent measures should be scored or combined? We all should of course engage in exploratory research, but we should be required either to report it as such (i.e., following the six requirements) or to complement it with (and possibly only report) confirmatory research consisting of exact replications of the design and analysis that “worked” in the exploratory phase.
+
+> **Cocnclusions**
+> Our goal as scientists is not to publish as many articles as we can, but to discover and disseminate truth. Many of us—and this includes the three authors of this article—often lose sight of this goal, yielding to the pressure to do whatever is justifiable to compile a set of studies that we can publish. This is not driven by a willingness to deceive but by the self-serving interpretation of ambiguity, which enables us to convince ourselves that whichever decisions produced the most publishable outcome must have also been the most appropriate.

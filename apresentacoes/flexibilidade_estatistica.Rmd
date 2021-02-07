@@ -18,6 +18,7 @@ knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 ::: {.column width="60%"}
 - Código genético - Degenerado
 - Múltiplos códons - Um mesmo aa
+  - Último nucleotídeo - *Wobble*
 - Preferência por códons específicos
   - Viés de uso de codon (*codon usage bias*)
   - Comum no genoma mitocondrial
@@ -33,7 +34,7 @@ knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 
 ## Dados
 
-- Clado escolhido: Primates
+- Clado escolhido: Primates (~ 300 spp.)
   - Dados baixados pelo [Portal RefSeq de organelas do NCBI](https://www.ncbi.nlm.nih.gov/genome/browse#!/organelles/)
   - 50 mitogenomas escolhidos aleatoriamente para a análise
 - Análise dos códons que codificam para o aminoácido X
@@ -57,6 +58,16 @@ dim.data.frame(cubtable)
 length(unique(cubtable[["Species"]]))
 ```
 \normalsize
+
+## Resultado
+
+
+## Resultado
+
+- Codons só variam na terceira posição
+  - Esperaríamos que a escolha fosse aleatória
+- Maximização da transcrição
+  - Priorização do códon com mais AT
 
 ## Resultado "real"
 
