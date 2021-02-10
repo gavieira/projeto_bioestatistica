@@ -106,7 +106,7 @@ chi_sqr_results
 
 - p < 0.05
 
-## Resultado
+## Para a tirosina...
 
 - Codons só variam na terceira posição
   - Esperaríamos que a escolha fosse aleatória
@@ -165,7 +165,7 @@ chi_sqr
 
 ## Manipulação dos dados
 
-- Ordenei o dataset (os maiores valores de AT primeiro)
+- Ordenei o dataset (os maiores valores de TAT primeiro)
 - Selecionei as primeiras 50 espécies do dataframe
 
 \tiny
