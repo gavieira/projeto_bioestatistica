@@ -20,20 +20,20 @@ library(readxl)
 
 ```{r}
 dados = read_excel("../primates/Primates_codon_usage.xlsx")[,c(1, 3:4, 6:8)]
-dados = rename(dados, codon_num = `Number of Codon Occurences`)
-#Taking only the columns we're interested in
+dados = rename(dados, codon_count = `Number of Codon Occurences`) #Taking only the columns we're interested in
+vec_dicodonicos = c("Phe", "Met", "Tyr", "Ile", "His", "Gln", "Asn", "Lys", "Asp", "Glu", "Cys", "Trp")
 ```
 
 ```{r}
 #Dataframe só com aa dicodônicos...
 aa_dicodonicos = dados %>%
-  filter(Aminoacid %in% c("Phe", "Met", "Tyr", "Ile", "His", "Gln", "Asn", "Lys", "Asp", "Glu", "Cys", "Trp"))
+  filter(Aminoacid %in% vec_dicodonicos)
 ```
 
 ```{r}
 #Diferença média dos aminoácidos dicodônicos...
 aa_dicodonicos_mean_diff = dados %>%
-  filter(Aminoacid %in% c("Phe", "Met", "Tyr", "Ile", "His", "Gln", "Asn", "Lys", "Asp", "Glu", "Cys", "Trp")) %>%
+  filter(Aminoacid %in% vec_dicodonicos) %>%
   mutate(Diff = abs(Fraction - lag(Fraction))) %>%
   group_by(Aminoacid) %>%
   summarise(Diff_mean = mean(Diff, na.rm = T))
@@ -43,7 +43,7 @@ aa_dicodonicos_mean_diff = dados %>%
 ```{r}
 #Visualizando os pontos para os aa_dicodonicos (ocorrências absolutas)
 ggplot(aa_dicodonicos) +
-  aes(x = Codon, y = codon_num) + 
+  aes(x = Codon, y = codon_count) + 
   geom_boxplot() +
   geom_point(size=2, alpha = 0.2, position = position_jitter(width = 0.2)) +
   facet_wrap(~Aminoacid, scales = "free")
@@ -57,46 +57,371 @@ ggplot(aa_dicodonicos) +
   geom_point(size=2, alpha = 0.2, position = position_jitter(width = 0.2)) +
   facet_wrap(~Aminoacid, scales = "free")
 ```
+
 `TAT` e `TAC` (que codificam para Tirosina) parecem ter uma boa variabilidade (que ainda por cima gravita em torno de 50%). O mesmo é válido para `ATC` e `ATT` (Isoleucina). Logo, qqr uma das duas parece ser uma boa pedida pra gente flexibilizar em cima e contar nossa história da carochinha.
 
 A distribuição dos códons que codificam para Tirosina para ser mais próxima a uma normal. Vamos começar tentando usar eles e, se não der certo, vamos para a Isoleucina.
 
 Então, iremos forçar um resultado significativo que corrobore a hipótese de que códons com mais conteúdo AT são mais comuns. No caso da tirosina, iremos favorecer a amostragem de indivíduos que possuam maior porcentagem de TAT em relação a TAC.
 
-## Testando se há diferença significativa (p < 0.05)
+Como teste estatístico, usaremos o **chi-square goodness of fit test**
 
 
+## Testando se há diferença significativa (p < 0.05) para algum aa
 
-## Selecionando amostra "aleatória" dos dados
-
-Primeiramente, iremos escolher 50 individuos aleatoriamente, mas só manteremos a amostra se o a porcentagem de `TAT` for consistentemente igual ou maior que 65%.
+Por via das dúvidas, irei tirar a média de todas...
 
 ```{r}
-for (i in 1:100) {
-amostra = data %>%
-  mutate(
-    Grupo = ifelse(AnimalID %in% controles, "Controle", "Tratado")
-  )
-  MEDIAS = DF %>% group_by(Grupo) %>%
-    summarise(Media = mean(Peso))
+all_aa = dados %>%
+group_by(Aminoacid, Codon) %>%
+summarise(mean_codon = mean(codon_count))
+
+for (aa in unique(all_aa$Aminoacid)) {
+  subset = all_aa %>% filter(Aminoacid == aa)
+  rows = nrow(subset)
+  chi_sqr = chisq.test(subset$mean_codon, p = rep(1/rows, rows))
+  print(paste("Valor de p para aminoacido", aa, ":", chi_sqr$p.value))
+}
+```
+
+E, de fato, a Tirosina (Tyr) apresenta o maior valor (0.76). E é não significativo.
+
+```{r}
+Tyr = dados %>%
+  filter(Aminoacid == "Tyr") %>%
+  group_by(Codon) %>%
+  summarise(mean_codon = mean(codon_count), .groups = "drop")
+
+chi_sqr = chisq.test(Tyr$mean_codon, p = c(0.5, 0.5))
+
+print(chi_sqr$p.value)
+```
+
+```{r}
+#Normalizando para 100 indivíduos a partir de fraction...
+
+Tyr = dados %>%
+  filter(Aminoacid == "Tyr") %>%
+  group_by(Codon) %>%
+  summarise(mean_prop = mean(Fraction), .groups = "drop")
+
+chi_sqr = chisq.test(Tyr$mean_prop * 100, p = c(0.5, 0.5))
+
+print(chi_sqr$p.value)
+```
+
+
+**Disclaimer:** Se somar as ocorrências em cada espécie, o valor de qui-quadrado fica absurdamente baixo. Não sei o que eu fiz (tirar a média, meio que tratando as espécies como replicatas) é válido estatísticamente.
+
+```{r}
+all_aa = dados %>%
+group_by(Aminoacid, Codon) %>%
+summarise(sum_codon = sum(codon_count))
+
+for (aa in unique(all_aa$Aminoacid)) {
+  subset = all_aa %>% filter(Aminoacid == aa)
+  rows = nrow(subset)
+  chi_sqr = chisq.test(subset$sum_codon, p = rep(1/rows, rows))
+  print(paste("Valor de p para aminoacido", aa, ":", chi_sqr$p.value))
+}
+```
+
+## Testando com uma fração dos dados
+
+Agora, é hora de cometer um pecado científico: fazer o mesmo teste com amostras aleatórias de espécies até que tenhamos um resultado significativo (p < 0.05). Daí, manter esse resultado e nem comentar dos que foram negativos.
+
+```{r}
+set.seed(265)
+
+#265, 285
+
+random_sample = function(df_size, sample_size) {
+ return (sample(1:df_size, sample_size))
+}
+
+Tyr = dados %>%
+  filter(Codon == "TAT") %>%
+  group_by(Codon)
+
+not_significant = 0
+
+for (sample_size in seq(20, 60, 1)) {
+  df_size = nrow(Tyr)
+  sample_tyr = Tyr[random_sample(df_size, sample_size),] %>%
+    group_by(Codon) %>%
+    summarise_at(c("codon_count", "Fraction"), mean, .groups = "drop") %>%
+    rename(mean_count = codon_count, mean_prop = Fraction)
   
-  peso1 = MEDIAS[1,2]
-  peso2 = MEDIAS[2,2]
+  TAC_prop = 1 - sample_tyr$mean_prop[1]
+  TAC_count =  round(sample_tyr$mean_count[1] * TAC_prop / sample_tyr$mean_prop[1], 2)
   
-  if (abs(peso1 - peso2) < 0.1) {
+  sample_tyr = sample_tyr %>% 
+    rbind(c("TAC", TAC_count, TAC_prop)) %>%
+    mutate_at(c("mean_count", "mean_prop"), as.numeric, .groups = "drop")
+  
+  chi_sqr_sample = chisq.test(sample_tyr$mean_count, p = c(0.5, 0.5))
+  print(chi_sqr_sample$p.value)
+  
+  if (chi_sqr_sample$p.value <= 0.05) {
+    print(paste("We have achieved a significant result after", not_significant, "tries."))
     break
+  } else {
+    not_significant = not_significant + 1
   }
 }
 ```
 
 
-No código acima, eu gero amostras aleatórias do dataset ao mesmo tempo em que forço o resultado para manter a primeira aleatorização onde o códon `TAT` ocorra mais do que 80% das vezes. É verdade que eu forço a barra aqui, mas escolher trabalhar com uma fração dos dados, vc sempre corre o risco de encontrar uma amostra dessas.
+```{r}
+#set.seed(1)
+
+#265, 285
+
+random_sample = function(df_size, sample_size) {
+ return (sample(1:df_size, sample_size))
+}
+
+Tyr = dados %>%
+  filter(Codon == "TAT") %>%
+  group_by(Codon)
+
+not_significant = 0
+
+for (seed in 148:1000) {
+set.seed(seed)
+print(paste("Testing seed:", seed))
+  
+for (sample_size in seq(20, 60, 1)) {
+  df_size = nrow(Tyr)
+  sample_tyr = Tyr[random_sample(df_size, sample_size),] %>%
+    group_by(Codon) %>%
+    summarise_at(c("codon_count", "Fraction"), mean, .groups = "drop") %>%
+    rename(mean_count = codon_count, mean_prop = Fraction)
+  
+  TAC_prop = 1 - sample_tyr$mean_prop[1]
+  TAC_count =  round(sample_tyr$mean_count[1] * TAC_prop / sample_tyr$mean_prop[1], 2)
+  
+  sample_tyr = sample_tyr %>% 
+    rbind(c("TAC", TAC_count, TAC_prop)) %>%
+    mutate_at(c("mean_count", "mean_prop"), as.numeric, .groups = "drop")
+  
+  chi_sqr_sample = chisq.test(sample_tyr$mean_count, p = c(0.5, 0.5))
+  #print(chi_sqr_sample$p.value)
+  
+  if (chi_sqr_sample$p.value <= 0.) {
+    print(paste("We have achieved a significant result after", not_significant, "tries."))
+    print(paste("Seed:", seed))
+    break
+  } else {
+    not_significant = not_significant + 1
+  }
+}
+}
+```
+
+Entretanto, está bem difícil encontrar resultados significativos aqui. Usando `set.seed(1)`, o resultado fica bem próximos de 0.05, mas ainda passa um pouqinho... Será que normalizando pra 100 indivíduos fica mais fácil?
+
+```{r}
+#Normalizando para 100
+#set.seed(1)
+
+random_sample = function(df_size, sample_size) {
+ return (sample(1:df_size, sample_size))
+}
+
+Tyr = dados %>%
+  filter(Codon == "TAT") %>%
+  group_by(Codon)
+
+not_significant = 0
+
+for (seed in 1:1000) {
+set.seed(seed)
+print(paste("Testing seed:", seed))
+  
+for (sample_size in seq(20, 150, 1)) {
+  df_size = nrow(Tyr)
+  sample_tyr = Tyr[random_sample(df_size, sample_size),] %>%
+    group_by(Codon) %>%
+    summarise_at(c("codon_count", "Fraction"), mean, .groups = "drop") %>%
+    rename(mean_count = codon_count, mean_prop = Fraction)
+  
+  TAC_prop = 1 - sample_tyr$mean_prop[1]
+  TAC_count =  round(sample_tyr$mean_count[1] * TAC_prop / sample_tyr$mean_prop[1], 2)
+  
+  sample_tyr = sample_tyr %>% 
+    rbind(c("TAC", TAC_count, TAC_prop)) %>%
+    mutate_at(c("mean_count", "mean_prop"), as.numeric, .groups = "drop")
+  
+  chi_sqr_sample = chisq.test(sample_tyr$mean_prop * 100, p = c(0.5, 0.5))
+  #print(chi_sqr_sample$p.value)
+  
+  if (chi_sqr_sample$p.value <= 0.05) {
+    print(paste("We have achieved a significant result after", not_significant, "tries."))
+    print(paste("Seed:", seed))
+    break
+  } else {
+    not_significant = not_significant + 1
+  }
+}
+}
+```
+Não, não ficou. Talvez tentando com um aminoácido onde o resultado seja mais discrepante (e.g. Phe)?
+
+```{r}
+#set.seed(1)
+
+random_sample = function(df_size, sample_size) {
+ return (sample(1:df_size, sample_size))
+}
+
+Phe = dados %>%
+  filter(Codon == "TTT") %>%
+  group_by(Codon)
+
+not_significant = 0
+
+for (seed in 24:1000) {
+set.seed(seed)
+print(paste("Testing seed:", seed))
+  
+for (sample_size in seq(20, 150, 1)) {
+  df_size = nrow(Phe)
+  sample_phe = Phe[random_sample(df_size, sample_size),] %>%
+    group_by(Codon) %>%
+    summarise_at(c("codon_count", "Fraction"), mean, .groups = "drop") %>%
+    rename(mean_count = codon_count, mean_prop = Fraction)
+  
+  TTC_prop = 1 - sample_phe$mean_prop[1]
+  TTC_count =  round(sample_phe$mean_count[1] * TTC_prop / sample_tyr$mean_prop[1], 2)
+  
+  sample_phe = sample_phe %>% 
+    rbind(c("TTC", TTC_count, TTC_prop)) %>%
+    mutate_at(c("mean_count", "mean_prop"), as.numeric, .groups = "drop")
+  
+  chi_sqr_sample = chisq.test(sample_phe$mean_count, p = c(0.5, 0.5))
+  #print(chi_sqr_sample$p.value)
+  
+  if (chi_sqr_sample$p.value <= 0.05) {
+    print(paste("We have achieved a significant result after", not_significant, "tries."))
+    print(paste("Seed:", seed))
+    break
+  } else {
+    not_significant = not_significant + 1
+  }
+}
+}
+```
+
+Tbm não está encontrando. Qual será o menor p-valor possível dentro de um subconjunto da nossa amostra? (Nesse caso, escolhemos uma amostra de 50 espécies). 
+
+
+
+```{r}
+#Vendo o menor valor de p possível
+max_frac = aa_dicodonicos %>%
+filter(Codon == "TAT") %>%
+arrange(-Fraction) %>%
+slice(1:50) %>%
+group_by(Codon) %>%
+summarise(mean_codon = mean(Fraction))
+
+max_frac_final = max_frac %>% 
+rbind(c("ATC", 1 - mean(max_frac$mean_codon[1])))
+
+max_frac_final$mean_codon = as.numeric(max_frac_final$mean_codon)
+
+
+chi_sqr_biased = chisq.test(max_frac_final$mean_codon * 100, p = rep(.5,2)) 
+print(chi_sqr_biased$p.value)
+```
+
+Ok, então tem como escolhermos aleatoriamente uma amostra desse tamanho que tenha um p abaixo do limiar de 0.05. O jeito é forçar a escolha de um número fixo de espécies que maximize essa diferença.
+
+## Selecionando amostra "aleatória" dos dados
+
+### Opção 1
+
+Primeiramente, iremos escolher 50 espécies aleatoriamente, mas **só manteremos a amostra que der um p-valor abaixo de 0.05**. Entretanto:
+
+Manipulações:
+
+- Ordenamos o dataset (os maiores valores primeiro)
+- Selecionamos aleatoriamente 50 espécies **dentre as primeiras 90** do dataframe.
+
+
+```{r}
+set.seed(1)
+
+Tyr = dados %>%
+  filter(Codon == "TAT") %>%
+  arrange(-Fraction)
+
+for (try in 1:1000) {
+  df_size = nrow(Tyr)
+  
+  sample_tyr = Tyr[sample(1:90, 50),] %>%
+    group_by(Codon) %>%
+    summarise_at(c("codon_count", "Fraction"), mean, .groups = "drop") %>%
+    rename(mean_count = codon_count, mean_prop = Fraction)
+  
+  
+  TAC_prop = 1 - sample_tyr$mean_prop[1]
+  TAC_count =  round(sample_tyr$mean_count[1] * TAC_prop / sample_tyr$mean_prop[1], 2)
+  
+  sample_tyr = sample_tyr %>% 
+    rbind(c("TAC", TAC_count, TAC_prop)) %>%
+    mutate_at(c("mean_count", "mean_prop"), as.numeric, .groups = "drop")
+  
+  if (sample_tyr$mean_prop[1] < 0.60) {
+    print("Proportion of TAT is less than 60%. Going to next randomization")
+    next
+  }
+  
+  chi_sqr_sample = chisq.test(sample_tyr$mean_count, p = c(0.5, 0.5))
+  print(chi_sqr_sample$p.value)
+  
+  if (chi_sqr_sample$p.value <= 0.05) {
+    print(paste("We have achieved a significant result after", try, "tries."))
+    break
+  }
+}
+```
+
+###Opção 2
+
+Manipulações:
+
+- Ordenamos o dataset (os maiores valores de AT primeiro)
+- Selecionamos as primeiras 50 espécies do dataframe
+
+
+```{r}
+#Ordenando pelas espécies que possuem maior porcentagem de TAT
+Tyr = dados %>%
+  filter(Aminoacid == "Tyr") %>%
+  arrange(desc(Codon), -Fraction)
+
+#Extraindo as 50 espécies com maior porcentagem TAT
+max_perc_tat = Tyr %>%
+  filter(Species %in% Tyr$Species[1:50]) %>%
+  group_by(Codon) %>%
+  summarise(mean_count = mean(codon_count), mean_perc = mean(Fraction))
+
+#Rodando o qui-quadrado  
+chi_sqr_sample = chisq.test(max_perc_tat$mean_count, p = c(0.5, 0.5))
+  
+print(chi_sqr_sample)
+  
+```
+
+É verdade que eu forço a barra aqui, mas escolher trabalhar com uma fração dos dados, vc sempre corre o risco de encontrar uma amostra dessas.
 
 Então, para fins práticos, é como se eu tivesse feito um msm experimento multiplas vezes e parado quando ele deu significativo, omitindo qualquer menção sobre as vezes nas quais não obtive p < 0.05.
 
 Quantas vezes o resultado foi não significativo? Qual o valor de p desses outros experimentos? Há alguma justificativa biológica pela qual eu acredito que esse resultado significativo é evidência o bastante da minha hipótese alternativa para chegar ao ponto de suplantar os outros testes que deram negativo?
 
-Citando as recomendações [desse artigo](https://journals.sagepub.com/doi/full/10.1177/0956797611417632):
+Citando recomendações/trechos [desse artigo](https://journals.sagepub.com/doi/full/10.1177/0956797611417632):
 
 > For authors:
 
