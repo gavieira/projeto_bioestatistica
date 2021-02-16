@@ -196,4 +196,4 @@ chi_sqr_sample
   - Oitavo círculo: Publicação parcial
   - Nono círculo: Inventar dados
   
-- Então, eu provavelmente ($p < 0.05$) estaria bem fundo no inferno científico
+- Então, se me encontrarem bem fundo no inferno científico, provavelmente não será por acaso ($p < 0.05$)

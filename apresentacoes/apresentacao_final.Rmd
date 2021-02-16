@@ -1,0 +1,139 @@
+---
+title: "Análise de *codon usage bias* mitocondrial"
+output: 
+  beamer_presentation:
+    fig_width: 10
+    fig_height: 7
+    theme: "Copenhagen"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
+```
+
+# Introdução
+
+:::::::::::::: {.columns}
+::: {.column width="60%"}
+- Código genético - Degenerado
+- Preferência por códons específicos
+  - Viés de uso de codon (*codon usage bias*)
+  - Comum no genoma mitocondrial
+- Possíveis explicação
+  - Maximizar a transcrição de seus genes (e.g. mais A-T)
+  - Priorizar os códons do mitogenoma (22 tRNAs)
+- Clado escolhido: Primates
+:::
+::: {.column width="40%"}
+![]("./img/mitogenome.png")
+:::
+::::::::::::::
+
+
+# Perguntas
+
+## Perguntas Biológicas
+
+1. Quais aminoácidos apresentam *codon usage bias*?
+
+2. Dentre os que apresentam:
+
+    a) Essa preferência está associada ao número de bases AT do códon?
+    
+    b) Essa preferência está associada a quais codons o mitogenoma usa?
+
+::: {.block}
+## Perguntas experimentais
+1. Há uma diferença entre o número de codons sinônimos usados para cada aa?
+
+2. a) Há uma diferença entre o número de codons que possuem 1, 2 ou 3 Adeninas ou Timinas?
+
+    b) Há uma diferença entre o número de codons cujos tRNAs/anticodons são encontrados no mitogenoma e os que não são?
+:::
+
+**Obs**: As perguntas são restritas à mitocôndrias de primatas.
+
+
+# Estudo observacional
+
+```{r include = FALSE}
+#Importando o que vamos precisar
+library(tidyverse, warn.conflicts=F, quietly=T)
+library(readxl, warn.conflicts=F, quietly=T)
+```
+
+\tiny
+```{r}
+codons <- readxl::read_excel("../primates/Primates_codon_usage.xlsx")  
+codons <- codons %>% rename(codon_count = "Number of Codon Occurences")
+print.data.frame(head(codons))
+```
+\normalsize
+
+- Não usaremos todas as variáveis medidas
+  - Variáveis Dependentes:
+    - Codon count, Fraction
+  - Variáveis Independentes:
+    - Species, aminoacid, codon
+    
+- Unidade experimental: Espécie
+  - Mitogenoma completo da espécie
+  - Toda espécie consegue contribuir com um ponto por grupo - Critério de pareamento
+
+# Tamanho da amostra e poder estatístico
+
+\tiny
+
+- Número de espécies
+```{r}
+length(unique(codons$Species))
+```
+
+- Curva de poder estatístico
+
+
+
+\normalsize
+
+#Resultados do experimento:
+
+O que fazer aqui? Talvez plotar os gráficos?
+
+\tiny
+
+```{r}
+#Visualizando os pontos para os aa_dicodonicos (Fraction)
+ggplot(codons %>% filter(Aminoacid != "End")) +
+  aes(x = Codon, y = Fraction) + 
+  geom_boxplot() +
+  geom_point(size=2, alpha = 0.2, position = position_jitter(width = 0.2)) +
+  facet_wrap(~Aminoacid, scales = "free")
+```
+\normalsize
+
+# Teste estatístico:
+
+- Variáveis qualitativas (aa e codons)
+- Lidando com porcentagens observadas e esperadas
+
+- Qui-quadrado de aderência
+  - Feito para cada aminoácido
+
+
+# Resultados dos testes:
+
+```{r}
+all_aa = codons %>%
+group_by(Aminoacid, Codon) %>%
+summarise(sum_codon = sum(codon_count))
+
+for (aa in unique(all_aa$Aminoacid)) {
+  subset = all_aa %>% filter(Aminoacid == aa)
+  rows = nrow(subset)
+  chi_sqr = chisq.test(subset$sum_codon, p = rep(1/rows, rows))
+  print(paste("Valor de p para aminoacido", aa, ":", chi_sqr$p.value))
+}
+```
+# O que os resultados significam mesmo?
+
+# Será que os resultados fazem sentido?

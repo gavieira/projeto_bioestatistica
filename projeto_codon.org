@@ -1,0 +1,14 @@
+#+TITLE: Projeto bioestatística - /Codon Usage Bias/
+
+* TODO
+
+- Fazer um teste (pode ser um one sample t test para dicodonicos ou teste qui-quadrado de aderência, tlvz?) para cada aminoácido e identificar se eles tem algum bias
+  
+- Fazer um teste pareado para:
+
+  + Comparar aminoacidos com 1, 2 ou 3 A-T.
+
+  + Comparar aminoácidos que são ou não mitocondriais.
+
+  + Nesses dois casos, vamos ter que tratar alguns aminoácidos como replicatas, para poder ainda assim tirar proveito do teste pareado (pareamento só ocorre quando uma mesma unidade experimental contribui com apenas um ponto em cada grupo).:w
+    
