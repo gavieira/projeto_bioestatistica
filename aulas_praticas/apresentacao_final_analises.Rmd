@@ -69,11 +69,21 @@ summarise(observed_values = sum(codon_count))
 chi_results = data.frame()
 
 for (aa in unique(all_aa$Aminoacid)) {
-  
   subset = all_aa %>% filter(Aminoacid == aa)
   rows = nrow(subset)
   chi_sqr = chisq.test(subset$observed_values, p = rep(1/rows, rows))
   print(paste("Valor de p para aminoacido", aa, ":", chi_sqr$p.value))
-  chi_results = cbind(chi_results, subset$Aminoacid, subset$Codon, chi_sqr$observed)
+  
+  for (i in 1:rows) {
+  chi_results = rbind(chi_results, c(
+    subset$Aminoacid[i], 
+    subset$Codon[i], 
+    chi_sqr$observed[i],
+    round(chi_sqr$expected[i], 2),
+    round(chi_sqr$residuals[i], 2),
+    round(chi_sqr$stdres[i], 2)
+    ))
+  }
+  colnames(chi_results) = c("Aa", "Codon", "Observed", "Expected", "Residuals", "stdres")
 }
 ```

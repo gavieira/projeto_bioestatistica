@@ -19,8 +19,9 @@ knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 - Preferência por códons específicos
   - Viés de uso de codon (*codon usage bias*)
   - Comum no genoma mitocondrial
-- Possível explicação
+- Possíveis explicações
   - Maximizar a transcrição de seus genes (e.g. mais A-T)
+  - Priorizar os códons do mitogenoma (22 tRNAs)
 - Clado escolhido: Primates
 :::
 ::: {.column width="40%"}
@@ -31,21 +32,14 @@ knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 
 # Perguntas
 
-## Perguntas Biológicas
+## Pergunta Biológica
 
-1. Quais aminoácidos apresentam *codon usage bias*?
-
-2. Dentre os que apresentam: Essa preferência está associada ao número de bases AT do códon?
+Quais aminoácidos apresentam *codon usage bias* (se é que algum apresenta)?
     
 ::: {.block}
-## Perguntas experimentais
-1. Há uma diferença entre o número de codons sinônimos usados para cada aa?
-
-2. Há uma diferença entre o número de codons que possuem 1, 2 ou 3 Adeninas ou Timinas?
+## Pergunta experimental
+Há uma diferença entre o número de codons sinônimos usados para cada aa?
 :::
-
-**Obs**: As perguntas são restritas à mitocôndrias de primatas.
-
 
 # Estudo observacional
 
@@ -57,50 +51,92 @@ library(readxl, warn.conflicts=F, quietly=T)
 
 \tiny
 ```{r}
-codons <- readxl::read_excel("../primates/Primates_codon_usage.xlsx")  
-codons <- codons %>% rename(codon_count = "Number of Codon Occurences")
-print.data.frame(head(codons, 2))
+dados <- readxl::read_excel("../primates/Primates_codon_usage.xlsx")  
+dados <- dados %>% rename(codon_count = "Number of Codon Occurences")
+print.data.frame(head(dados, 2))
 ```
 \normalsize
 
 \vspace{12pt}    
 
+- Amostragem: 199 espécies
 - Não usaremos todas as variáveis medidas
-  - **Variáveis Dependentes**:
-    - Codon count, Fraction
-  - **Variáveis Independentes**:
-    - Species, aminoacid, codon
-
-\vspace{12pt}    
+  - **Variável Dependente**:
+    - Codon count
+  - **Variável Independente**:
+    - Codon
     
 - Unidade experimental: Espécie
   - Mitogenoma completo da espécie
   - Toda espécie consegue contribuir com um ponto por grupo - Critério de pareamento
+  
+- Logo, minha pergunta e possíveis extrapolações estão **restritos à mitocôndrias de primatas**.
 
-# Tamanho da amostra e poder estatístico
+# Teste estatístico:
 
+- Teste para cada aminoácido
+  - Uma variável qualitativa independente (codons) em cada teste 
+  - Essa variável qualitativa única pode ter duas ou mais categorias
+  - A variável dependente é o número de ocorrência dos códons
+  - Queremos saber quão provável é obter o número de ocorrência de códons observados aleatóriamente, dado que, se não houver bias, esperamos que todos os códons sejam encontrados em igual quantidade/proporção. 
+
+- Em outras palavras...
+  - Queremos testar se uma variável segue uma determinada distribuição teórica. 
+  - **Qui-quadrado de aderência**
+  
+
+# Resultados dos testes:
 \tiny
-
-- Número de espécies
 ```{r}
-length(unique(codons$Species))
+all_aa = dados %>%
+group_by(Aminoacid, Codon) %>%
+summarise(observed_values = sum(codon_count), .groups = "drop")
+
+chi_results = data.frame()
+
+for (aa in unique(all_aa$Aminoacid)) {
+  
+  subset = all_aa %>% filter(Aminoacid == aa)
+  rows = nrow(subset)
+  chi_sqr = chisq.test(subset$observed_values, p = rep(1/rows, rows))
+  print(paste("Valor de p para aminoacido", aa, ":", chi_sqr$p.value))
+  
+  for (i in 1:rows) {
+  chi_results = rbind(chi_results, c(
+    subset$Aminoacid[i],
+    subset$Codon[i],
+    chi_sqr$observed[i],
+    chi_sqr$expected[i],
+    round(chi_sqr$residuals[i], 2),
+    round(chi_sqr$stdres[i], 2),
+    chi_sqr$p.value
+    ))
+  }
+colnames(chi_results) =  c("Aminoacid", "Codon", "Observed", "Expected", "Residuals", "Stdres", "p-value" )
+}
+write.csv(chi_results, "./chi_sqr_results.csv")
 ```
-
-- Curva de poder estatístico
-
-
 
 \normalsize
 
-# Resultados do experimento:
+# O que os resultados significam mesmo?
 
-O que fazer aqui? Talvez plotar os gráficos?
+- Hipótese nula:
+  - A diferença entre os valores observados e esperados das contagens de codons é devida ao acaso.
+
+
+- Dado que a hipótese nula é verdadeira, a probabilidade de obter um resultado onde a **diferença entre valores observados e esperados** é **igual ou maior** aos que eu encontrei é muito baixa (até demais).
+
+- Logo, seria razoável rejeitar a hipótese nula e aceitar uma hipótese alternativa
+  - No caso, a hipótese de que há um viés no uso de códons.
+
+# Será que os resultados fazem sentido?
 
 \tiny
 
 ```{r}
 #Visualizando os pontos para os aa_dicodonicos (Fraction)
-ggplot(codons %>% filter(Aminoacid != "End")) +
+ggplot(dados %>% filter(Aminoacid != "End")) +
   aes(x = Codon, y = Fraction) + 
   geom_boxplot() +
   geom_point(size=2, alpha = 0.2, position = position_jitter(width = 0.2)) +
@@ -108,43 +144,42 @@ ggplot(codons %>% filter(Aminoacid != "End")) +
 ```
 \normalsize
 
-# Teste estatístico:
+# Será que os resultados fazem sentido?
 
-- Variáveis qualitativas (aa e codons)
-- Lidando com porcentagens observadas e esperadas
-- Teste para cada aminoácido
-
-- Qui-quadrado de aderência
-  - Feito para cada aminoácido
-  - Uma variável 
-  
--
-
-
-# Resultados dos testes:
 \tiny
 ```{r}
-all_aa = codons %>%
-group_by(Aminoacid, Codon) %>%
-summarise(sum_codon = sum(codon_count))
-
-for (aa in unique(all_aa$Aminoacid)) {
-  subset = all_aa %>% filter(Aminoacid == aa)
-  rows = nrow(subset)
-  chi_sqr = chisq.test(subset$sum_codon, p = rep(1/rows, rows))
-  print(paste("Valor de p para aminoacido", aa, ":", chi_sqr$p.value))
-}
+print.data.frame(head(chi_results, 25))
 ```
 \normalsize
 
-# O que os resultados significam mesmo?
+# Outras perguntas
 
-- Dado que a hipótese nula é verdadeira, a probabilidade de obter um resultado onde a diferença entre valores observados e esperados é igual ou maior que os que eu encontrei é muito baixa (até demais).
+# Perguntas
 
-- Logo, seria razoável rejeitar a hipótese nula
+\small
 
-# Será que os resultados fazem sentido?
+## Perguntas Biológicas
 
+1. Essa preferência está associada ao número de bases AT do códon?
+
+2. Essa preferência está associada a quais codons o mitogenoma usa?
+
+::: {.block}
+## Perguntas experimentais
+
+1. Há uma diferença entre o número de codons que possuem 1, 2 ou 3 Adeninas ou Timinas?
+
+2. Há uma diferença entre o número de codons cujos tRNAs/anticodons são encontrados no mitogenoma e os que não são?
+:::
+
+- Abordagem:
+  - Qui-quadrado de aderência
+    - No caso da pergunta 1 (3 categorias): teste *post-hoc*
+  - Em ambos os casos:
+    - Para manter unidade experimental como espécie e evitar possíveis vieses, todos os codons pertencentes às categorias serão usados como réplicas... 
+    - Isso também permitiria análises pareadas
+    
+\normalsize    
 
 # *Pitch* - Biologia Computacional e Reprodutibilidade
 

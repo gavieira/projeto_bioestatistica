@@ -73,8 +73,3 @@ Let's visualize which are the most representative codons in the more evident bia
 ```{r}
 grouped_summary[]
 ```
-
-
-## Barplot (Mean fraction + standard deviation)
-
-Barplot of mean fraction with standard deviation
