@@ -37,8 +37,8 @@ knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 Quais aminoácidos apresentam *codon usage bias* (se é que algum apresenta)?
     
 ::: {.block}
-## Pergunta experimental
-Há uma diferença entre o número de codons sinônimos usados para cada aa?
+## Pergunta quantitativa
+Os valores observados na contagem de códons sinônimos mitocondriais para um dado aminoácido são diferentes dos valores esperado caso não haja preferência por nenhum códon?
 :::
 
 # Estudo observacional
