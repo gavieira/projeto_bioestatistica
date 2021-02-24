@@ -167,9 +167,9 @@ print.data.frame(head(chi_results, 25))
 ::: {.block}
 ## Perguntas experimentais
 
-1. Há uma diferença entre o número de codons que possuem 1, 2 ou 3 Adeninas ou Timinas?
+1. Os valores observados na contagem de códons mitocondriais com 1, 2 ou 3 Adeninas/Timinas são diferentes dos valores esperado caso não haja preferência por nenhuma dessas categorias?
 
-2. Há uma diferença entre o número de codons cujos tRNAs/anticodons são encontrados no mitogenoma e os que não são?
+2. Os valores observados na contagem de códons mitocondriais codificados ou não são diferentes dos valores esperado caso não haja preferência por nenhuma dessas categorias?
 :::
 
 - Abordagem:
