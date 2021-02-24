@@ -19,9 +19,8 @@ knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 - Preferência por códons específicos
   - Viés de uso de codon (*codon usage bias*)
   - Comum no genoma mitocondrial
-- Possíveis explicação
+- Possível explicação
   - Maximizar a transcrição de seus genes (e.g. mais A-T)
-  - Priorizar os códons do mitogenoma (22 tRNAs)
 - Clado escolhido: Primates
 :::
 ::: {.column width="40%"}
@@ -36,19 +35,13 @@ knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 
 1. Quais aminoácidos apresentam *codon usage bias*?
 
-2. Dentre os que apresentam:
-
-    a) Essa preferência está associada ao número de bases AT do códon?
+2. Dentre os que apresentam: Essa preferência está associada ao número de bases AT do códon?
     
-    b) Essa preferência está associada a quais codons o mitogenoma usa?
-
 ::: {.block}
 ## Perguntas experimentais
 1. Há uma diferença entre o número de codons sinônimos usados para cada aa?
 
-2. a) Há uma diferença entre o número de codons que possuem 1, 2 ou 3 Adeninas ou Timinas?
-
-    b) Há uma diferença entre o número de codons cujos tRNAs/anticodons são encontrados no mitogenoma e os que não são?
+2. Há uma diferença entre o número de codons que possuem 1, 2 ou 3 Adeninas ou Timinas?
 :::
 
 **Obs**: As perguntas são restritas à mitocôndrias de primatas.
@@ -66,15 +59,19 @@ library(readxl, warn.conflicts=F, quietly=T)
 ```{r}
 codons <- readxl::read_excel("../primates/Primates_codon_usage.xlsx")  
 codons <- codons %>% rename(codon_count = "Number of Codon Occurences")
-print.data.frame(head(codons))
+print.data.frame(head(codons, 2))
 ```
 \normalsize
 
+\vspace{12pt}    
+
 - Não usaremos todas as variáveis medidas
-  - Variáveis Dependentes:
+  - **Variáveis Dependentes**:
     - Codon count, Fraction
-  - Variáveis Independentes:
+  - **Variáveis Independentes**:
     - Species, aminoacid, codon
+
+\vspace{12pt}    
     
 - Unidade experimental: Espécie
   - Mitogenoma completo da espécie
@@ -95,7 +92,7 @@ length(unique(codons$Species))
 
 \normalsize
 
-#Resultados do experimento:
+# Resultados do experimento:
 
 O que fazer aqui? Talvez plotar os gráficos?
 
@@ -115,13 +112,17 @@ ggplot(codons %>% filter(Aminoacid != "End")) +
 
 - Variáveis qualitativas (aa e codons)
 - Lidando com porcentagens observadas e esperadas
+- Teste para cada aminoácido
 
 - Qui-quadrado de aderência
   - Feito para cada aminoácido
+  - Uma variável 
+  
+-
 
 
 # Resultados dos testes:
-
+\tiny
 ```{r}
 all_aa = codons %>%
 group_by(Aminoacid, Codon) %>%
@@ -134,6 +135,51 @@ for (aa in unique(all_aa$Aminoacid)) {
   print(paste("Valor de p para aminoacido", aa, ":", chi_sqr$p.value))
 }
 ```
+\normalsize
+
 # O que os resultados significam mesmo?
 
+- Dado que a hipótese nula é verdadeira, a probabilidade de obter um resultado onde a diferença entre valores observados e esperados é igual ou maior que os que eu encontrei é muito baixa (até demais).
+
+- Logo, seria razoável rejeitar a hipótese nula
+
 # Será que os resultados fazem sentido?
+
+
+# *Pitch* - Biologia Computacional e Reprodutibilidade
+
+![]("./img/big_data.png")
+
+![]("./img/big_data2.png")
+
+# *Pitch* - Biologia Computacional e Reprodutibilidade
+
+- "We used a custom python/perl script to..."
+- "An In-house script was used to..."
+- "The 199 mitogenomes were downloaded from NCBI. The complete coding sequence was extracted and codon occurrences were counted for each species."
+
+- Daí você procura o código e ele não está em local algum... 
+
+- Você pode contactar o autor do paper e pedir pelo script/jupyter notebook/rmarkdown...
+  - Processo demorado: Mais rápido vc mesmo escrever seu programa
+  - E isso é péssimo em termos de reprodutibilidade...
+
+- E mesmo que o código esteja disponível, isso ainda não garante que o trabalho seja replicável...
+  
+# *Pitch* - Biologia Computacional e Reprodutibilidade
+
+- E se focássemos nesses artefatos de pesquisa? 
+
+1. Selecionar uma amostra de papers que manipulem dados usando linguagens de programação
+  - Palavras-chave: **"custom script/program"**, **"jupyter notebook/.ipynb"**, **"Rmarkdown/.Rmd"**, etc...
+  
+2. Se por acaso o código não estiver disponível em lugar nenhum, contactar os autores e requisitar o código...
+  
+3. Tentar reproduzir as análises computacionais.
+  
+  
+# Não é uma idéia totalmente original...
+
+![]("./img/computational_reproducibility.png")
+
+![]("./img/computational_reproducibility2.png")

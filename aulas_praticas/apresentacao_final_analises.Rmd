@@ -1,0 +1,79 @@
+---
+title: "Apresentação final"
+author: "Gabriel Alves Vieira"
+date: "2/7/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Importando bibliotecas e obtendo dataframe inicial
+
+
+
+```{r}
+library(tidyverse)
+library(readxl)
+```
+
+```{r}
+dados = read_excel("../primates/Primates_codon_usage.xlsx")[,c(1, 3:4, 6:8)]
+dados = rename(dados, codon_count = `Number of Codon Occurences`) #Taking only the columns we're interested in
+```
+
+
+Como teste estatístico, usaremos o **chi-square goodness of fit test**
+
+
+# Testando se há diferença significativa (p < 0.05) para algum aa
+
+
+```{r}
+all_aa = dados %>%
+group_by(Aminoacid, Codon) %>%
+summarise(observed_values = sum(codon_count))
+
+chi_results = data.frame()
+
+for (aa in unique(all_aa$Aminoacid)) {
+  
+  subset = all_aa %>% filter(Aminoacid == aa)
+  rows = nrow(subset)
+  chi_sqr = chisq.test(subset$observed_values, p = rep(1/rows, rows))
+  print(paste("Valor de p para aminoacido", aa, ":", chi_sqr$p.value))
+  
+  for (i in 1:rows) {
+  chi_results = rbind(chi_results, c(
+    subset$Aminoacid[i],
+    subset$Codon[i],
+    chi_sqr$observed[i],
+    chi_sqr$expected[i],
+    chi_sqr$residuals[i],
+    chi_sqr$stdres[i],
+    chi_sqr$p.value),
+    deparse.level = 0)
+  }
+  
+colnames(chi_results) =  c("Aminoacid", "Codon", "Observed", "Expected", "Residuals", "Stdres", "p-value" )
+
+}
+```
+
+```{r}
+all_aa = dados %>%
+group_by(Aminoacid, Codon) %>%
+summarise(observed_values = sum(codon_count))
+
+chi_results = data.frame()
+
+for (aa in unique(all_aa$Aminoacid)) {
+  
+  subset = all_aa %>% filter(Aminoacid == aa)
+  rows = nrow(subset)
+  chi_sqr = chisq.test(subset$observed_values, p = rep(1/rows, rows))
+  print(paste("Valor de p para aminoacido", aa, ":", chi_sqr$p.value))
+  chi_results = cbind(chi_results, subset$Aminoacid, subset$Codon, chi_sqr$observed)
+}
+```
