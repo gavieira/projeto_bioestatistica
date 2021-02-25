@@ -38,7 +38,7 @@ Quais aminoácidos apresentam *codon usage bias* (se é que algum apresenta)?
     
 ::: {.block}
 ## Pergunta quantitativa
-Os valores observados na contagem de códons sinônimos mitocondriais para um dado aminoácido são diferentes dos valores esperado caso não haja preferência por nenhum códon?
+Os valores observados na contagem de códons sinônimos mitocondriais para um dado aminoácido são diferentes dos valores esperados caso não haja preferência por nenhum códon?
 :::
 
 # Estudo observacional
@@ -77,11 +77,11 @@ print.data.frame(head(dados, 2))
 - Teste para cada aminoácido
   - Uma variável qualitativa independente (codons) em cada teste 
   - Essa variável qualitativa única pode ter duas ou mais categorias
-  - A variável dependente é o número de ocorrência dos códons
-  - Queremos saber quão provável é obter o número de ocorrência de códons observados aleatóriamente, dado que, se não houver bias, esperamos que todos os códons sejam encontrados em igual quantidade/proporção. 
+  - A variável dependente é a contagem dos códons
+  - Queremos saber quão provável é obter a contagem de códons observados aleatóriamente, dado que, se não houver bias, esperamos que todos os códons sejam encontrados em igual quantidade/proporção. 
 
 - Em outras palavras...
-  - Queremos testar se uma variável segue uma determinada distribuição teórica. 
+  - Queremos testar o quão provável é uma variável pertencer a uma determinada distribuição teórica. 
   - **Qui-quadrado de aderência**
   
 
@@ -152,9 +152,18 @@ print.data.frame(head(chi_results, 25))
 ```
 \normalsize
 
-# Outras perguntas
+::: notes
 
-# Perguntas
+É possível que o valor de p baixo esteja apenas associado ao N enorme, mas:
+
+  - Não poderia ser um erro na escolha de método estatístico?
+  - Meus grupos não são independentes
+  - Mas o teste de McNemar só serve quando tem...
+  - Deveria ter tentado comparar as médias das proporções por meio de algum outro teste?
+
+:::
+
+# Outras perguntas
 
 \small
 
@@ -167,17 +176,16 @@ print.data.frame(head(chi_results, 25))
 ::: {.block}
 ## Perguntas experimentais
 
-1. Os valores observados na contagem de códons mitocondriais com 1, 2 ou 3 Adeninas/Timinas são diferentes dos valores esperado caso não haja preferência por nenhuma dessas categorias?
+1. Os valores observados na contagem de códons mitocondriais com 0, 1, 2 ou 3 Adeninas/Timinas são diferentes dos valores esperados caso não haja preferência por nenhuma dessas categorias?
 
-2. Os valores observados na contagem de códons mitocondriais codificados ou não são diferentes dos valores esperado caso não haja preferência por nenhuma dessas categorias?
+2. Os valores observados na contagem de códons mitocondriais codificados ou não são diferentes dos valores esperados caso não haja preferência por nenhuma dessas categorias?
 :::
 
 - Abordagem:
   - Qui-quadrado de aderência
     - No caso da pergunta 1 (3 categorias): teste *post-hoc*
   - Em ambos os casos:
-    - Para manter unidade experimental como espécie e evitar possíveis vieses, todos os codons pertencentes às categorias serão usados como réplicas... 
-    - Isso também permitiria análises pareadas
+    - Evitar possíveis vieses: todos os codons pertencentes às categorias serão usados como réplicas... 
     
 \normalsize    
 
@@ -205,7 +213,10 @@ print.data.frame(head(chi_results, 25))
 
 - E se focássemos nesses artefatos de pesquisa? 
 
+\vspace{12pt}
+
 1. Selecionar uma amostra de papers que manipulem dados usando linguagens de programação
+
   - Palavras-chave: **"custom script/program"**, **"jupyter notebook/.ipynb"**, **"Rmarkdown/.Rmd"**, etc...
   
 2. Se por acaso o código não estiver disponível em lugar nenhum, contactar os autores e requisitar o código...
