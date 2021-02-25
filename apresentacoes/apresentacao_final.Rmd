@@ -71,6 +71,32 @@ print.data.frame(head(dados, 2))
   
 - Logo, minha pergunta e possíveis extrapolações estão **restritos à mitocôndrias de primatas**.
 
+---
+
+```{r}
+library(tidyverse)
+library(pwr)
+
+calcula_efeito = function (power) {
+  resultado = pwr.chisq.test(w = NULL, N = 199, df = 1, sig.level = 0.05, power = power)
+  return (data.frame(
+    Power = power,
+    Effect_size = resultado$w
+  ))
+}
+  
+efeitos = map_dfr(seq(0.5,0.95,0.05), calcula_efeito)
+
+ggplot(efeitos) +
+  aes(x = Effect_size, y = Power) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Curva de poder estatístico: aminoácido dicodônico") +
+  annotate("text", x = 0.24, y = 0.7, label = "sample = 199\ndf = 1\nsig.level = 0.05", size = 5) + #Annotate adiciona algum (qqr) texto no gráfico
+  theme(plot.title = element_text(size = 20, hjust = 0.5))
+  #geom_hline(yintercept = 0.80, linetype = 'dashed', color = 'red') #Linha horizontal passando por onde o poder = 80%
+```
+
 # Teste estatístico:
 
 - Teste para cada aminoácido
@@ -80,7 +106,7 @@ print.data.frame(head(dados, 2))
   - Queremos saber quão provável é obter a contagem de códons observados aleatóriamente, dado que, se não houver bias, esperamos que todos os códons sejam encontrados em igual quantidade/proporção. 
 
 - Em outras palavras...
-  - Queremos testar o quão provável é uma variável pertencer a uma determinada distribuição teórica. 
+  - Queremos testar o quão provável é uma variável derivar de uma determinada distribuição teórica. 
   - **Qui-quadrado de aderência**
   
 
@@ -106,12 +132,10 @@ for (aa in unique(all_aa$Aminoacid)) {
     subset$Codon[i],
     chi_sqr$observed[i],
     chi_sqr$expected[i],
-    round(chi_sqr$residuals[i], 2),
-    round(chi_sqr$stdres[i], 2),
     chi_sqr$p.value
     ))
   }
-colnames(chi_results) =  c("Aminoacid", "Codon", "Observed", "Expected", "Residuals", "Stdres", "p-value" )
+colnames(chi_results) =  c("Aminoacid", "Codon", "Observed", "Expected", "p-value" )
 }
 write.csv(chi_results, "./chi_sqr_results.csv")
 ```
