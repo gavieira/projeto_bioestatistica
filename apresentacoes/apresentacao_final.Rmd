@@ -69,6 +69,17 @@ print.data.frame(head(dados, 2))
   
 - Logo, minha pergunta e possíveis conclusões estão **restritos à mitocôndrias de primatas** (amostra é representativa dessa população).
 
+::: notes
+Distribuição gaussiana é comum para variáveis que:
+
+  1. Sejam influenciadas por um grande numero de fatores, sem que nenhum deles seja dominante (parece ser o caso)
+  
+  2. Não sejam constritas em sua variação (já que estamos trabalhando com valores absolutos, pode ser q seja)
+
+- Teorema do limite central: Independentemente da distribuição de uma variável na população, as **médias de amostras aleatórias** retiradas desta população se distribuirão em uma curva que tenderá à normal conforme o tamando da amostra aumenta.
+
+:::
+
 ---
 
 ```{r}
@@ -95,6 +106,18 @@ ggplot(efeitos) +
   #geom_hline(yintercept = 0.80, linetype = 'dashed', color = 'red') #Linha horizontal passando por onde o poder = 80%
 ```
 
+::: notes
+
+- Alpha (limiar significância): É a probabilidade de erro Tipo I (falso positivo). Quanto mais estrito, menor o poder.
+
+- Beta: É a probabilidade de erro Tipo II.
+
+– O poder é a **chance de um experimento detectar uma diferença quando ela existe (1 - beta).**
+
+
+:::
+
+
 # Teste estatístico:
 
 - Teste para cada aminoácido
@@ -111,16 +134,6 @@ ggplot(efeitos) +
   - **Qui-quadrado de aderência**
   
 
-::: notes
-Distribuição gaussiana é comum para variáveis que:
-
-  1. Sejam influenciadas por um grande numero de fatores, sem que nenhum deles seja dominante (parece ser o caso)
-  
-  2. Não sejam constritas em sua variação (já que estamos trabalhando com valores absolutos, pode ser q seja)
-
-- Teorema do limite central: Independentemente da distribuição de uma variável na população, as **médias de amostras aleatórias** retiradas desta população se distribuirão em uma curva que tenderá à normal conforme o tamando da amostra aumenta.
-
-:::
 
 
 # Resultados dos testes:
@@ -205,7 +218,7 @@ Pressupostos qui-quadrado:
     - Mas o teste de McNemar serve quando tem uma única variável independente com multiplas categorias?
   - Deveria ter tentado comparar as médias das proporções por meio de algum outro teste?
   - Teste exato de Fisher: Interessante para quando não tem uma amostragem tão grande
-  - One Sample t-test, ANOVA de uma via...?
+  - ANOVA de medidas repetidas...?
 :::
 
 # Outras perguntas
