@@ -27,6 +27,31 @@ dados = rename(dados, codon_count = `Number of Codon Occurences`) #Taking only t
 Como teste estatístico, usaremos o **chi-square goodness of fit test**
 
 
+# Gráficos dos dados
+
+```{r}
+#Visualizando os pontos por aa (ocorrências absolutas)
+ggplot(dados) +
+  aes(x = Codon, y = codon_count) + 
+  geom_boxplot() +
+  geom_point(size=2, alpha = 0.2, position = position_jitter(width = 0.2)) +
+  facet_wrap(~Aminoacid, scales = "free")
+
+```
+
+
+
+```{r}
+#Visualizando os pontos por aa (Fraction)
+ggplot(dados) +
+  aes(x = Codon, y = Fraction) + 
+  geom_boxplot() +
+  geom_point(size=2, alpha = 0.2, position = position_jitter(width = 0.2)) +
+  facet_wrap(~Aminoacid, scales = "free")
+```
+
+
+
 # Testando se há diferença significativa (p < 0.05) para algum aa
 
 
@@ -159,3 +184,33 @@ ggplot(efeitos) +
   theme(plot.title = element_text(hjust = 0.5))
   #geom_hline(yintercept = 0.80, linetype = 'dashed', color = 'red') #Linha horizontal passando por onde o poder = 80%
 ```
+
+
+# Classificando codons em grupos por quantidade de AT
+
+```{r}
+library(tidyverse)
+library(stringr)
+
+all_aa = dados %>%
+group_by(Aminoacid, Codon) %>%
+summarise(observed_values = sum(codon_count))
+
+count0 = 0
+count1 = 0
+count2 = 0
+count3 = 0
+
+for (codon in unique(all_aa$Codon)) {
+  ATcont = sum(str_count(codon, c("A", "T")))
+  #print(c(codon, ATcont))
+  if (ATcont == 0) {count0 = count0 + 1}
+  if (ATcont == 1) {count1 = count1 + 1}
+  if (ATcont == 2) {count2 = count2 + 1}
+  if (ATcont == 3) {count3 = count3 + 1}
+}
+
+print(c(count0, count1, count2, count3))
+```
+
+Ou seja, as categorias com 0 ou 3 A/T apresentam só 8 códons cada, enquanto as com 1 ou 2 A/T apresentam o triplo.

@@ -11,8 +11,6 @@ output:
 knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 ```
 
-# Introdução
-
 :::::::::::::: {.columns}
 ::: {.column width="60%"}
 - Código genético - Degenerado
@@ -37,8 +35,8 @@ knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 Quais aminoácidos apresentam *codon usage bias* (se é que algum apresenta)?
     
 ::: {.block}
-## Pergunta quantitativa
-O quão provável é os valores observados na contagem de códons sinônimos mitocondriais para um dado aminoácido serem tão diferentes dos valores esperados caso não haja preferência por nenhum códon?
+## Pergunta Quantitativa
+Os valores observados na contagem de códons sinônimos mitocondriais para um dado aminoácido são diferentes dos valores esperados caso não haja preferência por nenhum códon?
 :::
 
 # Estudo observacional
@@ -57,7 +55,7 @@ print.data.frame(head(dados, 2))
 ```
 \normalsize
 
-\vspace{12pt}    
+\vspace{12pt}
 
 - Amostragem: 199 espécies - Teorema Central do Limite
 - Não usaremos todas as variáveis medidas
@@ -69,7 +67,7 @@ print.data.frame(head(dados, 2))
 - Unidade experimental: Espécie
   - Mitogenoma completo da espécie
   
-- Logo, minha pergunta e possíveis extrapolações estão **restritos à mitocôndrias de primatas**.
+- Logo, minha pergunta e possíveis conclusões estão **restritos à mitocôndrias de primatas** (amostra é representativa dessa população).
 
 ---
 
@@ -103,12 +101,27 @@ ggplot(efeitos) +
   - Uma variável qualitativa independente (codons) em cada teste 
   - Essa variável qualitativa única pode ter duas ou mais categorias
   - A variável dependente é a contagem dos códons
-  - Queremos saber quão provável é obter a contagem de códons observados aleatóriamente, dado que, se não houver bias, esperamos que todos os códons sejam encontrados em igual quantidade/proporção. 
+  - Se não houver viés, esperamos que os códons sinônimos sejam encontrados em **igual quantidade/proporção**
+  - Queremos saber **o quão provável é a diferença entre valores observados e esperados** nesse cenário.
+
+\vspace{12pt}
 
 - Em outras palavras...
-  - Queremos testar o quão provável é uma variável derivar de uma determinada distribuição teórica. 
+  - Queremos testar o quão provável é uma variável categórica seguir uma determinada distribuição teórica.
   - **Qui-quadrado de aderência**
   
+
+::: notes
+Distribuição gaussiana é comum para variáveis que:
+
+  1. Sejam influenciadas por um grande numero de fatores, sem que nenhum deles seja dominante (parece ser o caso)
+  
+  2. Não sejam constritas em sua variação (já que estamos trabalhando com valores absolutos, pode ser q seja)
+
+- Teorema do limite central: Independentemente da distribuição de uma variável na população, as **médias de amostras aleatórias** retiradas desta população se distribuirão em uma curva que tenderá à normal conforme o tamando da amostra aumenta.
+
+:::
+
 
 # Resultados dos testes:
 \tiny
@@ -147,7 +160,6 @@ write.csv(chi_results, "./chi_sqr_results.csv")
 - Hipótese nula:
   - Não há diferença entre os valores observados e esperados das contagens de codons.
 
-
 - Dado que a hipótese nula é verdadeira, a probabilidade de obter um resultado onde a **diferença entre valores observados e esperados** é **igual ou maior** aos que eu encontrei é muito baixa (até demais).
 
 - Logo, seria razoável rejeitar a hipótese nula e aceitar uma hipótese alternativa
@@ -177,12 +189,20 @@ print.data.frame(head(chi_results, 25))
 
 ::: notes
 
+Pressupostos qui-quadrado:
+
+- Amostras aleatórias e **independentes**
+- Categorias mutuamente excludentes
+- Números utilizados formam uma tabela de contingência contendo todos os indivíduos
+- n suficientemente grande (pelo menos 20 indivíduos ao todo, valores esperados de pelo menios 5 em cada casela)
+
+
 É possível que o valor de p baixo esteja apenas associado ao N enorme, mas:
 
   - Não poderia ser um erro na escolha de método estatístico?
   - Toda espécie consegue contribuir com um ponto por grupo - Critério de pareamento
     - Meus grupos não são independentes - Isso não quebraria um dos pressupostos?
-    - Mas o teste de McNemar só serve quando tem...
+    - Mas o teste de McNemar serve quando tem uma única variável independente com multiplas categorias?
   - Deveria ter tentado comparar as médias das proporções por meio de algum outro teste?
   - Teste exato de Fisher: Interessante para quando não tem uma amostragem tão grande
   - One Sample t-test, ANOVA de uma via...?
@@ -203,14 +223,23 @@ Os valores observados na contagem de códons mitocondriais com 0, 1, 2 ou 3 Aden
 
 :::
 
-- Abordagem:
-  - Unidade experimental: Espécie
-    - Os codons pertencentes à mesma categoria dentro de uma espécie serão usados como réplicas 
-  - Qui-quadrado de aderência
-    - 4 categorias: Onde está a diferença?
-    - Comparar o quarto grupo (3 A/T) com todos os outros com correção do valor de p por Bonferroni para 3 comparações.
+Abordagem:
+
+- Unidade experimental: Espécie
+  - Os codons pertencentes à mesma categoria dentro de uma espécie serão usados como réplicas
+- Qui-quadrado de aderência
+  - 4 categorias: Onde está a diferença?
+  - Comparar o quarto grupo (3 A/T) com todos os outros com correção do valor de p por Bonferroni para 3 comparações.
+
+::: notes
+
+Dois motivos para as réplicas:
+
+  1. As unidades experimentais devem ser independentes dentro de cada grupo
+  
+  2. Os grupos apresentam diferentes numeros de códons: 8, 24, 24, 8. Isso geraria grupos com mais pontos do que outros, o que seria bem bizarro. Em especial para um teste como o qui-quadrado de aderência, que soma valores.
     
-    
+:::
 \normalsize    
 
 # *Pitch* - Biologia Computacional e Reprodutibilidade
@@ -235,7 +264,7 @@ Os valores observados na contagem de códons mitocondriais com 0, 1, 2 ou 3 Aden
   
 # *Pitch* - Biologia Computacional e Reprodutibilidade
 
-- E se focássemos nesses artefatos de pesquisa? 
+E se focássemos nesses artefatos de pesquisa? 
 
 \vspace{12pt}
 
