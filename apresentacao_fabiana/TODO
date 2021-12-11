@@ -1,0 +1,4 @@
+- Plot comparando dois grupos: Bate com anticódon e não bate com anticódon
+- Pegar a quantidade de vezes que cada anticodon aparece.
+- Plot: Códon com 0, 1, 2 e 3 A-T.
+- Plot: Categorias são a última posição do anticódon.
