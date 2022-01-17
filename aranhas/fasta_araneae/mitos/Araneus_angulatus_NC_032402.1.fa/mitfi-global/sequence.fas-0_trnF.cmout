@@ -1,0 +1,55 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnF.cm
+# target sequence database:              mitos/Araneus_angulatus_NC_032402.1.fa//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.01
+# maximum DP search matrix size:         80000.0 Mb
+# HMM gFwd biased comp filter:           off
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnF  [CLEN=67]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+  (1) !     4e-07   42.5   0.1  NC_032402.1   5754   5701 -  cm    no 0.24  Araneus angulatus mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_032402.1  Araneus angulatus mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (1) !     4e-07   42.5   0.1  cm        1       67 []        5754        5701 - .. 0.98    no 0.24
+
+                    v v                                                          v v   NC
+                   (((((((,,<<<<______>>>>,<<<<<_______>>>>>,,,,<<<<<____>>>>>))))))): CS
+         trnF    1 guuuauGUAGCUUAAauUAAAGCAuagCACUGAAGAUGcuaAGAUGguuaaaaauaacCCauaaacA 67  
+                   : U :U:UAGCU:A+A  A:AGCA::::ACUGAAGAU::::A +U        +     :A: A :A
+  NC_032402.1 5754 AUUUUUAUAGCUUAUA-AAGAGCACUUUACUGAAGAUAAAGAAGU-------CU-----UAACAUUA 5701
+                   ****************.**************************99.......55.....******** PP
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (67 consensus positions)
+Target sequences:                                                1  (28410 residues searched)
+Target sequences re-searched for truncated hits:                 1  (464 residues re-searched)
+Windows   passing  local HMM SSV           filter:             206  (0.9021); expected (0.35)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:             140  (0.6476); expected (0.02)
+Windows   passing  local HMM Forward  bias filter:               6  (0.04049); expected (0.02)
+Windows   passing glocal HMM Forward       filter:               5  (0.03647); expected (0.02)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:               5  (0.01271); expected (0.02)
+Envelopes passing  local CM  CYK           filter:               3  (0.007273); expected (0.0001)
+Total CM hits reported:                                          1  (0.00187); includes 0 truncated hit(s)
+
+# CPU time: 0.04u 0.00s 00:00:00.04 Elapsed: 00:00:00.04
+//
+[ok]

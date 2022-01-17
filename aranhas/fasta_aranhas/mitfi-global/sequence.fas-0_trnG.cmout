@@ -1,0 +1,80 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnG.cm
+# target sequence database:              .//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.1
+# Max sensitivity mode:                  on [all heuristic filters off]
+# maximum DP search matrix size:         80000.0 Mb
+# truncated hit detection:               off [due to --max]
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnG  [CLEN=68]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+  (1) !   4.9e-05   36.7   4.4  NC_026123.1   5100   5152 +  cm    no 0.17  Wadicosa fidelis mitochondrion, complete genome
+ ------ inclusion threshold ------
+  (2) ?     0.023   23.0   0.9  NC_026123.1  13670  13607 -  cm    no 0.22  Wadicosa fidelis mitochondrion, complete genome
+  (3) ?     0.051   21.3   4.8  NC_026123.1   1012   1069 +  cm    no 0.17  Wadicosa fidelis mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_026123.1  Wadicosa fidelis mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (1) !   4.9e-05   36.7   4.4  cm        1       68 []        5100        5152 + ..   35.0    no 0.17
+
+                       v                                                         v      NC
+                   (((((((,,<<<<_____>>>>,<<<<<_______>>>>>,,,,<<<<<______>>>>>))))))): CS
+         trnG    1 auuuuuuUAGUAuAAuuAgUACAuuUGaCUUCCAAuCAaaaAGUcuuggUuaAAuccaagaaaaaauA 68  
+                   ::U: :UUA:UAU  +UAGUA: UUU:A+UUCCAAU:AAAA+G       +         A: :A::A
+  NC_026123.1 5100 GAUAUAUUAGUAU-UAUAGUAUGUUUAAUUUCCAAUUAAAAGGA-----GA---------AUUUAUUA 5152
+
+>> NC_026123.1  Wadicosa fidelis mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (2) ?     0.023   23.0   0.9  cm        1       68 []       13670       13607 - ..   19.4    no 0.22
+
+                                                                                          NC
+                    (((((((,,<<<<_____>>>>,<<<<<___~~~~~>>>>>,,,,<<<<<______>>>>>))))))): CS
+         trnG     1 auuuuuuUAGUAuAAuuAgUACAuuUGaCUU*[4]*uCAaaaAGUcuuggUuaAAuccaagaaaaaauA 68   
+                    ::U:UU: AGU:U   + G:ACAU:::A UU     U:::A AG ::U::  +   ::A:::AA:A::A
+  NC_026123.1 13670 UCUAUUAAAGUGU-CGAUGCACAUAAAAAUU*[4]*UUUUAUAGAGAUAUACU---AUAUCUAAUAGAA 13607
+
+>> NC_026123.1  Wadicosa fidelis mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (3) ?     0.051   21.3   4.8  cm        1       68 []        1012        1069 + ..   20.4    no 0.17
+
+                    v    v                                                     v    v   NC
+                   (((((((,,<<<<_____>>>>,<<<<<_______>>>>>,,,,<<<<<______>>>>>))))))): CS
+         trnG    1 auuuuuuUAGUAuAAuuAgUACAuuUGaCUUCCAAuCAaaaAGUcuuggUuaAAuccaagaaaaaauA 68  
+                   A UUU: UA: A:AAU+A:U :AUU: :+UUC A : :AAAAGU      UA AU      :AAA UA
+  NC_026123.1 1012 AGUUUAUUAAGAUAAUAAUUCUAUUAGCUUUCAAGGUUAAAAGU-----GUAUAU-----UUAAAAUA 1069
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (68 consensus positions)
+Target sequences:                                                1  (29482 residues searched)
+Target sequences re-searched for truncated hits:                 0  (0 residues re-searched)
+Windows   passing  local HMM SSV           filter:                  (off)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:                  (off)
+Windows   passing  local HMM Forward  bias filter:                  (off)
+Windows   passing glocal HMM Forward       filter:                  (off)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:                  (off)
+Envelopes passing  local CM  CYK           filter:                  (off)
+Total CM hits reported:                                          3  (0.005936); includes 0 truncated hit(s)
+
+# CPU time: 14.38u 0.00s 00:00:14.38 Elapsed: 00:00:14.40
+//
+[ok]

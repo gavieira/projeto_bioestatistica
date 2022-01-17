@@ -1,0 +1,68 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnN.cm
+# target sequence database:              .//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.1
+# Max sensitivity mode:                  on [all heuristic filters off]
+# maximum DP search matrix size:         80000.0 Mb
+# truncated hit detection:               off [due to --max]
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnN  [CLEN=72]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+  (1) !    0.0017   26.0   0.3  NC_026123.1   5575   5632 +  cm    no 0.28  Wadicosa fidelis mitochondrion, complete genome
+ ------ inclusion threshold ------
+  (2) ?     0.067   18.6   0.9  NC_026123.1  13670  13607 -  cm    no 0.22  Wadicosa fidelis mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_026123.1  Wadicosa fidelis mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (1) !    0.0017   26.0   0.3  cm        1       72 []        5575        5632 + ..   24.4    no 0.28
+
+                         v                                                            v        NC
+                   (((((((,,<<<<_______>>>>.,<<<<<_______>>>>>,,,,,<<<<<____..___>>>>>))))))): CS
+         trnN    1 UagauuGAAGCcauuaguUaagGC.auuUagCUGUUAAcuAaaAgaUUGuaggAUcG..AggccuaCCaaucuAG 72  
+                   U::A    AGC:     U+A :GC  UUU:: UGUUAA::AAA GA        U++  A+G     +  U::A 
+  NC_026123.1 5575 UUAAGG--AGCUG----UAAUAGCgUUUUCAUUGUUAAUGAAAUGAA------GUAAggAAG-----UUUUUAAU 5632
+
+>> NC_026123.1  Wadicosa fidelis mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (2) ?     0.067   18.6   0.9  cm        1       72 []       13670       13607 - ..   14.7    no 0.22
+
+                                                                                           NC
+                    (((((((,,<<<<_______>>>>,<<<<<~~~~~>>>>>,,,,,<<<<<_______>>>>>))))))): CS
+         trnN     1 UagauuGAAGCcauuaguUaagGCauuUag*[7]*cuAaaAgaUUGuaggAUcGAggccuaCCaaucuAG 72   
+                    U::AUU:AAG: :     ++: :CAU::A:     :U::A     G::::A +    ::::C:AAU::A 
+  NC_026123.1 13670 UCUAUUAAAGUGU---CGAUGCACAUAAAA*[7]*UUUUAUAGA-GAUAUACU----AUAUCUAAUAGAA 13607
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (72 consensus positions)
+Target sequences:                                                1  (29482 residues searched)
+Target sequences re-searched for truncated hits:                 0  (0 residues re-searched)
+Windows   passing  local HMM SSV           filter:                  (off)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:                  (off)
+Windows   passing  local HMM Forward  bias filter:                  (off)
+Windows   passing glocal HMM Forward       filter:                  (off)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:                  (off)
+Envelopes passing  local CM  CYK           filter:                  (off)
+Total CM hits reported:                                          2  (0.004138); includes 0 truncated hit(s)
+
+# CPU time: 15.12u 0.00s 00:00:15.12 Elapsed: 00:00:15.12
+//
+[ok]

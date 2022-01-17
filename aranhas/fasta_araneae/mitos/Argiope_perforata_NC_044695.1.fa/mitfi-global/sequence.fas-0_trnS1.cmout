@@ -1,0 +1,56 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnS1.cm
+# target sequence database:              mitos/Argiope_perforata_NC_044695.1.fa//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.1
+# Max sensitivity mode:                  on [all heuristic filters off]
+# maximum DP search matrix size:         80000.0 Mb
+# truncated hit detection:               off [due to --max]
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnS1  [CLEN=67]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+ ------ inclusion threshold ------
+  (1) ?      0.02   19.4   0.1  NC_044695.1   3808   3743 -  cm    no 0.29  Argiope perforata mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_044695.1  Argiope perforata mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (1) ?      0.02   19.4   0.1  cm        1       67 []        3808        3743 - ..   13.4    no 0.29
+
+                            v        v vv              vv                NC
+                   (((((((,,<<<.___>>>,<<<.<<_______>>>>>,~~~~~~))))))): CS
+        trnS1    1 GAgaaAguaucu.aAaagaaaaa.agCUGCUAAcuuuuu*[22]*cUuucUCu 67  
+                   :A:::::+   U  AAA  A  A A:CUGCUAA:UU  U      :::::U:U
+  NC_044695.1 3808 AAAAGUUACAGUaCAAACAAAUAcAACUGCUAAUUUUCU*[19]*AACAUUUU 3743
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (67 consensus positions)
+Target sequences:                                                1  (28064 residues searched)
+Target sequences re-searched for truncated hits:                 0  (0 residues re-searched)
+Windows   passing  local HMM SSV           filter:                  (off)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:                  (off)
+Windows   passing  local HMM Forward  bias filter:                  (off)
+Windows   passing glocal HMM Forward       filter:                  (off)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:                  (off)
+Envelopes passing  local CM  CYK           filter:                  (off)
+Total CM hits reported:                                          1  (0.002352); includes 0 truncated hit(s)
+
+# CPU time: 24.26u 0.01s 00:00:24.27 Elapsed: 00:00:24.26
+//
+[ok]

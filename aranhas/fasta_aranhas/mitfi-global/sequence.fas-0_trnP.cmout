@@ -1,0 +1,68 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnP.cm
+# target sequence database:              .//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.1
+# Max sensitivity mode:                  on [all heuristic filters off]
+# maximum DP search matrix size:         80000.0 Mb
+# truncated hit detection:               off [due to --max]
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnP  [CLEN=67]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+  (1) !    0.0015   26.6   2.1  NC_026123.1   9141   9090 -  cm    no 0.17  Wadicosa fidelis mitochondrion, complete genome
+ ------ inclusion threshold ------
+  (2) ?     0.028   20.4   7.7  NC_026123.1  10824  10873 +  cm    no 0.14  Wadicosa fidelis mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_026123.1  Wadicosa fidelis mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (1) !    0.0015   26.6   2.1  cm        1       67 []        9141        9090 - ..   24.7    no 0.17
+
+                   v v v                                                        v v v  NC
+                   (((((((,,<<<<_____>>>>,<<<<<_______>>>>>,,,,<<<<<_____>>>>>))))))): CS
+         trnP    1 CAgaaaaUAGUUuAauUAaAAUauuagCUUUGGGaGcuaaaGAUggggguuAaUcccccuuuucUGA 67  
+                    : : AAUA:UUUA++UAAAA:AU:::CUUUGG++G:::A          ++A      UU : : A
+  NC_026123.1 9141 UUCUAAAUAAUUUAUAUAAAAUAUCUACUUUGGAUGUAGA----------AUAA-----UUCAAACA 9090
+
+>> NC_026123.1  Wadicosa fidelis mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (2) ?     0.028   20.4   7.7  cm        1       67 []       10824       10873 + ..   19.0    no 0.14
+
+                                                                            NC
+                    (((((((,,<<<<_____>>>>,<<<<<_______>>>>>,~~~~~~))))))): CS
+         trnP     1 CAgaaaaUAGUUuAauUAaAAUauuagCUUUGGGaGcuaaa*[18]*uuuucUGA 67   
+                     A::  :UA:UUUAA UAAAA:AU:A::UUUG +A::U:AA      :  ::U A
+  NC_026123.1 10824 GAUUGGUUAGUUUAAGUAAAACAUAAAUUUUGUAAAUUUAA*[ 1]*AUUAAUUA 10873
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (67 consensus positions)
+Target sequences:                                                1  (29482 residues searched)
+Target sequences re-searched for truncated hits:                 0  (0 residues re-searched)
+Windows   passing  local HMM SSV           filter:                  (off)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:                  (off)
+Windows   passing  local HMM Forward  bias filter:                  (off)
+Windows   passing glocal HMM Forward       filter:                  (off)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:                  (off)
+Envelopes passing  local CM  CYK           filter:                  (off)
+Total CM hits reported:                                          2  (0.00346); includes 0 truncated hit(s)
+
+# CPU time: 19.15u 0.01s 00:00:19.16 Elapsed: 00:00:19.15
+//
+[ok]

@@ -1,0 +1,55 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnI.cm
+# target sequence database:              .//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.1
+# Max sensitivity mode:                  on [all heuristic filters off]
+# maximum DP search matrix size:         80000.0 Mb
+# truncated hit detection:               off [due to --max]
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnI  [CLEN=70]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+  (1) !   1.4e-06   46.0   2.0  NC_026123.1   9575   9641 +  cm    no 0.24  Wadicosa fidelis mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_026123.1  Wadicosa fidelis mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (1) !   1.4e-06   46.0   2.0  cm        1       70 []        9575        9641 + ..   45.0    no 0.24
+
+                   vv v                                                              v vv  NC
+                   (((((((,,<<<<_____>>>>,<<<<<_______>>>>>,,,,,<<.<<<_______>>>>>))))))): CS
+         trnI    1 agaaaugUGCCUgAAuuAaAGGAuuAcuUUGAUAgagUaaAuuAUga.AggUUaAAaUccUuccauuucua 70  
+                       AUGUGCCUG AUUAAAGG+UUA:UUUGAUAGA:UAAAU+AU A A::UU+   U::UU CAU     
+  NC_026123.1 9575 AAUUAUGUGCCUG-AUUAAAGGGUUAAUUUGAUAGAUUAAAUAAUGAuAUAUUU---UUAUUUCAUUGCGG 9641
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (70 consensus positions)
+Target sequences:                                                1  (29482 residues searched)
+Target sequences re-searched for truncated hits:                 0  (0 residues re-searched)
+Windows   passing  local HMM SSV           filter:                  (off)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:                  (off)
+Windows   passing  local HMM Forward  bias filter:                  (off)
+Windows   passing glocal HMM Forward       filter:                  (off)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:                  (off)
+Envelopes passing  local CM  CYK           filter:                  (off)
+Total CM hits reported:                                          1  (0.002273); includes 0 truncated hit(s)
+
+# CPU time: 36.95u 0.02s 00:00:36.97 Elapsed: 00:00:37.11
+//
+[ok]

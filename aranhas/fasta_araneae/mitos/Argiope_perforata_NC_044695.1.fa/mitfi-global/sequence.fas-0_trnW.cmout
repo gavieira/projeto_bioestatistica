@@ -1,0 +1,92 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnW.cm
+# target sequence database:              mitos/Argiope_perforata_NC_044695.1.fa//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.1
+# Max sensitivity mode:                  on [all heuristic filters off]
+# maximum DP search matrix size:         80000.0 Mb
+# truncated hit detection:               off [due to --max]
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnW  [CLEN=69]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+  (1) !    0.0055   24.0   0.1  NC_044695.1   1000   1079 +  cm    no 0.28  Argiope perforata mitochondrion, complete genome
+ ------ inclusion threshold ------
+  (2) ?     0.022   21.0   6.4  NC_044695.1   5037   5106 +  cm    no 0.19  Argiope perforata mitochondrion, complete genome
+  (3) ?     0.024   20.8   0.1  NC_044695.1   7439   7385 -  cm    no 0.24  Argiope perforata mitochondrion, complete genome
+  (4) ?     0.026   20.7   1.8  NC_044695.1   3382   3439 +  cm    no 0.21  Argiope perforata mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_044695.1  Argiope perforata mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (1) !    0.0055   24.0   0.1  cm        1       69 []        1000        1079 + ..   19.8    no 0.28
+
+                       v       v      v                                   v      NC
+                   (((((((,,<<<<______>>>>,<<<<<_______>>>>>,,,,<~~~~~~>))))))): CS
+         trnW    1 AGggacUUAgGuUAAauuAAaCcAaugGCCUUCAAAGCcauAAAUA*[14]*UAguccCUG 69  
+                   AG   :UUA:G:  A++ A :C:A:U:G  UUCAA  C:A:A + :      :A:   CU+
+  NC_044695.1 1000 AGGUUAUUAGGAU-AUAAAUUCUAUUAGUUUUCAAGGCUAAAUGAG*[26]*CAUCAUCUA 1079
+
+>> NC_044695.1  Argiope perforata mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (2) ?     0.022   21.0   6.4  cm        1       69 []        5037        5106 + ..   19.5    no 0.19
+
+                                                                                             NC
+                   (((((((,,<<<<______>>>>,<<<<<_______>>>>>,,,,<<<<<______>>>>>....))))))): CS
+         trnW    1 AGggacUUAgGuUAAauuAAaCcAaugGCCUUCAAAGCcauAAAUAagagUAAAaUcucuU....AguccCUG 69  
+                   A: :A::UAG:::  AUUA:::CA:U:G: UUC AA:C:A:  + AAGA: AA  U:UCUU    ::U: :UG
+  NC_044695.1 5037 AGUAAUAUAGUAU--AUUAGUACAUUUGAUUUCCAAUCAAAUGGAAAGAA-AAUUUUUCUUuuuaUAUUAUUG 5106
+
+>> NC_044695.1  Argiope perforata mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (3) ?     0.024   20.8   0.1  cm        1       69 []        7439        7385 - ..   18.9    no 0.24
+
+                    v   v                                                        v   v   NC
+                   (((((((,,<<<<______>>>>,<<<<<__~~~~~>>>>>,,,,<<<<<______>>>>>))))))): CS
+         trnW    1 AGggacUUAgGuUAAauuAAaCcAaugGCCU*[5]*GCcauAAAUAagagUAAAaUcucuUAguccCUG 69  
+                   A ::: UUAG:UU  AUUAAA:CAAUGGC U     GCCAUAAAU         A      A ::: U 
+  NC_044695.1 7439 AUAAUAUUAGUUU--AUUAAAACAAUGGCUU*[5]*GCCAUAAAU-------CUAA-----AAAUUUUC 7385
+
+>> NC_044695.1  Argiope perforata mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (4) ?     0.026   20.7   1.8  cm        1       69 []        3382        3439 + ..   18.0    no 0.21
+
+                      v                                                     v     NC
+                   (((((((,,<<<<______>>>>,<<<<<__._____>>>>>,,,,<~~~~~~>))))))): CS
+         trnW    1 AGggacUUAgGuUAAauuAAaCcAaugGCCU.UCAAAGCcauAAAUA*[14]*UAguccCUG 69  
+                   ::G A:UUA::UU AAU AAA::A:U::: U UCAA :::A:A A A      UA:U C::+
+  NC_044695.1 3382 GAGAAAUUAGUUU-AAUAAAAAUAUUAGUUUgUCAA-AUUAAAGAAA*[ 4]*UAUUCCUCA 3439
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (69 consensus positions)
+Target sequences:                                                1  (28064 residues searched)
+Target sequences re-searched for truncated hits:                 0  (0 residues re-searched)
+Windows   passing  local HMM SSV           filter:                  (off)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:                  (off)
+Windows   passing  local HMM Forward  bias filter:                  (off)
+Windows   passing glocal HMM Forward       filter:                  (off)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:                  (off)
+Envelopes passing  local CM  CYK           filter:                  (off)
+Total CM hits reported:                                          4  (0.009371); includes 0 truncated hit(s)
+
+# CPU time: 14.29u 0.00s 00:00:14.29 Elapsed: 00:00:14.28
+//
+[ok]

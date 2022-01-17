@@ -1,0 +1,68 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnC.cm
+# target sequence database:              mitos/Agelena_silvatica_NC_033971.1.fa//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.01
+# maximum DP search matrix size:         80000.0 Mb
+# HMM gFwd biased comp filter:           off
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnC  [CLEN=68]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+  (1) !   0.00081   26.4   0.4  NC_033971.1   7117   7053 -  cm    no 0.23  Agelena silvatica mitochondrion, complete genome
+  (2) !    0.0011   25.8   1.7  NC_033971.1   2539   2480 -  cm    no 0.20  Agelena silvatica mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_033971.1  Agelena silvatica mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (1) !   0.00081   26.4   0.4  cm        1       68 []        7117        7053 - .. 0.98    no 0.23
+
+                     vvvv                                        v           v   vvvv    NC
+                   (((((((,,<<<<_____>>>>,<<<<<_______>>>>>,,,,<<<<<_._____>>>>>))))))): CS
+         trnC    1 aGcccugUAGUguAauuAacACAUuAaAUUGCAAAUuUaAAGAaGcagau.uAauaucugCcagggCuU 68  
+                   A ++ +GUA: :: A+ A:: :A::::AUUGCAAAU::::   A:: ::+ UAA +:: ::C     UU
+  NC_033971.1 7117 AUUGAAGUAUGUACAACAUAUUAACUGAUUGCAAAUCAGUUAUAAACUUCaUAAGUAAUUUC----AUU 7053
+                   *************888********************************99************....*** PP
+
+>> NC_033971.1  Agelena silvatica mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (2) !    0.0011   25.8   1.7  cm        1       68 []        2539        2480 - .. 0.87    no 0.20
+
+                      v                                         vvvv      vvvv    v     NC
+                   (((((((,,<<<<_____>>>>,<<<<<_______>>>>>,,,,<<<<<______>>>>>))))))): CS
+         trnC    1 aGcccugUAGUguAauuAacACAUuAaAUUGCAAAUuUaAAGAaGcagauuAauaucugCcagggCuU 68  
+                   A : :U: AGU:U   U A:ACAUUAA:UUGCAAA:UUAAA  +     +UA+U+ ++  :A: : U 
+  NC_033971.1 2539 AGUAAUUAAGUUUC--UCAAACAUUAAGUUGCAAACUUAAAAUU-----CUAUUUAAGA-AAUCAUUA 2480
+                   *************8..88***********************998.....4334443333.******** PP
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (68 consensus positions)
+Target sequences:                                                1  (29552 residues searched)
+Target sequences re-searched for truncated hits:                 1  (576 residues re-searched)
+Windows   passing  local HMM SSV           filter:             184  (0.9421); expected (0.35)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:             133  (0.7443); expected (0.02)
+Windows   passing  local HMM Forward  bias filter:              14  (0.08846); expected (0.02)
+Windows   passing glocal HMM Forward       filter:               9  (0.08846); expected (0.02)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:               9  (0.02323); expected (0.02)
+Envelopes passing  local CM  CYK           filter:               5  (0.01331); expected (0.0001)
+Total CM hits reported:                                          2  (0.004149); includes 0 truncated hit(s)
+
+# CPU time: 0.15u 0.00s 00:00:00.15 Elapsed: 00:00:00.15
+//
+[ok]

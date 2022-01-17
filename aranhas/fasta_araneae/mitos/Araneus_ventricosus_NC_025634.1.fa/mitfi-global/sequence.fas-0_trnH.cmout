@@ -1,0 +1,68 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnH.cm
+# target sequence database:              mitos/Araneus_ventricosus_NC_025634.1.fa//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.01
+# maximum DP search matrix size:         80000.0 Mb
+# HMM gFwd biased comp filter:           off
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnH  [CLEN=68]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+  (1) !   2.2e-05   39.3   4.7  NC_025634.1   3395   3449 +  cm    no 0.16  Araneus ventricosus mitochondrion, complete genome
+  (2) !   0.00026   33.7   0.4  NC_025634.1   7443   7385 -  cm    no 0.22  Araneus ventricosus mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_025634.1  Araneus ventricosus mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (1) !   2.2e-05   39.3   4.7  cm        1       68 []        3395        3449 + .. 0.97    no 0.16
+
+                      v                                                           v     NC
+                   (((((((,,<<<<_______>>>>,<<<<<_______>>>>>,,,,<<<<<____>>>>>))))))): CS
+         trnH    1 guuuaaaUAgUUUAAauuuAAAAcAuUaGaUUGUGGuuCuAaAGAUagaagAAaucuucuuuuaaacc 68  
+                   ::U :A:UA:UUUAA+  UAAAA:AUUAG:UUGU ++:CUAAAGAU      A       :U: A::C
+  NC_025634.1 3395 AAUAUAUUAGUUUAAU--UAAAAUAUUAGUUUGUCAAGCUAAAGAU------AGA-----AUAAAUUC 3449
+                   ****************..****************999*********......676.....******** PP
+
+>> NC_025634.1  Araneus ventricosus mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (2) !   0.00026   33.7   0.4  cm        1       68 []        7443        7385 - .. 0.88    no 0.22
+
+                     v v                        v       v                  v v    NC
+                   (((((((,,<<<<_______>>>>,<<<<<_______>>>>>,,,,<~~~~~~>))))))): CS
+         trnH    1 guuuaaaUAgUUUAAauuuAAAAcAuUaGaUUGUGGuuCuAaAGAUa*[12]*uuuuaaacc 68  
+                   :: : ::UAGUUU A+  + AAACA:U:G UUGUGGU C:A:A+A A      U:: : ::C
+  NC_025634.1 7443 AAUAUUUUAGUUU-AU--ACAAACAAUGGAUUGUGGUGCCAUAAAAA*[ 6]*UAAUUUUUC 7385
+                   *************.66..55*************************95...4..5******** PP
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (68 consensus positions)
+Target sequences:                                                1  (29234 residues searched)
+Target sequences re-searched for truncated hits:                 1  (516 residues re-searched)
+Windows   passing  local HMM SSV           filter:             221  (0.991); expected (0.35)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:             207  (0.9608); expected (0.02)
+Windows   passing  local HMM Forward  bias filter:              10  (0.07371); expected (0.02)
+Windows   passing glocal HMM Forward       filter:               6  (0.06504); expected (0.02)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:               9  (0.02249); expected (0.02)
+Envelopes passing  local CM  CYK           filter:               2  (0.004706); expected (0.0001)
+Total CM hits reported:                                          2  (0.003832); includes 0 truncated hit(s)
+
+# CPU time: 0.05u 0.00s 00:00:00.05 Elapsed: 00:00:00.05
+//
+[ok]

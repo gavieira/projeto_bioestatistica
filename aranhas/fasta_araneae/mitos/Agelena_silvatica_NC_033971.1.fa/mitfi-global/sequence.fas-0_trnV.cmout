@@ -1,0 +1,55 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnV.cm
+# target sequence database:              mitos/Agelena_silvatica_NC_033971.1.fa//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.01
+# maximum DP search matrix size:         80000.0 Mb
+# HMM gFwd biased comp filter:           off
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnV  [CLEN=70]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+  (1) !    0.0003   30.4   0.0  NC_033971.1     38      1 -  cm    3' 0.26  Agelena silvatica mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_033971.1  Agelena silvatica mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (1) !    0.0003   30.4   0.0  cm        1       41 [~          38           1 - .~ 0.99    3' 0.26
+
+                 ???????                                         NC
+                 (((((((,,<<<<______>>>>,<<<<<_______>>>>>~~~~~~ CS
+         trnV  1 CAaaauaUAGCUuAAauaaaAGCAUuUcaCUUACACugAaA*[29]> 70
+                  A   UA AGCU:   U+A:AGCAUUUCACUUACACUGAAA      
+  NC_033971.1 38 AACUUUAAAGCUU---UUAUAGCAUUUCACUUACACUGAAA*[ 0]> 1 
+                 *************...888**********************...... PP
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (70 consensus positions)
+Target sequences:                                                1  (29552 residues searched)
+Target sequences re-searched for truncated hits:                 1  (392 residues re-searched)
+Windows   passing  local HMM SSV           filter:             275  (0.9628); expected (0.35)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:             248  (0.9119); expected (0.02)
+Windows   passing  local HMM Forward  bias filter:               5  (0.02398); expected (0.02)
+Windows   passing glocal HMM Forward       filter:               4  (0.02398); expected (0.02)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:               4  (0.009551); expected (0.02)
+Envelopes passing  local CM  CYK           filter:               2  (0.00354); expected (0.0001)
+Total CM hits reported:                                          1  (0.002538); includes 1 truncated hit(s)
+
+# CPU time: 0.03u 0.00s 00:00:00.03 Elapsed: 00:00:00.05
+//
+[ok]

@@ -1,0 +1,68 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnL2.cm
+# target sequence database:              mitos/Carrhotus_xanthogramma_NC_027492.1.fa//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.01
+# maximum DP search matrix size:         80000.0 Mb
+# HMM gFwd biased comp filter:           off
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnL2  [CLEN=71]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+  (1) !   0.00014   30.9   0.5  NC_027492.1  11836  11784 -  cm    no 0.21  Carrhotus xanthogramma mitochondrion, complete genome
+  (2) !   0.00035   29.0   0.0  NC_027492.1   5497   5431 -  cm    no 0.33  Carrhotus xanthogramma mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_027492.1  Carrhotus xanthogramma mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (1) !   0.00014   30.9   0.5  cm        1       71 []       11836       11784 - .. 0.96    no 0.21
+
+                    v   v v                                            v v   v  NC
+                    (((((((,,<<<<_______>>>>,<<<<<_______>>>>>,,,~~~~~~))))))): CS
+        trnL2     1 acUAaugUGGCAgAauauGaaUGCAauaGaUUUAAAAuCuauuuA*[18]*cauUAguA 71   
+                     :UA : UGGCAGA++A   AUGCA:UAGA UUA+AAUCUA:U A       : UA: A
+  NC_027492.1 11836 UAUAUAUUGGCAGAUAA---AUGCAUUAGAAUUAGAAUCUAAUGA*[ 3]*UUUUAUUA 11784
+                    *****************...**********************986...6..899***** PP
+
+>> NC_027492.1  Carrhotus xanthogramma mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (2) !   0.00035   29.0   0.0  cm        1       71 []        5497        5431 - .. 0.84    no 0.33
+
+                       vvv                                         vvv        vvv  vvv      NC
+                   (((((((,,<<<<_______>>>>,<<<<<_______>>>>>,,,,<<<<<_______.>>>>>))))))): CS
+        trnL2    1 acUAaugUGGCAgAauauGaaUGCAauaGaUUUAAAAuCuauuuAUAgaggUUCAAaU.ccucUcauUAguA 71  
+                   ::::   UGGCA:A UA   :UGCA:UA::UUUAA++::UA: UAU:: + UUC AAU +  ::   :::: 
+  NC_027492.1 5497 UUCUAAUUGGCAGACUA---GUGCAUUAAGUUUAAGCCUUAAGUAUGAAC-UUCCAAUcA-AUCUAAAGAAC 5431
+                   *****************...*************************98755.344444423.355556***** PP
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (71 consensus positions)
+Target sequences:                                                1  (29126 residues searched)
+Target sequences re-searched for truncated hits:                 1  (660 residues re-searched)
+Windows   passing  local HMM SSV           filter:             170  (0.9821); expected (0.35)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:             165  (0.9715); expected (0.02)
+Windows   passing  local HMM Forward  bias filter:              29  (0.2333); expected (0.02)
+Windows   passing glocal HMM Forward       filter:              16  (0.2333); expected (0.02)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:              27  (0.08017); expected (0.02)
+Envelopes passing  local CM  CYK           filter:               5  (0.014); expected (0.0001)
+Total CM hits reported:                                          2  (0.004029); includes 0 truncated hit(s)
+
+# CPU time: 0.29u 0.00s 00:00:00.28 Elapsed: 00:00:00.28
+//
+[ok]

@@ -1,0 +1,55 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnW.cm
+# target sequence database:              mitos/Carrhotus_xanthogramma_NC_027492.1.fa//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.01
+# maximum DP search matrix size:         80000.0 Mb
+# HMM gFwd biased comp filter:           off
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnW  [CLEN=69]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+  (1) !   2.3e-05   35.7   0.0  NC_027492.1   1040   1094 +  cm    no 0.27  Carrhotus xanthogramma mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_027492.1  Carrhotus xanthogramma mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (1) !   2.3e-05   35.7   0.0  cm        1       69 []        1040        1094 + .. 0.90    no 0.27
+
+                       v                                                           v      NC
+                   (((((((,,<<<<______>.>>>,<<<<<_______>>>>>,,,,<<<<<______>>>>>))))))): CS
+         trnW    1 AGggacUUAgGuUAAauuAA.aCcAaugGCCUUCAAAGCcauAAAUAagagUAAAaUcucuUAguccCUG 69  
+                   A :: :UUA:G::  AU A: :C: :::GCCUUCAAAGC:::AA+U                A: :: UG
+  NC_027492.1 1040 AUAAUAUUAAGAU--AUAAGuUCUGUUAGCCUUCAAAGCUGAAAGU--------GUA-----AUCUUAUG 1094
+                   ***********98..444445***********************99........444.....******** PP
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (69 consensus positions)
+Target sequences:                                                1  (29126 residues searched)
+Target sequences re-searched for truncated hits:                 1  (424 residues re-searched)
+Windows   passing  local HMM SSV           filter:             218  (0.881); expected (0.35)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:             179  (0.7458); expected (0.02)
+Windows   passing  local HMM Forward  bias filter:               1  (0.007174); expected (0.02)
+Windows   passing glocal HMM Forward       filter:               1  (0.007174); expected (0.02)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:               1  (0.002504); expected (0.02)
+Envelopes passing  local CM  CYK           filter:               1  (0.002504); expected (0.0001)
+Total CM hits reported:                                          1  (0.001861); includes 0 truncated hit(s)
+
+# CPU time: 0.02u 0.00s 00:00:00.02 Elapsed: 00:00:00.02
+//
+[ok]

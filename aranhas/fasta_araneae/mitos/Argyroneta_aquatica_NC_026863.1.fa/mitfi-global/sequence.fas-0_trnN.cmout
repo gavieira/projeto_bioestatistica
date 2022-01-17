@@ -1,0 +1,56 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnN.cm
+# target sequence database:              mitos/Argyroneta_aquatica_NC_026863.1.fa//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.1
+# Max sensitivity mode:                  on [all heuristic filters off]
+# maximum DP search matrix size:         80000.0 Mb
+# truncated hit detection:               off [due to --max]
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnN  [CLEN=72]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+ ------ inclusion threshold ------
+  (1) ?     0.017   21.6   0.0  NC_026863.1   4686   4738 +  cm    no 0.34  Argyroneta aquatica mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_026863.1  Argyroneta aquatica mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (1) ?     0.017   21.6   0.0  cm        1       72 []        4686        4738 + ..   19.3    no 0.34
+
+                                                                                              NC
+                   (((((((,,<<<<_______>>>>.,<<<<<_______>>>>>.,,,,,<<<<<_______>>>>>))))))): CS
+         trnN    1 UagauuGAAGCcauuaguUaagGC.auuUagCUGUUAAcuAaa.AgaUUGuaggAUcGAggccuaCCaaucuAG 72  
+                    A: :: AAGC::      +::GC AUUU:: UGUUA ::AAA AGA         +          :: :U G
+  NC_026863.1 4686 GAAUAAUAAGCUU------GAGGCgAUUUCAUUGUUACUGAAAuAGAA------GGA---------GUUGUUUG 4738
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (72 consensus positions)
+Target sequences:                                                1  (32000 residues searched)
+Target sequences re-searched for truncated hits:                 0  (0 residues re-searched)
+Windows   passing  local HMM SSV           filter:                  (off)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:                  (off)
+Windows   passing  local HMM Forward  bias filter:                  (off)
+Windows   passing glocal HMM Forward       filter:                  (off)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:                  (off)
+Envelopes passing  local CM  CYK           filter:                  (off)
+Total CM hits reported:                                          1  (0.001656); includes 0 truncated hit(s)
+
+# CPU time: 15.98u 0.00s 00:00:15.98 Elapsed: 00:00:15.97
+//
+[ok]

@@ -1,0 +1,94 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnP.cm
+# target sequence database:              mitos/Argiope_perforata_NC_044695.1.fa//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.01
+# maximum DP search matrix size:         80000.0 Mb
+# HMM gFwd biased comp filter:           off
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnP  [CLEN=67]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+  (1) !   4.7e-05   33.8   1.5  NC_044695.1  10726  10787 +  cm    no 0.21  Argiope perforata mitochondrion, complete genome
+  (2) !   7.1e-05   32.9   1.8  NC_044695.1   3382   3439 +  cm    no 0.21  Argiope perforata mitochondrion, complete genome
+  (3) !   0.00035   29.5   1.2  NC_044695.1   9043   8979 -  cm    no 0.22  Argiope perforata mitochondrion, complete genome
+  (4) !    0.0039   24.5   0.2  NC_044695.1   7439   7383 -  cm    no 0.23  Argiope perforata mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_044695.1  Argiope perforata mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (1) !   4.7e-05   33.8   1.5  cm        1       67 []       10726       10787 + .. 0.92    no 0.21
+
+                      v    vv                                                    vv  v    NC
+                    ((((..(((,,<<<<_____>>>>,<<<<<_______>>>>>,,,,<<<<<_____>>>>>))))))): CS
+         trnP     1 CAga..aaaUAGUUuAauUAaAAUauuagCUUUGGGaGcuaaaGAUggggguuAaUcccccuuuucUGA 67   
+                    CA :  A  UAGUUUAA UAAAAUA::A:CUUUG +AG:U::AGAU   :: UAA ::     U: UGA
+  NC_044695.1 10726 CAAGuuAAUUAGUUUAAGUAAAAUAAAAACUUUGUAAGUUUUAGAU---UC-UAAAGA---CAUCAUGA 10787
+                    ****65667*************************999*********...77.888877...99****** PP
+
+>> NC_044695.1  Argiope perforata mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (2) !   7.1e-05   32.9   1.8  cm        1       67 []        3382        3439 + .. 0.91    no 0.21
+
+                      v                                        v             v   v     NC
+                   (((((((,,<<<<_____>>>>,<<<<<__~~~~~>>>>>,,,,<<<<<_____>>>>>))))))): CS
+         trnP    1 CAgaaaaUAGUUuAauUAaAAUauuagCUU*[5]*GcuaaaGAUggggguuAaUcccccuuuucUGA 67  
+                    AG AA:UAGUUUAAU+AAAAUAUUA::UU     ::UAAAGA +      AAU     :UU CU A
+  NC_044695.1 3382 GAGAAAUUAGUUUAAUAAAAAUAUUAGUUU*[5]*AUUAAAGAAA----GGAAU-----AUUCCUCA 3439
+                   ****************************97..*..*******982....23444.....******** PP
+
+>> NC_044695.1  Argiope perforata mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (3) !   0.00035   29.5   1.2  cm        1       67 []        9043        8979 - .. 0.98    no 0.22
+
+                     vvv                  v               v      v         v    vvv    NC
+                   (((((((,,<<<<_____>>>>,<<<<<_______>>>>>,,,,<<<<<_____>>>>>))))))): CS
+         trnP    1 CAgaaaaUAGUUuAauUAaAAUauuagCUUUGGGaGcuaaaGAUggggguuAaUcccccuuuucUGA 67  
+                   ::   ::UA:UUU AU+AAAA:A :::CUUUGG++G::: A AU:: :: UA+U:: ::::   ::A
+  NC_044695.1 9043 UUCUUUUUAGUUU-AUAAAAACACCUACUUUGGAUGUAGAAAAUACUUU-UAUUAACGUAAUCAAAA 8979
+                   *************.9*******************************999.9999999********** PP
+
+>> NC_044695.1  Argiope perforata mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (4) !    0.0039   24.5   0.2  cm        1       67 []        7439        7383 - .. 0.92    no 0.23
+
+                    v  v                                           v     v      v  v   NC
+                   (((((((,,<<<<_____>>>>,<<<<<_______>>>>>,,,,<<<<<_____>>>>>))))))): CS
+         trnP    1 CAgaaaaUAGUUuAauUAaAAUauuagCUUUGGGaGcuaaaGAUggggguuAaUcccccuuuucUGA 67  
+                   : :A A:UA:UUU AUUAAAA:A:U:GCUU  GG+GC:A:A AU     U+AA      :U U: : 
+  NC_044695.1 7439 AUAAUAUUAGUUU-AUUAAAACAAUGGCUUGUGGUGCCAUAAAU----CUAAAA-----AUUUUCUU 7383
+                   *************.**************9988999********9....245555.....******** PP
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (67 consensus positions)
+Target sequences:                                                1  (28064 residues searched)
+Target sequences re-searched for truncated hits:                 1  (508 residues re-searched)
+Windows   passing  local HMM SSV           filter:             213  (0.9822); expected (0.35)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:             188  (0.9035); expected (0.02)
+Windows   passing  local HMM Forward  bias filter:              24  (0.1772); expected (0.02)
+Windows   passing glocal HMM Forward       filter:              13  (0.1683); expected (0.02)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:              13  (0.0344); expected (0.02)
+Envelopes passing  local CM  CYK           filter:               5  (0.01214); expected (0.0001)
+Total CM hits reported:                                          4  (0.00847); includes 0 truncated hit(s)
+
+# CPU time: 0.11u 0.00s 00:00:00.11 Elapsed: 00:00:00.11
+//
+[ok]

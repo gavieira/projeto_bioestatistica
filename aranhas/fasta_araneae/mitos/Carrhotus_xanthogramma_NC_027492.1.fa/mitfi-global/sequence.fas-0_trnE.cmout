@@ -1,0 +1,92 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnE.cm
+# target sequence database:              mitos/Carrhotus_xanthogramma_NC_027492.1.fa//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.1
+# Max sensitivity mode:                  on [all heuristic filters off]
+# maximum DP search matrix size:         80000.0 Mb
+# truncated hit detection:               off [due to --max]
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnE  [CLEN=69]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+  (1) !    0.0002   32.3   4.4  NC_027492.1   5767   5856 +  cm    no 0.23  Carrhotus xanthogramma mitochondrion, complete genome
+ ------ inclusion threshold ------
+  (2) ?      0.01   23.8   0.5  NC_027492.1   5067   5120 +  cm    no 0.20  Carrhotus xanthogramma mitochondrion, complete genome
+  (3) ?     0.012   23.4   3.4  NC_027492.1   6974   7046 +  cm    no 0.22  Carrhotus xanthogramma mitochondrion, complete genome
+  (4) ?     0.092   19.0   0.0  NC_027492.1  13663  13601 -  cm    no 0.30  Carrhotus xanthogramma mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_027492.1  Carrhotus xanthogramma mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (1) !    0.0002   32.3   4.4  cm        1       69 []        5767        5856 + ..   30.7    no 0.23
+
+                                                                v                                         v          NC
+                   (((((((,,<<<<_____>>>>,<<<<<_______>>>>>,,,,<<<<<_............................______>>>>>))))))): CS
+         trnE    1 gUUcuuaUAGUUgAAuUAcAACauUggaUUUUCAauccAaAGGUcuuggU............................UAaAauccaaguaagAAuu 69  
+                   G:U::UAUAGU::     ::ACAUU::: UUUCA+:::AAAG+U  U:GU                            UA AA C:A  UA::A:U+
+  NC_027492.1 5767 GAUUAUAUAGUGA----UUCACAUUAUUAUUUCAUGAUAAAGAU-CUAGUcuucauuuaucuucaguaaaucgcucuaUAUAAGCUA--UAUAAUUA 5856
+
+>> NC_027492.1  Carrhotus xanthogramma mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (2) ?      0.01   23.8   0.5  cm        1       69 []        5067        5120 + ..   23.1    no 0.20
+
+                     v                                                              v    NC
+                   (((((((,,<<<<_____>>>>,<<<<<_______>>>>>,,,,<<<<<_______>>>>>))))))): CS
+         trnE    1 gUUcuuaUAGUUgAAuUAcAACauUggaUUUUCAauccAaAGGUcuuggUUAaAauccaaguaagAAuu 69  
+                   :: :U:A AGU::AAU  ::AC+UU:GAUUU CAAUC:AAAG          +A       U:A: ::U
+  NC_027492.1 5067 AAUAUAAAAGUAUAAU--AUACGUUUGAUUUCCAAUCAAAAGUA--------GAGC-----UUAUUUUU 5120
+
+>> NC_027492.1  Carrhotus xanthogramma mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (3) ?     0.012   23.4   3.4  cm        1       69 []        6974        7046 + ..   21.4    no 0.22
+
+                       v    v                   v                          v       v      v      NC
+                   (((((((,,<<<<.._____......>>>>,<<<<<_______>>>>>,,,,<<<<<_______>>>>>))))))): CS
+         trnE    1 gUUcuuaUAGUUg..AAuUA......cAACauUggaUUUUCAauccAaAGGUcuuggUUAaAauccaaguaagAAuu 69  
+                   :U : U:UA U::  AA+U       ::A +UU::AU UUCA U::AAAG+ ::::    AA+U :::::A : A:+
+  NC_027492.1 6974 AUUACUGUA-UAAggAAAUUcuuuggUUAGGUUAAAUCUUCAGUUUAAAGAAAGAAA---AAUUAUUCUUAUUGAUA 7046
+
+>> NC_027492.1  Carrhotus xanthogramma mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (4) ?     0.092   19.0   0.0  cm        1       69 []       13663       13601 - ..   15.8    no 0.30
+
+                     v                                                                v   NC
+                    (((((((,,<<<<_____>>>>,<<<<<_______>>>>>,,,,<<<<<_______>>>>>))))))): CS
+         trnE     1 gUUcuuaUAGUUgAAuUAcAACauUggaUUUUCAauccAaAGGUcuuggUUAaAauccaaguaagAAuu 69   
+                    : U:UUA  GU::  UU ::ACAU ::  UUU A+ :: A GG ::UG:     ++:CA::UAA:A :+
+  NC_027492.1 13663 UUUAUUAAGGUGUCCUU-GCACAUGAAGAUUUGAUUUUCAGGGAGAUGU-----UAACAUCUAAUAUAA 13601
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (69 consensus positions)
+Target sequences:                                                1  (29126 residues searched)
+Target sequences re-searched for truncated hits:                 0  (0 residues re-searched)
+Windows   passing  local HMM SSV           filter:                  (off)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:                  (off)
+Windows   passing  local HMM Forward  bias filter:                  (off)
+Windows   passing glocal HMM Forward       filter:                  (off)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:                  (off)
+Envelopes passing  local CM  CYK           filter:                  (off)
+Total CM hits reported:                                          4  (0.009613); includes 0 truncated hit(s)
+
+# CPU time: 30.63u 0.01s 00:00:30.64 Elapsed: 00:00:30.65
+//
+[ok]

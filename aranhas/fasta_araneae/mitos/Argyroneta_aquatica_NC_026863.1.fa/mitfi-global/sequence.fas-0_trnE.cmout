@@ -1,0 +1,92 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnE.cm
+# target sequence database:              mitos/Argyroneta_aquatica_NC_026863.1.fa//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.1
+# Max sensitivity mode:                  on [all heuristic filters off]
+# maximum DP search matrix size:         80000.0 Mb
+# truncated hit detection:               off [due to --max]
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnE  [CLEN=69]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+  (1) !   6.4e-05   35.0   0.0  NC_026863.1   4913   4972 +  cm    no 0.27  Argyroneta aquatica mitochondrion, complete genome
+  (2) !   0.00013   33.5   1.5  NC_026863.1  12798  12736 -  cm    no 0.21  Argyroneta aquatica mitochondrion, complete genome
+  (3) !    0.0032   26.5   0.1  NC_026863.1   2254   2304 +  cm    no 0.24  Argyroneta aquatica mitochondrion, complete genome
+ ------ inclusion threshold ------
+  (4) ?     0.065   20.0   0.3  NC_026863.1   4253   4310 +  cm    no 0.24  Argyroneta aquatica mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_026863.1  Argyroneta aquatica mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (1) !   6.4e-05   35.0   0.0  cm        1       69 []        4913        4972 + ..   32.2    no 0.27
+
+                                                                vvv         vvv          NC
+                   (((((((,,<<<<_____>>>>,<<<<<_______>>>>>,,,,<<<<<_______>>>>>))))))): CS
+         trnE    1 gUUcuuaUAGUUgAAuUAcAACauUggaUUUUCAauccAaAGGUcuuggUUAaAauccaaguaagAAuu 69  
+                   ::U::::UAGU::AAU  ::AC+U:::: UUUCA+::::AA +U   +     A U     ::::A::U
+  NC_026863.1 4913 GAUAAAGUAGUGAAAU--UCACGUCAUUAUUUCAUGAUGAAUAUGUUU-----AGU--CUUCUUUAUCU 4972
+
+>> NC_026863.1  Argyroneta aquatica mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (2) !   0.00013   33.5   1.5  cm        1       69 []       12798       12736 - ..   29.3    no 0.21
+
+                                                                    v       v             NC
+                    (((((((,,<<<<~~~~~>>>>,<<<<<_______>>>>>,,,,<<<<<_______>>>>>))))))): CS
+         trnE     1 gUUcuuaUAGUUg*[5]*cAACauUggaUUUUCAauccAaAGGUcuuggUUAaAauccaaguaagAAuu 69   
+                    ::U:UUAUAGU::     ::ACAU:::A UUU A+U:::AA+GU::U:      A++:A::UAA:A::+
+  NC_026863.1 12798 UCUAUUAUAGUGU*[4]*GCACAUAAAAAUUUGAUUUUUAAAGUGAUU-----UAAUAAUCUAAUAGAA 12736
+
+>> NC_026863.1  Argyroneta aquatica mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (3) !    0.0032   26.5   0.1  cm        7       62 ..        2254        2304 + ..   25.6    no 0.24
+
+                                                           v v       v v    NC
+                   (,,<<<<_____>>>>,<<<<<_______>>>>>,,,,<<<<<_______>>>>>) CS
+         trnE    7 aUAGUUgAAuUAcAACauUggaUUUUCAauccAaAGGUcuuggUUAaAauccaagu 62  
+                   :UA:UU:AA UA:AA:AUU:::UU UCAA:::AAAG+U:: G     AA++C :::
+  NC_026863.1 2254 GUAGUUAAACUAUAAUAUUAAUUUGUCAAAUUAAAGAUAGAG-----AAAUCCCUC 2304
+
+>> NC_026863.1  Argyroneta aquatica mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (4) ?     0.065   20.0   0.3  cm        1       69 []        4253        4310 + ..   16.5    no 0.24
+
+                     v                                                               v    NC
+                   (((((((,,<<<<_____>>>>,<<<<<_______>>>>>,,,,<<<<<_______.>>>>>))))))): CS
+         trnE    1 gUUcuuaUAGUUgAAuUAcAACauUggaUUUUCAauccAaAGGUcuuggUUAaAau.ccaaguaagAAuu 69  
+                   GU  ::A AGU::A+U  ::AC+UU::AUUU CAAU::AA GGU       AA ++      U::  AU+
+  NC_026863.1 4253 GUUUAUAAAGUAUAUU--GUACGUUUAAUUUCCAAUUAAAGGGU-----GAAAUUAu-----UGUGCAUA 4310
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (69 consensus positions)
+Target sequences:                                                1  (32000 residues searched)
+Target sequences re-searched for truncated hits:                 0  (0 residues re-searched)
+Windows   passing  local HMM SSV           filter:                  (off)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:                  (off)
+Windows   passing  local HMM Forward  bias filter:                  (off)
+Windows   passing glocal HMM Forward       filter:                  (off)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:                  (off)
+Envelopes passing  local CM  CYK           filter:                  (off)
+Total CM hits reported:                                          4  (0.00725); includes 0 truncated hit(s)
+
+# CPU time: 33.07u 0.02s 00:00:33.09 Elapsed: 00:00:33.12
+//
+[ok]

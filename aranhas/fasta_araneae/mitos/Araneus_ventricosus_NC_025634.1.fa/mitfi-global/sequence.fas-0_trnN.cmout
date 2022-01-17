@@ -1,0 +1,80 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnN.cm
+# target sequence database:              mitos/Araneus_ventricosus_NC_025634.1.fa//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.1
+# Max sensitivity mode:                  on [all heuristic filters off]
+# maximum DP search matrix size:         80000.0 Mb
+# truncated hit detection:               off [due to --max]
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnN  [CLEN=72]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+ ------ inclusion threshold ------
+  (1) ?     0.011   22.3   0.0  NC_025634.1  13576  13514 -  cm    no 0.30  Araneus ventricosus mitochondrion, complete genome
+  (2) ?     0.022   20.9   0.0  NC_025634.1   1091   1036 -  cm    no 0.30  Araneus ventricosus mitochondrion, complete genome
+  (3) ?     0.057   19.0   0.0  NC_025634.1   5450   5532 +  cm    no 0.31  Araneus ventricosus mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_025634.1  Araneus ventricosus mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (1) ?     0.011   22.3   0.0  cm        1       72 []       13576       13514 - ..   20.6    no 0.30
+
+                                                                                           NC
+                    (((((((,,<<<<_______>>>>,<<<<<~~~~~>>>>>,,,,,<<<<<_______>>>>>))))))): CS
+         trnN     1 UagauuGAAGCcauuaguUaagGCauuUag*[7]*cuAaaAgaUUGuaggAUcGAggccuaCCaaucuAG 72   
+                    U:::UU:AAG: :     ++: :CAU::A:     :U::AAG   G: ::A C    :: :C:AA:::A 
+  NC_025634.1 13576 UUUGUUAAAGUGU----GAGGCACAUAAAA*[7]*UUUUAAGGA-GGCAAAAC----UUGCCUAACAAAA 13514
+
+>> NC_025634.1  Araneus ventricosus mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (2) ?     0.022   20.9   0.0  cm        1       72 []        1091        1036 - ..   19.0    no 0.30
+
+                       v                                                             v      NC
+                   (((((((,,<<<<_______>>>>,<<<<<_______>>>>>,,,,,<<<<<_______>>>>>))))))): CS
+         trnN    1 UagauuGAAGCcauuaguUaagGCauuUagCUGUUAAcuAaaAgaUUGuaggAUcGAggccuaCCaaucuAG 72  
+                   UA   :GAA::CA     U+AG::+:U AGCUGU AACU A:A++U G:   AU+ AG    :CC:   UAG
+  NC_025634.1 1091 UA--AAGAAAUCA-----UUAGAUGAUGAGCUGUAAACUCAUAUUU-GA---AUUUAGC---UCCUC--UAG 1036
+
+>> NC_025634.1  Araneus ventricosus mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (3) ?     0.057   19.0   0.0  cm        1       72 []        5450        5532 + ..   15.6    no 0.31
+
+                                                                                      NC
+                   (((((((,,<~~~~~~>,<<<<<_______>>>>>.,,,,,<<<<<_______>>>>>))))))): CS
+         trnN    1 UagauuGAAG*[13]*CauuUagCUGUUAAcuAaa.AgaUUGuaggAUcGAggccuaCCaaucuAG 72  
+                   U::A::  AG      CA:UU:: UGUUA ::AA:   A       AU+  +G      ::U::AG
+  NC_025634.1 5450 UUAAACUUAG*[34]*CAAUUCAUUGUUACUGAAUcGAAG------AUUUGAG-----AGUUUAAG 5532
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (72 consensus positions)
+Target sequences:                                                1  (29234 residues searched)
+Target sequences re-searched for truncated hits:                 0  (0 residues re-searched)
+Windows   passing  local HMM SSV           filter:                  (off)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:                  (off)
+Windows   passing  local HMM Forward  bias filter:                  (off)
+Windows   passing glocal HMM Forward       filter:                  (off)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:                  (off)
+Envelopes passing  local CM  CYK           filter:                  (off)
+Total CM hits reported:                                          3  (0.00691); includes 0 truncated hit(s)
+
+# CPU time: 14.64u 0.00s 00:00:14.64 Elapsed: 00:00:14.64
+//
+[ok]

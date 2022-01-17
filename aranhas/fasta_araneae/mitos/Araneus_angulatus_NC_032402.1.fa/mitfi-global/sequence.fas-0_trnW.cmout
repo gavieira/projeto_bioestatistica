@@ -1,0 +1,80 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnW.cm
+# target sequence database:              mitos/Araneus_angulatus_NC_032402.1.fa//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.1
+# Max sensitivity mode:                  on [all heuristic filters off]
+# maximum DP search matrix size:         80000.0 Mb
+# truncated hit detection:               off [due to --max]
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnW  [CLEN=69]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+ ------ inclusion threshold ------
+  (1) ?     0.024   20.9   0.1  NC_032402.1   1000   1068 +  cm    no 0.29  Araneus angulatus mitochondrion, complete genome
+  (2) ?     0.038   19.9   1.5  NC_032402.1   7444   7369 -  cm    no 0.24  Araneus angulatus mitochondrion, complete genome
+  (3) ?     0.041   19.7   0.0  NC_032402.1      1     62 +  cm    no 0.37  Araneus angulatus mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_032402.1  Araneus angulatus mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (1) ?     0.024   20.9   0.1  cm        1       69 []        1000        1068 + ..   18.4    no 0.29
+
+                   v           v      v                         v vv         vv v      v  NC
+                   (((((((,,<<<<______>>>>,<<<<<_______>>>>>,,,,<<<<<_._____>>>>>))))))): CS
+         trnW    1 AGggacUUAgGuUAAauuAAaCcAaugGCCUUCAAAGCcauAAAUAagagU.AAAaUcucuUAguccCUG 69  
+                    G :A: UA:G:  A++ A :C:A U:G  UUCAA  C:A A +  :  :    AA :  :  :U: C G
+  NC_032402.1 1000 GGUAAAUUAGGAU-AUAAAUUCUAUUAGUUUUCAAGGCUAGAGGAGCUAAAuUCAAAUAUGAGUUUACAG 1068
+
+>> NC_032402.1  Araneus angulatus mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (2) ?     0.038   19.9   1.5  cm        1       69 []        7444        7369 - ..   16.5    no 0.24
+
+                        v                                                         v       NC
+                   (((((((,,<<<<______>>>>,<<<<<__~~~~~~>>>>>,,,,<<<<<______>>>>>))))))): CS
+         trnW    1 AGggacUUAgGuUAAauuAAaCcAaugGCCU*[ 5]*GCcauAAAUAagagUAAAaUcucuUAguccCUG 69  
+                   A : A UUAG:UU AA  AAA:CA:U G: U      :C A:AA UAA::     A  ::UUA U : U 
+  NC_032402.1 7444 AUAUAAUUAGUUU-AAGAAAAACAUUGGUUU*[14]*ACUAAAAUUAAUUU-CCGAGGAAUUACUAUAUU 7369
+
+>> NC_032402.1  Araneus angulatus mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (3) ?     0.041   19.7   0.0  cm        1       69 []           1          62 + [.   15.8    no 0.37
+
+                 v  v                                          v v        v v    v  v  NC
+                 (((((((,,<<<<______>>>>,<<<<<__~~~~~>>>>>,,,,<<<<<______>>>>>))))))): CS
+         trnW  1 AGggacUUAgGuUAAauuAAaCcAaugGCCU*[5]*GCcauAAAUAagagUAAAaUcucuUAguccCUG 69
+                  G   C:UA:G:U AAU AA:C:AAUG:  U      :CAUAAAU: :A    A    : ::G   C G
+  NC_032402.1  1 GGGUUCAUAAGCU-AAUAAAGCUAAUGAGUU*[5]*CUCAUAAAUGAAA----AGA--UGCUGGCUCAG 62
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (69 consensus positions)
+Target sequences:                                                1  (28410 residues searched)
+Target sequences re-searched for truncated hits:                 0  (0 residues re-searched)
+Windows   passing  local HMM SSV           filter:                  (off)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:                  (off)
+Windows   passing  local HMM Forward  bias filter:                  (off)
+Windows   passing glocal HMM Forward       filter:                  (off)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:                  (off)
+Envelopes passing  local CM  CYK           filter:                  (off)
+Total CM hits reported:                                          3  (0.007286); includes 0 truncated hit(s)
+
+# CPU time: 14.41u 0.01s 00:00:14.42 Elapsed: 00:00:14.43
+//
+[ok]

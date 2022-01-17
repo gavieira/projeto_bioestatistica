@@ -1,0 +1,92 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnD.cm
+# target sequence database:              mitos/Araneus_angulatus_NC_032402.1.fa//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.1
+# Max sensitivity mode:                  on [all heuristic filters off]
+# maximum DP search matrix size:         80000.0 Mb
+# truncated hit detection:               off [due to --max]
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnD  [CLEN=70]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+  (1) !   0.00081   30.9   1.5  NC_032402.1   7444   7369 -  cm    no 0.24  Araneus angulatus mitochondrion, complete genome
+  (2) !   0.00083   30.9   9.8  NC_032402.1   3384   3448 +  cm    no 0.15  Araneus angulatus mitochondrion, complete genome
+ ------ inclusion threshold ------
+  (3) ?     0.074   20.5   1.3  NC_032402.1   9030   8969 -  cm    no 0.21  Araneus angulatus mitochondrion, complete genome
+  (4) ?     0.077   20.3   0.3  NC_032402.1   5660   5725 +  cm    no 0.24  Araneus angulatus mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_032402.1  Araneus angulatus mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (1) !   0.00081   30.9   1.5  cm        1       70 []        7444        7369 - ..   27.8    no 0.24
+
+                        v                                                            v       NC
+                   (((((((,,<<<<______>>>>,<<<<<____~~~~~~>>>>>,,,,<<<<<_______>>>>>))))))): CS
+         trnD    1 aAGauauUAGUaaAauaAAuuACAuuaccUUGU*[ 3]*gguaaAAUUacaggUUaAAauccuguauauCUua 70  
+                   A : : UUAGU::AA AA ::ACAUU ::UUGU      :: AAAAUUA:::      A  :::UA : : U+
+  NC_032402.1 7444 AUAUAAUUAGUUUAAGAA-AAACAUUGGUUUGU*[12]*ACUAAAAUUAAUUU--CCGAGGAAUUACUAUAUU 7369
+
+>> NC_032402.1  Araneus angulatus mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (2) !   0.00083   30.9   9.8  cm        1       70 []        3384        3448 + ..   29.6    no 0.15
+
+                       vv                                       v  v         v  v vv      NC
+                   (((((((,,<<<<______>>>>,<<<<<_______>>>>>,,,,<<<<<_______>>>>>))))))): CS
+         trnD    1 aAGauauUAGUaaAauaAAuuACAuuaccUUGUCAAgguaaAAUUacaggUUaAAauccuguauauCUua 70  
+                   A :A  UUA:U::A++AA ::A:A:UA::UUGUCAA::UA:A+   :: :     AU: :: A  U: UA
+  NC_032402.1 3384 AUAAAAUUAGUUUAUAAA-AAAUAAUAAUUUGUCAAGUUAUAGAAAAGAA----UAUUCCUCAACUUAUA 3448
+
+>> NC_032402.1  Araneus angulatus mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (3) ?     0.074   20.5   1.3  cm        1       70 []        9030        8969 - ..   17.0    no 0.21
+
+                   v                                                      v  NC
+                   (((((((,,<<<<______>>>>,<<<<<__~~~~~>>>>>,,~~~~~~))))))): CS
+         trnD    1 aAGauauUAGUaaAauaAAuuACAuuaccUU*[5]*gguaaAA*[19]*auauCUua 70  
+                    A:AU:UUAGU::AA  A ::ACA::::CUU     G::::AA      A:AU:U +
+  NC_032402.1 9030 AAAAUUUUAGUUUAA--A-AAACACCUACUU*[5]*GUAGGAA*[14]*AAAUUUAU 8969
+
+>> NC_032402.1  Araneus angulatus mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       cyksc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ------ ----- ----
+  (4) ?     0.077   20.3   0.3  cm        1       70 []        5660        5725 + ..   17.6    no 0.24
+
+                                                                    vv           vv          NC
+                   (((((...((,,<<<<______>>>>,<<<<<_______>>>>>,,,,<<<<<_______>>>>>))))))): CS
+         trnD    1 aAGau...auUAGUaaAauaAAuuACAuuaccUUGUCAAgguaaAAUUacaggUUaAAauccuguauauCUua 70  
+                   :A:::   ::UAGU:AAA  + U:ACAU:A:: U UCA ::U:A A U   ::     A+::   :::::U:A
+  NC_032402.1 5660 GAAGAuuuUAUAGUGAAA--U-UCACAUCAUUAUUUCAUGAUGAUAAUGUUAA----GACUUCUUUAUCUUCA 5725
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (70 consensus positions)
+Target sequences:                                                1  (28410 residues searched)
+Target sequences re-searched for truncated hits:                 0  (0 residues re-searched)
+Windows   passing  local HMM SSV           filter:                  (off)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:                  (off)
+Windows   passing  local HMM Forward  bias filter:                  (off)
+Windows   passing glocal HMM Forward       filter:                  (off)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:                  (off)
+Envelopes passing  local CM  CYK           filter:                  (off)
+Total CM hits reported:                                          4  (0.009468); includes 0 truncated hit(s)
+
+# CPU time: 19.53u 0.00s 00:00:19.53 Elapsed: 00:00:19.53
+//
+[ok]

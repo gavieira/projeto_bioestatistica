@@ -1,0 +1,68 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.4 (Dec 2020)
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         ../refseq89m/../refseq89m/ncRNA/trnY.cm
+# target sequence database:              mitos/Argiope_bruennichi_NC_024281.1.fa//sequence.fas-0
+# max ASCII text line length:            unlimited
+# sequence reporting threshold:          E-value <= 0.01
+# maximum DP search matrix size:         80000.0 Mb
+# HMM gFwd biased comp filter:           off
+# number of worker threads:              1 [--cpu]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       trnY  [CLEN=70]
+Hit scores:
+ rank     E-value  score  bias  sequence     start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  ----------- ------ ------   --- ----- ----  -----------
+  (1) !   0.00097   24.0   0.0  NC_024281.1   5234   5298 +  cm    no 0.31  Argiope bruennichi mitochondrion, complete genome
+  (2) !    0.0055   20.8   0.1  NC_024281.1  10918  10858 -  cm    no 0.25  Argiope bruennichi mitochondrion, complete genome
+
+
+Hit alignments:
+>> NC_024281.1  Argiope bruennichi mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (1) !   0.00097   24.0   0.0  cm        1       70 []        5234        5298 + .. 0.93    no 0.31
+
+                         v                                                        v         NC
+                   (((((((,,<<<<______>>>>,<<<<<___~~~~~>>>>>,,,,<<<<<_______>>>>>)))).))): CS
+         trnY    1 ggUaagaUGGCuGAguguUAaGCGauagaUUG*[4]*ucuauuuAuGgaggUUuaAaUccucCucuu.AccA 70  
+                   ::UA : UG CUGAG +  AAG G:UA: UUG      :UA:+UA  GA::U      ::UC  : U A::A
+  NC_024281.1 5234 AAUAGAGUGCCUGAGGAA-AAGGGCUAACUUG*[4]*GUUAGAUAAUGAAAUA-----UUUCAAUUUcAUUA 5298
+                   ****************96.***********98..9..**************76.....99**966666**** PP
+
+>> NC_024281.1  Argiope bruennichi mitochondrion, complete genome
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (2) !    0.0055   20.8   0.1  cm        1       70 []       10918       10858 - .. 0.89    no 0.25
+
+                         v   v                      v                           v       NC
+                    (((((((,,<<<<.........______.>>>>,<<<<<_______>>>>>,,~~~~~~))))))): CS
+         trnY     1 ggUaagaUGGCuG.........AguguU.AaGCGauagaUUGUAAAucuauuu*[19]*ucuuAccA 70   
+                    ::U:: A   :::         A  +U  ::: G:U:::+UGUAAA:::A:+U      U ::A::A
+  NC_024281.1 10918 AGUUUAAAAUUCUucuuaagaaAUCAU-uAGAUGGUGAGCUGUAAACUCAUAU*[ 1]*UGAAAUUA 10858
+                    ******************999544444.5**********************86...4..6699**** PP
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (70 consensus positions)
+Target sequences:                                                1  (28126 residues searched)
+Target sequences re-searched for truncated hits:                 1  (760 residues re-searched)
+Windows   passing  local HMM SSV           filter:             135  (0.9509); expected (0.35)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:             123  (0.893); expected (0.02)
+Windows   passing  local HMM Forward  bias filter:              22  (0.2107); expected (0.02)
+Windows   passing glocal HMM Forward       filter:              12  (0.2107); expected (0.02)
+Windows   passing glocal HMM Forward  bias filter:                  (off)
+Envelopes passing glocal HMM envelope defn filter:              12  (0.03995); expected (0.02)
+Envelopes passing  local CM  CYK           filter:               4  (0.01613); expected (0.0001)
+Total CM hits reported:                                          2  (0.004362); includes 0 truncated hit(s)
+
+# CPU time: 0.29u 0.00s 00:00:00.28 Elapsed: 00:00:00.29
+//
+[ok]
