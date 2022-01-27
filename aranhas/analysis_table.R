@@ -2,11 +2,11 @@
 
 
 library("tidyverse")
-library("readxl")
+library("rstudioapi")
 
 #Lendo tabela
-setwd("./apresentacao_fabiana")
-dados <- readxl::read_excel("../primates/Primates_codon_usage.xlsx")
+setwd(dirname(getActiveDocumentContext()$path))
+dados <- read_csv("Codon_usage.csv")
 
 #Mudando título de coluna
 dados <- dados %>% rename(codon_count = "Number of Codon Occurences")
@@ -14,7 +14,7 @@ dados <- dados %>% rename(codon_count = "Number of Codon Occurences")
 print.data.frame(head(dados, 2))
 
 
-# Agrupando dados por aa e codon, e somando a ocorrência total de cada códon (soma das 199 spp.)
+# Agrupando dados por aa e codon, e somando a ocorrência total de cada códon (soma de todas as spp.)
 all_aa = dados %>%
   group_by(Aminoacid, Codon) %>%
   summarise(observed_values = sum(codon_count), .groups = "drop")
@@ -166,28 +166,39 @@ ggplot(fractions_final) +
 
 ## Comparativo última posição do códon
 
-last_pos = dados %>%
+codon_pos = dados %>%
   filter(Aminoacid != "End") %>% #Removing stop codons
-  mutate(last_pos = substr(Codon,3,3)) %>% # Get only 3rd nucleotide
-  group_by(last_pos) %>%
+  mutate(first_pos = substr(Codon,1,1)) %>%
+  mutate(second_pos = substr(Codon,2,2)) %>% 
+  mutate(third_pos = substr(Codon,3,3)) # Get only 3rd nucleotide
+
+
+first_pos = codon_pos %>%
+  group_by(first_pos) %>%
+  summarise(codon_sum = sum(codon_count), codon_mean = mean(codon_count))
+
+second_pos = codon_pos %>%
+  group_by(second_pos) %>%
+  summarise(codon_sum = sum(codon_count), codon_mean = mean(codon_count))
+
+third_pos = codon_pos %>%
+  group_by(third_pos) %>%
   summarise(codon_sum = sum(codon_count), codon_mean = mean(codon_count))
 
 #Plotando a ultima posição
 
-ggplot(last_pos) +
-  aes(x = last_pos, y = codon_sum) + 
+ggplot(codon_pos) +
+  aes(x = third_pos, y = codon_sum) + 
   geom_col(aes(fill = last_pos)) +
   scale_y_continuous(labels = scales::comma) +
   #facet_wrap(~Aminoacid, scales = "free") +
   ggtitle("Codon count (sum) - by 3rd codon position") +
   theme(plot.title = element_text(hjust = 0.5))
 
-ggplot(last_pos) +
-  aes(x = last_pos, y = codon_mean) + 
+ggplot(codon_pos) +
+  aes(x = third_pos, y = codon_mean) + 
   geom_col(aes(fill = last_pos)) +
   scale_y_continuous(labels = scales::comma) +
   #facet_wrap(~Aminoacid, scales = "free") +
   ggtitle("Codon count (mean) - by 3rd codon position") +
   theme(plot.title = element_text(hjust = 0.5))
-
-
