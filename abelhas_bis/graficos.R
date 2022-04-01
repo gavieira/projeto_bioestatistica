@@ -57,7 +57,9 @@ frequencia <- peso_completo %>%
 #In order to plot in a specific order, we need to change the order of the levels of our categorical variables (factors): COR e DATA
 levels(frequencia$COR) <- c("AMARELO", "AZUL", "BRANCO", "VERDE", "VERMELHO", "CONTROLE") 
 
-levels(frequencia$DATA) <- rev(levels(frequencia$DATA)) #inverting the order of the levels in the DATA variable
+#levels(frequencia$DATA) <- rev(levels(frequencia$DATA)) #inverting directly the order of the levels in the DATA variable
+#frequencia$DATA <- ordered(frequencia$DATA, levels = c("26/05/2020", "16/07/2020", "14/10/2020")) #Manually ordering the levels of the DATA factor
+frequencia$DATA <- factor(frequencia$DATA, levels = c("26/05/2020", "16/07/2020", "14/10/2020"), ordered =TRUE) #Manually ordering the levels of the DATA factor
 
 ggplot(frequencia) +
   aes(x=DATA, y=mean_freq, fill=COR) +
