@@ -1,7 +1,9 @@
 #Abelhas gráficos
 
 library("tidyverse")
-setwd("~/Dropbox/bis")
+library("rstudioapi")
+
+setwd(dirname(getActiveDocumentContext()$path))
 
 
 ### Modificando o arquivo "peso_categorias.csv"
@@ -30,13 +32,14 @@ subset <- peso_completo %>%
   mutate("corrigido" = ifelse(corrigido == 0, "Sem retorno", "Retorno"))
 
 ggplot(subset) +
-  aes(x = corrigido, y = PESO) + 
-  geom_boxplot(aes(fill=corrigido)) +
-  geom_point(position= "jitter", alpha=3/10, aes(fill=corrigido)) +
+  aes(x = corrigido, y = PESO, color=corrigido) + 
+  geom_boxplot() +
+  geom_point(position= "jitter", alpha=3/10) +
   xlab("") +
   ylab("Massa (mg)") +
   ggtitle("Massa vs. Retorno") +
-  theme(plot.title = element_text(hjust = 0.5))
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(legend.position = 'none')
 
 frequencia <- peso_completo %>%
   select(COR, DATA, corrigido) %>% #Só usarei as colunas que importam
